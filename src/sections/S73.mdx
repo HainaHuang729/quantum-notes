@@ -1,0 +1,552 @@
+import { OscillatorEigenLab } from "./widgets/OscillatorEigenLab";
+import { ClassicalCorrespondenceLab } from "./widgets/ClassicalCorrespondenceLab";
+
+export const id = "7.3";
+export const title = "谐振子的量子化";
+
+本节在坐标表象里解谐振子的能量本征值问题。Hamiltonian 与经典运动已经在 @sec:7.1 和 @sec:7.2 准备好；这里要做的是把它变成微分方程，再从全实轴可归一的条件推出离散能谱和 Hermite 波函数。先看两端的行为，再抽出 Gaussian 因子，最后用完整波函数的可归一条件约束剩下的幂级数。
+
+### Hamiltonian、演化与正能量
+
+含时 Schrödinger 方程是
+$$
+i\hbar\frac{d}{dt}|\psi\rangle=H|\psi\rangle,
+\qquad
+H=\frac{P^2}{2m}+\frac12m\omega^2X^2.
+$$
+演化算符由 $H$ 的谱决定，所以最终要解的是定态本征方程。在进入具体求解之前，先用算符的自伴性排除负能量。对合适的归一化态，
+$$
+\begin{aligned}
+\langle H\rangle
+&=\frac1{2m}\langle\psi|P^2|\psi\rangle
++\frac12m\omega^2\langle\psi|X^2|\psi\rangle\\
+&=\frac1{2m}\langle P\psi|P\psi\rangle
++\frac12m\omega^2\langle X\psi|X\psi\rangle\ge0.
+\end{aligned}
+$$
+若 $|\psi\rangle$ 是能量本征态，左边就是 $E$，所以 $E\ge0$。这一步只说明能量不能为负，还没有给出最低值 $\hbar\omega/2$。零点能来自后面“两端都要可归一”的条件，也来自不确定性关系给出的下界；不能把非负性本身当成完整的量子化证明。
+
+### 从算符本征方程到坐标方程
+
+先写本征方程，再投影到 $X$ 表象：
+$$ {#eq-7.3.1}
+\left(\frac{P^2}{2m}+\frac12m\omega^2X^2\right)|E\rangle=E|E\rangle.
+$$
+在坐标表象中作替换
+$$
+X\to x,\qquad
+P\to-i\hbar\frac{d}{dx},\qquad
+|E\rangle\to\psi_E(x),
+$$
+就得到坐标空间的定态方程
+$$ {#eq-7.3.2}
+\left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac12m\omega^2x^2\right)\psi=E\psi.
+$$
+这里把 $\psi_E(x)$ 的指标和自变量暂时省去，下面的推导都针对一个固定的 $E$。移项后
+$$ {#eq-7.3.3}
+\frac{d^2\psi}{dx^2}+\frac{2m}{\hbar^2}
+\left(E-\frac12m\omega^2x^2\right)\psi=0.
+$$
+这是一个二阶线性 :c[微分方程]{#differential-equation}。一般的微分方程有很多解，但物理 Hilbert 空间只接受在全实轴上可归一化的解：
+$$
+\int_{-\infty}^{\infty}|\psi(x)|^2\,dx<\infty.
+$$
+散射态常用 delta 函数归一，那是连续谱的语言；谐振子的束缚态没有连续谱，最终得到的每个能级都是普通的平方可积函数。
+
+### 无量纲化：让方程自己选尺度
+
+方程里同时有 $\hbar,m,\omega$，直接猜解很不方便。令
+$$ {#eq-7.3.4}
+x=by,
+$$
+其中 $b$ 有长度单位，$y$ 无量纲。因为 $d/dx=b^{-1}d/dy$，把 @eq:7.3.3 乘以 $b^2$ 后得到
+$$ {#eq-7.3.5}
+\frac{d^2\psi}{dy^2}+\frac{2mEb^2}{\hbar^2}\psi
+-\frac{m^2\omega^2b^4}{\hbar^2}y^2\psi=0.
+$$
+选择 $b$ 使 $y^2$ 的系数等于 $1$：
+$$ {#eq-7.3.6}
+b=\left(\frac{\hbar}{m\omega}\right)^{1/2}.
+$$
+再定义无量纲能量
+$$ {#eq-7.3.7}
+\varepsilon=\frac{mEb^2}{\hbar^2}=\frac{E}{\hbar\omega}.
+$$
+这样方程变成
+$$ {#eq-7.3.8}
+\psi''+(2\varepsilon-y^2)\psi=0,
+$$
+其中撇号现在表示对 $y$ 求导。$b$ 不是随便选的一个“方便单位”，而是由 $m,\omega,\hbar$ 共同决定的自然长度；$\hbar\omega$ 则是自然能量。后面说 $y$ 大或小，都是相对于这个自然尺度，而不是相对于某个固定的米数。$\varepsilon$ 的定义可以差一个常数倍，这里的选择是为了后面得到 $\varepsilon=n+1/2$，而不是 $2n+1$。
+
+### 无穷远：先看指数的两种可能
+
+固定能量，让 $y\to+\infty$。此时 $y^2$ 远大于 $2\varepsilon$，@eq:7.3.8 的首阶近似是
+$$ {#eq-7.3.9}
+\psi''-y^2\psi=0.
+$$
+试探
+$$
+\psi=Ay^{\mu}e^{\pm y^2/2},
+$$
+其中 $\mu$ 是一个待定的幂次，不是粒子质量。直接求导，
+$$
+\psi''=Ay^{\mu+2}e^{\pm y^2/2}
+\left[1\pm\frac{2\mu+1}{y^2}+\frac{\mu(\mu-1)}{y^4}\right]
+\underset{y\to\infty}{\longrightarrow}
+Ay^{\mu+2}e^{\pm y^2/2}=y^2\psi.
+$$
+所以两种指数在首阶上都满足 @eq:7.3.9，但物理上只能保留衰减的那一支：
+$$
+\psi\sim y^{\mu}e^{-y^2/2}.
+$$
+带 $e^{+y^2/2}$ 的支在 $y\to+\infty$ 指数增长，不可能平方可积。这里的“$\sim$”只表示首阶渐近行为，不表示任意 $\mu$ 都已经给出全局精确解；真正的多项式次数和能量还要由两端条件和幂级数递推决定。
+
+### 原点附近与 Gaussian 因子
+
+再看 $y\to0$。此时 $y^2$ 可以丢掉，@eq:7.3.8 变成
+$$
+\psi''+2\varepsilon\psi=0,
+$$
+局部解是
+$$
+\psi=A\cos(\sqrt{2\varepsilon}\,y)+B\sin(\sqrt{2\varepsilon}\,y)
+=A+cy+O(y^2),
+$$
+其中 $c=B\sqrt{2\varepsilon}$。原点是一个正则点，没有负幂次，也没有必须舍弃的奇性。这为下面的幂级数形式提供了边界信息。
+
+把已知的指数尾部抽出来，设
+$$ {#eq-7.3.10}
+\psi(y)=u(y)e^{-y^2/2}.
+$$
+这一步只是把无穷远已经确定的高斯包络分离出去，并没有假设 $u$ 已经是多项式。求导得
+$$
+\psi'=e^{-y^2/2}(u'-yu),
+\qquad
+\psi''=e^{-y^2/2}\left[u''-2yu'+(y^2-1)u\right].
+$$
+代回 @eq:7.3.8，消去公共因子 $e^{-y^2/2}$，得到 $u$ 的方程
+$$ {#eq-7.3.11}
+u''-2yu'+(2\varepsilon-1)u=0.
+$$
+现在 $u$ 在原点附近是 $A+cy+\cdots$，在无穷远最多只能像幂次那样增长；它不能重新带回 $e^{+y^2/2}$，否则前面的因子就白抽了。
+
+### 幂级数与两步递推
+
+设 $u$ 可以写成 :c[幂级数]{#series}
+$$ {#eq-7.3.12}
+u(y)=\sum_{n=0}^{\infty}C_ny^n.
+$$
+没有负幂次，是因为原点正则、局部行为是 $A+cy+O(y^2)$。把这个级数代入 @eq:7.3.11：
+$$ {#eq-7.3.13}
+\sum_{n=0}^{\infty}C_n
+\left[n(n-1)y^{n-2}-2ny^n+(2\varepsilon-1)y^n\right]=0.
+$$
+第一项的 $n=0,1$ 系数为零，可以改写成
+$$
+\sum_{n=2}^{\infty}C_nn(n-1)y^{n-2}
+=\sum_{m=0}^{\infty}C_{m+2}(m+2)(m+1)y^m
+=\sum_{n=0}^{\infty}C_{n+2}(n+2)(n+1)y^n.
+$$
+这里只是把求和指标改名，指数的幂次并没有改变。代回后按 $y^n$ 合并：
+$$ {#eq-7.3.14}
+\sum_{n=0}^{\infty}y^n
+\left[C_{n+2}(n+2)(n+1)+C_n(2\varepsilon-1-2n)\right]=0.
+$$
+各幂次线性无关，所以每个方括号都为零：
+$$ {#eq-7.3.15}
+C_{n+2}=C_n\frac{2n+1-2\varepsilon}{(n+2)(n+1)}.
+$$
+这就是 :c[递推关系]{#recurrence-relation}。它把 $C_{n+2}$ 和 $C_n$ 连起来，因此偶数次系数由 $C_0$ 生成，奇数次系数由 $C_1$ 生成，两条链彼此独立。
+
+### 偶链与奇链
+
+把递推逐项写出来，就得到
+$$ {#eq-7.3.16}
+\begin{aligned}
+u(y)={}&C_0\left[1+\frac{1-2\varepsilon}{2\cdot1}y^2
++\frac{(1-2\varepsilon)(5-2\varepsilon)}{(2\cdot1)(4\cdot3)}y^4+\cdots\right]\\
+&+C_1\left[y+\frac{3-2\varepsilon}{3\cdot2}y^3
++\frac{(3-2\varepsilon)(7-2\varepsilon)}{(3\cdot2)(5\cdot4)}y^5+\cdots\right].
+\end{aligned}
+$$
+对任意 $C_0,C_1$，这给出 @eq:7.3.11 的两个线性无关局部解。此时 $\varepsilon$ 仍然可以是任意值，看起来能量没有受到限制。问题出在无穷远：这两个级数一般都不会自动停在一个有限多项式上。
+
+### 为什么级数必须终止
+
+由递推 @eq:7.3.15，大阶系数满足
+$$ {#eq-7.3.17}
+\frac{C_{n+2}}{C_n}\underset{n\to\infty}{\sim}\frac2n.
+$$
+把它和 $y^{\mu}e^{y^2}$ 的幂级数比较。写出
+$$
+y^{\mu}e^{y^2}=\sum_{k=0}^{\infty}\frac{y^{2k+\mu}}{k!},
+$$
+其中 $n=2k+\mu$，对应系数约为 $1/k!$，相邻比值为
+$$
+\frac{C_{n+2}}{C_n}
+=\frac{1}{(n-\mu+2)/2}\sim\frac2n.
+$$
+这个比较针对单独的偶宇称或奇宇称系数链：若该链不终止，就含有 $y^{\mu}e^{y^2}$ 类型的增长支，使 $\psi=ue^{-y^2/2}$ 不可归一。偶、奇链混合可以在一端抵消增长项，但因为两链在反向时符号行为不同，不能同时消掉两端的增长项。
+
+要小心一个常见误解：仅仅“级数有无穷多项”并不自动等于不可归一，$e^{-y^2}$ 本身也有无穷多项。这里真正的理由是系数的渐近增长与增长指数匹配。另一方面，只让一端出现可接受行为也不够；物理波函数必须在 $+\infty$ 和 $-\infty$ 两端都可归一。偶势的宇称分支使这一点更清楚：一条链终止后，另一条链必须从一开始就置零，否则它会在某一端留下增长项。
+
+### 终止条件与能级
+
+如果存在非负整数 $N$，使
+$$
+2N+1-2\varepsilon=0,
+$$
+那么 $C_{N+2}=0$，由同一递推生成的所有更高项也为零。若 $N$ 为偶数，取 $C_1=0$；若 $N$ 为奇数，取 $C_0=0$。这样 $u$ 是一个 $N$ 次多项式，$\psi$ 在两端都只带 $e^{-y^2/2}$ 的衰减。把这个条件写成源书的无量纲能量：
+$$ {#eq-7.3.18}
+\varepsilon_n=\frac{2n+1}{2},\qquad n=0,1,2,\ldots
+$$
+下面把终止时的最高阶 $N$ 改称能级指标 $n$。对应的多项式乘 Gaussian 为
+$$ {#eq-7.3.19}
+\psi(y)=u(y)e^{-y^2/2}=
+\begin{cases}
+\left(C_0+C_2y^2+\cdots+C_ny^n\right)e^{-y^2/2},& n\text{ 为偶数},\\[2pt]
+\left(C_1y+C_3y^3+\cdots+C_ny^n\right)e^{-y^2/2},& n\text{ 为奇数}.
+\end{cases}
+$$
+再由 $\varepsilon=E/(\hbar\omega)$，
+$$ {#eq-7.3.20}
+E_n=\left(n+\frac12\right)\hbar\omega,\qquad n=0,1,2,\ldots
+$$
+这就是谐振子的量子化能谱。关键点在于：多项式不是一开始假设出来的，而是“两端都要可归一”迫使级数终止后才出现的。局部的幂级数本身允许任意 $\varepsilon$，真正选择离散值的是全局边界条件。
+
+### Hermite 多项式
+
+@eq:7.3.15 对每个 $n$ 给出一个 $n$ 次多项式。按物理学家的标准约定取 $H_0=1$、$H_1=2y$，前几个是
+$$ {#eq-7.3.21}
+\begin{aligned}
+H_0(y)&=1,\\
+H_1(y)&=2y,\\
+H_2(y)&=-2(1-2y^2)=4y^2-2,\\
+H_3(y)&=-12\left(y-\frac23y^3\right)=8y^3-12y,\\
+H_4(y)&=12\left(1-4y^2+\frac43y^4\right)=16y^4-48y^2+12.
+\end{aligned}
+$$
+这些是 :c[多项式]{#polynomial}，满足后面 @eq:7.3.24 和 @eq:7.3.25 的递推。物理学家约定与概率论中的 Hermite 约定具有不同的变量缩放和系数；本章的常数都按这里的约定读取。
+
+### 归一化波函数
+
+把多项式、Gaussian 和归一化常数拼起来，实空间的定态为
+$$ {#eq-7.3.22}
+\psi_E(x)=\psi_{(n+1/2)\hbar\omega}(x)=\psi_n(x)
+=\left[\frac{m\omega}{\pi\hbar\,2^{2n}(n!)^2}\right]^{1/4}
+e^{-m\omega x^2/(2\hbar)}
+H_n\!\left(\sqrt{\frac{m\omega}{\hbar}}x\right).
+$$
+归一化常数单独记作
+$$ {#eq-7.3.23}
+A_n=\left[\frac{m\omega}{\pi\hbar\,2^{2n}(n!)^2}\right]^{1/4}.
+$$
+源书明确说这个常数的长推导很繁琐，因此不在正文展开；本节也不把它扩成另一篇归一化证明。实际计算时更常用等价写法：令
+$$
+\alpha=\sqrt{\frac{m\omega}{\hbar}},\qquad
+\phi_n(y)=\frac{1}{\sqrt{2^n n!}}\pi^{-1/4}H_n(y)e^{-y^2/2},
+$$
+则
+$$
+\psi_n(x)=\sqrt{\alpha}\,\phi_n(\alpha x),\qquad
+\int_{-\infty}^{\infty}|\phi_n(y)|^2\,dy=1.
+$$
+这里用到 :c[阶乘]{#factorial} $n!$。把 $\phi_n$ 写成这个无量纲形式后，全实轴归一化和后面的数值实验都更方便。注意归一化是在整条实轴上进行的；如果画图时只取一个有限窗口，窗口内的概率一般略小于 $1$，不能把窗口内的曲线重新缩放后冒充物理波函数。
+
+### Hermite 的递推与正交性
+
+Hermite 多项式有两个常用递推：
+$$ {#eq-7.3.24}
+H_n'(y)=2nH_{n-1}(y),
+$$
+$$ {#eq-7.3.25}
+H_{n+1}(y)=2yH_n(y)-2nH_{n-1}(y).
+$$
+低阶多项式可检查这些关系，一般关系可由生成函数推导；此处直接调用。正交性写成
+$$ {#eq-7.3.26}
+\int_{-\infty}^{\infty}H_n(y)H_{n'}(y)e^{-y^2}\,dy
+=\delta_{nn'}\sqrt{\pi}\,2^n n!,
+$$
+其中 $\delta_{nn'}$ 是 :c[Kronecker delta]{#kronecker-delta}。换回 $x$ 时 $dx=dy/\alpha$，再乘上 $A_nA_{n'}$，正好得到
+$$
+\int_{-\infty}^{\infty}\psi_n^*(x)\psi_{n'}(x)\,dx=\delta_{nn'}.
+$$
+这就是定态波函数的正交归一条件。它和绘图窗口内的“看起来归一”是两件不同的事：前者是全实轴的物理归一，后者只是显示范围。
+
+### 谱传播子
+
+有了完整的正交归一能量本征态，时间演化算符可以用谱分解写出：
+$$ {#eq-7.3.27}
+U(x,t;x',t')=\sum_{n=0}^{\infty}\psi_n(x)\psi_n^*(x')
+\exp\left[-i\left(n+\frac12\right)\omega(t-t')\right].
+$$
+这里 $\psi_n^*(x')$ 是 :c[复共轭]{#conjugate}。本征函数可以选成实函数，所以具体计算时星号常常不写；但一般谱核写成带星号的形式更安全。这个谱和直接使用已经带自然长度尺度的 $\psi_n$，每一项的量纲一致，也不再需要单独写 $H_n(x)$。这个求和如何评价，下一小节只报告结果，不在这里展开。
+
+### 闭式传播核与方法的回顾
+
+源书给出闭式核
+$$ {#eq-7.3.28}
+U(x,t;x',t')=
+\left(\frac{m\omega}{2\pi i\hbar\sin\omega T}\right)^{1/2}
+\exp\left[
+\frac{im\omega}{2\hbar\sin\omega T}
+\left((x^2+x'^2)\cos\omega T-2xx'\right)
+\right],
+\qquad T=t-t'.
+$$
+这个结果不作本节推导，它的评价留给后面的路径积分章节。作为使用限制，普通函数表达式应先限制在不跨焦散的时间区间，例如 $0<\omega T<\pi$，并选取连续的平方根分支；当 $\sin\omega T=0$ 时不能直接数值代入，跨过这些点需要额外的相位或分布意义。不能把主值平方根直接用于所有时间，然后声称公式处处正常。
+
+这段求解也留下一个可复用的方法。第一步，用方程自身的参数找无量纲变量；第二步，分析原点与无穷远的可接受行为；第三步，把已知的指数尾部抽出来；第四步，对剩下的函数作幂级数，得到更简单的递推。这个方法在后面遇到其他常微分方程时还会反复出现。
+
+### 能级间距在宏观尺度上有多小
+
+@eq:7.3.20 说能级等间距，间隔是 $\hbar\omega$。这和经典振子可以连续取能量并不矛盾，只是量子化在宏观尺度上非常细。源书用一组粗 cgs 数字作比较：取质量 $m=2\,\mathrm g$、角频率 $\omega=1\,\mathrm{rad/s}$、振幅 $x_0=1\,\mathrm{cm}$，则
+$$
+E=\frac12m\omega^2x_0^2=1\ \mathrm{erg},
+\qquad
+\delta E=\hbar\omega\simeq10^{-27}\ \mathrm{erg},
+\qquad
+n=\frac{E}{\hbar\omega}-\frac12\simeq10^{27}.
+$$
+这里 $1\,\mathrm{erg}=10^{-7}\,\mathrm{J}$。相邻能级的量子数只差 $1$，但 $n$ 本身约为 $10^{27}$，所以相对间距约为 $1/n$。在这个精度下，宏观振子看起来像连续的；对应原理说的是相关宏观精度下量子预测趋近经典预测，而不是说能级真的连成一片，也不是说零点能或禁阻区突然消失。
+
+### 量子、声子、光子与零点能
+
+等间距还带来一种计数语言：能量增加 $\hbar\omega$ 可以说成增加一个“量子”，减少就是去掉一个量子。晶体中各简正模的激发称为声子，电磁模的激发称为光子。它们之所以共用同一套数学，是因为每个简正模的 Hamiltonian 都是二次型；但物理坐标不同，声子不是晶体里新长出来的一颗原子，光子也不是把光看成一群小弹丸。
+
+没有激发时，每个模仍有 $\hbar\omega/2$ 的零点能。它不是“有半个可数的声子或光子”：可数的激发数从 $0$ 开始，零点能是每个模的基态能量。更高阶的非谐项可以让这些激发之间、或与外部探针发生相互作用；本节只把它当作一个语言上的提醒，不展开非谐动力学。
+
+### 零点能、方差与不确定性
+
+如果能量真的为零，动能和势能的平均值都必须为零。两个非负项各自为零，就要求位置和动量同时精确地停在原点；而 $[X,P]=i\hbar$ 不允许一个普通的归一化态同时具有零位置方差和零动量方差。所以最低能量不可能为零。
+
+为了把这个下界算出来，先把平均能量写成
+$$ {#eq-7.3.29}
+\langle\psi|H|\psi\rangle=\langle H\rangle
+=\frac{\langle P^2\rangle}{2m}+\frac12m\omega^2\langle X^2\rangle.
+$$
+本书用 $\Delta X$ 表示 :c[标准差]{#standard-deviation}，因此方差是 $(\Delta X)^2$。方差与二阶矩的关系是
+$$ {#eq-7.3.30}
+(\Delta P)^2=\langle P^2\rangle-\langle P\rangle^2,
+$$
+$$ {#eq-7.3.31}
+(\Delta X)^2=\langle X^2\rangle-\langle X\rangle^2.
+$$
+这两个式子对任意归一化态都成立；下面要找的是使平均能量最小的那个态。
+
+### 把均值移到零
+
+把 @eq:7.3.30 和 @eq:7.3.31 代回 @eq:7.3.29，得到
+$$ {#eq-7.3.32}
+\langle H\rangle=\frac{(\Delta P)^2+\langle P\rangle^2}{2m}
++\frac12m\omega^2\left[(\Delta X)^2+\langle X\rangle^2\right].
+$$
+均值项和方差项分开出现。在同一个 Hamiltonian 下，把试探波包整体移到势能最低点，并移去其平均动量，不改变方差，却去掉了能量中的非负均值项。这里改变的是试探态。寻找最低能量时，可以只考虑 $\langle X\rangle=\langle P\rangle=0$ 的态。对这些态，
+$$ {#eq-7.3.33}
+\langle H\rangle=\frac{(\Delta P)^2}{2m}+\frac12m\omega^2(\Delta X)^2.
+$$
+这一步不是把分布压成一个点；它只是把整体平移的自由度去掉。
+
+### 不确定性下界与 Gaussian
+
+一般态满足不确定性关系
+$$ {#eq-7.3.34}
+\Delta X\,\Delta P\ge\frac{\hbar}{2}.
+$$
+把 $\Delta P\ge\hbar/(2\Delta X)$ 代入 @eq:7.3.33，得到
+$$ {#eq-7.3.35}
+\langle H\rangle\ge
+\frac{\hbar^2}{8m(\Delta X)^2}
++\frac12m\omega^2(\Delta X)^2.
+$$
+这个下界对任意 $\Delta X$ 都成立。若要求等号，需要取一个零均值、没有额外二次空间相位的最小不确定 Gaussian；这时
+$$ {#eq-7.3.36}
+\langle H\rangle_{\mathrm{Gaussian}}
+=\frac{\hbar^2}{8m(\Delta X)^2}
++\frac12m\omega^2(\Delta X)^2.
+$$
+Gaussian 的归一化和方差在 @example:4.2.4 已经算过，这里只调用结果。任意带二次复相位的 Gaussian 不一定饱和 $\Delta X\Delta P=\hbar/2$，所以“Gaussian”三个字本身还不是等号条件。
+
+### 对宽度求极小
+
+把 $(\Delta X)^2$ 看成独立变量，记为 $s$。对 @eq:7.3.36 求极值：
+$$ {#eq-7.3.37}
+\frac{\partial\langle H\rangle_{\mathrm{Gaussian}}}{\partial(\Delta X)^2}
+=0
+=-\frac{\hbar^2}{8m(\Delta X)^4}
++\frac12m\omega^2.
+$$
+注意求导对象是 $(\Delta X)^2$，不是 $\Delta X$。令导数为零并解出
+$$ {#eq-7.3.38}
+(\Delta X)^2=\frac{\hbar}{2m\omega}.
+$$
+代回能量，得到
+$$ {#eq-7.3.39}
+\langle H\rangle_{\min}=\frac{\hbar\omega}{2}.
+$$
+在这个宽度下，$(\Delta P)^2=m\omega\hbar/2$，动能和势能的平均值都为 $\hbar\omega/4$。
+
+### 为什么这确实是基态
+
+对应的最小波函数是
+$$ {#eq-7.3.40}
+\psi_{\min}(x)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+\exp\left(-\frac{m\omega x^2}{2\hbar}\right),
+\qquad
+\langle H\rangle_{\min}=\frac{\hbar\omega}{2}.
+$$
+上面的最小化说明，对任意归一化试探态 $|\psi\rangle$，
+$$
+\langle\psi_{\min}|H|\psi_{\min}\rangle
+\le\langle\psi|H|\psi\rangle.
+$$
+把试探态取成真正的基态 $|\psi_0\rangle$，就得到
+$$ {#eq-7.3.41}
+\langle\psi_{\min}|H|\psi_{\min}\rangle
+\le\langle\psi_0|H|\psi_0\rangle=E_0.
+$$
+另一方面，基态的定义是能量最低的态，所以
+$$ {#eq-7.3.42}
+E_0=\langle\psi_0|H|\psi_0\rangle
+\le\langle\psi_{\min}|H|\psi_{\min}\rangle.
+$$
+两个不等式夹住同一个数，因此
+$$ {#eq-7.3.43}
+E_0=\langle\psi_0|H|\psi_0\rangle
+=\langle\psi_{\min}|H|\psi_{\min}\rangle
+=\frac{\hbar\omega}{2}.
+$$
+这个束缚态问题的基态唯一，所以两者是同一条态射线；选定相位后
+$$ {#eq-7.3.44}
+|\psi_0\rangle=|\psi_{\min}\rangle.
+$$
+这个“用不确定性直接找出波函数”的成功依赖两个特殊条件：Hamiltonian 是二次的，而且不确定性的等号可以由 Gaussian 饱和。对一般势能，同样的办法通常只能给出基态能量和宽度的估计，不能自动得到精确波函数。
+
+### 宇称、节点与禁阻区
+
+偶势使定态具有确定的宇称：
+$$
+\psi_n(-x)=(-1)^n\psi_n(x).
+$$
+$n$ 为偶数时波函数是偶函数，$n$ 为奇数时是奇函数。这个结论也可以直接从 Hermite 多项式只有偶次或只有奇次项看出。教材用 $n=0,1,2,3$ 的四个实波函数示意这些性质；那四幅图画的是波函数，不是概率密度。每个 $\psi_n$ 在实轴上有 $n$ 个节点，节点位置是 $H_n$ 的实根；不要只凭画图取样去数，曲线很密时容易漏掉节点。
+
+经典转折点由 $E_n=V(x_t)$ 给出。用无量纲 $y$，
+$$
+y_t=\pm\sqrt{2n+1},
+$$
+换回长度单位就是
+$$
+x_t=\pm\sqrt{\frac{(2n+1)\hbar}{m\omega}}.
+$$
+教材中画在小图上的箭头标的是这些转折点，不是波函数的零点。对有限 $n$，$|x|>|x_t|$ 的经典禁阻区内波函数不严格为零，而是指数衰减；因此禁阻区概率是正的。$n$ 增大时这个尾部相对于经典振幅通常变小，但不会在任何有限 $n$ 精确变成零。
+
+### 实验：定态波函数与禁阻区
+
+下面的实验使用无量纲坐标 $q=\alpha x$ 和
+$$
+\phi_n(q)=\frac{1}{\sqrt{2^n n!}}\pi^{-1/4}H_n(q)e^{-q^2/2},
+\qquad
+\int_{-\infty}^{\infty}|\phi_n(q)|^2\,dq=1.
+$$
+固定图窗取 $[-7,7]$。对 $n=0,\ldots,10$，这个窗口足以显示主瓣和大部分衰减尾部，但图窗内的概率仍然略小于 $1$；实验会单独列出窗外尾部，不会把窗内曲线重新归一。转折点、节点数、宇称和禁阻区积分概率都会随 $n$ 更新。
+
+:::interactive[定态波函数与禁阻区]
+
+<OscillatorEigenLab />
+
+把显示从波函数切换到密度，节点位置不变，但负瓣的符号信息消失，只剩下非负的概率密度。提高 $n$ 会同时增加节点数和能级高度，而禁阻区概率并不为零；在这组 $n=0,\ldots,10$ 中，它随 $n$ 逐渐变小。图窗外的概率始终属于同一个归一化态，不能因为图上看不见就把它删掉或补回窗内。
+
+:::
+
+### 经典停留时间密度
+
+回到经典图像。若在一个周期内随机选一个观察时刻，粒子在速度小的地方停留更久，因此位置密度正比于速度大小的倒数。源书写作
+$$ {#eq-7.3.45}
+P_{\mathrm{cl}}(x)\propto\frac1{v(x)}
+=\frac1{\omega\sqrt{x_0^2-x^2}},
+\qquad |x|<x_0,
+$$
+其中 $x_0$ 是经典振幅，$v(x)$ 取正的速度大小。归一化后的形式、以及它为什么是反正弦分布，已经在 @sec:7.2 由周期平均得到：
+$$
+P_{\mathrm{cl}}(x)=\frac{1}{\pi\sqrt{x_0^2-x^2}},
+\qquad |x|<x_0,
+$$
+区间外为零。这个密度在 $x=\pm x_0$ 可积地发散；它不是无限概率。不能把密度顶端裁平再重新归一化，然后把它当作原来的经典分布。
+
+比较量子与经典时，最稳妥的对象是有限区间的概率。对 $a\le b$，
+$$
+P_{\mathrm{cl}}([a,b])
+=\frac1\pi\left[
+\arcsin\!\left(\operatorname{clamp}\!\left(\frac{b}{x_0},-1,1\right)\right)
+-\arcsin\!\left(\operatorname{clamp}\!\left(\frac{a}{x_0},-1,1\right)\right)
+\right],
+$$
+其中 :c[三角函数]{#trigonometry} $\arcsin$ 是反正弦。这个公式只对有限 bin 积分，不画转折点处的无穷尖峰；它也自动给出区间外的零概率。实验中的经典曲线就是这些 bin 概率，量子曲线则是对 $|\phi_n|^2$ 的独立数值 :c[积分]{#integral}。在下面的无量纲实验里，同一能量的经典振幅记作 $A=\sqrt{2n+1}$，也就是 $x_0$ 用自然长度单位表示后的数值。
+
+### 高 n 对应：粗粒化而不是逐点重合
+
+教材在高 $n$ 的示意图中取 $n=11$，把量子概率密度和同一能量的经典分布画在一起。此时正转折点为
+$$
+y_t=\sqrt{2\cdot11+1}=\sqrt{23}\approx4.796.
+$$
+量子密度有快速振荡、节点和转折点外的指数尾部；经典密度是区间内的平滑 U 形，并在两个端点发散。把两条曲线叠在一起，不会得到“每一点都相同”的结论。高 $n$ 对应的是固定经典振幅尺度上的粗测量或区间平均：有限分辨率把快速振荡抹平后，相关 bin 的概率接近经典预测。它不是把波函数变成一条经典轨迹，也没有把能级、零点能或禁阻区从理论里删除。
+
+粗化是一种统计操作，不保证每个参数、每个 bin 的误差都随 bin 数单调下降。bin 很粗时，量子振荡被平均掉，分布看起来接近经典；bin 很细时，振荡重新显现，逐 bin 差异反而可能变大。因此实验比较的是“在合适粗尺度下的统计接近”，而不是逐点密度相等。
+
+### 实验：有限 bin 的量子与经典比较
+
+下面的实验把图窗固定在 $\pm(A+3)$，其中经典振幅取
+$$
+A=\sqrt{2n+1}.
+$$
+量子每个 bin 的概率由 $|\phi_n|^2$ 的数值积分给出，经典每个 bin 的概率用上面的反正弦差。图窗内量子 bin 的总和略小于 $1$，差额就是窗外尾部，实验会把它单列；经典分布在 $|q|>A$ 处为零，因此经典窗外概率严格为零。默认取 $n=11$、$24$ 个 bin，接近教材示意图的比较；可以继续把 $n$ 扫到 $24$，也可以把 bin 调到 $12$ 或 $72$ 看粗化和细化。
+
+:::interactive[有限 bin 的量子与经典比较]
+
+<ClassicalCorrespondenceLab />
+
+高 $n$ 且 bin 较粗时，量子阶梯的包络与经典 U 形接近；把 bin 调细可重新分辨量子振荡，差异不保证随 bin 数单调变化。这里比较的是粗粒化后的统计，量子窗外尾部也保留为一个类别，没有重新分配给窗内。
+
+:::
+
+### 自测：这节最容易混淆的四处
+
+::::quiz
+
+:::question{true}
+谐振子能级由“两端都可归一”这一全局条件选出，而不是由局部幂级数自动给出。
+
+【解释】局部级数对任意 $\varepsilon$ 都能写出前几项；只有要求级数终止、波函数在两端都衰减，才得到 $\varepsilon_n=(2n+1)/2$ 和 $E_n=(n+1/2)\hbar\omega$。
+:::
+
+:::question{false}
+只要波函数的幂级数含有无穷多项，就一定能断定它不可归一。
+
+【解释】$e^{-y^2}$ 也有无穷幂级数，却可以归一。本节检验的是抽出 Gaussian 后各宇称分支的增长类型，再要求完整波函数在两端都可归一。
+:::
+
+:::question{false}
+@eq:7.3.35 的等号对任意 Gaussian 都成立。
+
+【解释】等号要求零均值、没有额外二次空间相位的最小不确定 Gaussian；一般的 Gaussian 可以有更大的 $\Delta X\Delta P$，不会自动饱和不确定性下界。
+:::
+
+:::question{true}
+高 $n$ 时，有限 bin 的量子概率可以在粗粒化后接近经典分布，但这不等于两个密度逐点相等。
+
+【解释】量子密度仍然有快速振荡、节点和禁阻区尾部；经典对应说的是固定分辨率下的区间平均，不是把波函数变成经典轨迹。
+:::
+
+::::
+
+:::deepdive[可选：如果不先抽出 Gaussian]
+
+也可以直接把 $\psi=\sum a_ny^n$ 代入无量纲方程 @eq:7.3.8。这样会得到三项递推
+$$
+(n+2)(n+1)a_{n+2}+2\varepsilon a_n-a_{n-2}=0,
+$$
+并约定负指标的系数为零。这是完整 $\psi$ 的级数，即使在允许能量下也通常不终止，例如基态 Gaussian 的 Taylor 级数就有无穷项。两端可归一化仍限制能量，但直接从这个三项递推识别限制较困难；先抽出 Gaussian 后，才由较简单的 $u$ 递推得到多项式终止条件。
+
+:::
+
+::source[依 Shankar, Principles of Quantum Mechanics, second edition (1994), Chapter 7 独立改写；保留原书方程标签，不复制英文原文。]

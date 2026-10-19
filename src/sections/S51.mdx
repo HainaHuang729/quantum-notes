@@ -1,0 +1,240 @@
+import { FreeGaussianLab } from "./widgets/FreeBoxLabs";
+
+export const id = "5.1";
+export const title = "自由粒子：从平面波到会展宽的波包";
+
+### 把公设用于一个没有势的粒子
+
+从这一章开始，我们用前一章的公设计算具体系统。只保留一个空间坐标，仍能研究连续谱、离散能级、束缚与散射，也能看清边界条件怎样参与物理预言。谐振子另有专章，这里先从没有外力的自由粒子开始。
+
+质量为 $m$ 的粒子满足
+
+$$ {#eq-5.1.1}
+i\hbar\frac{d}{dt}|\psi\rangle=H|\psi\rangle=\frac{P^2}{2m}|\psi\rangle.
+$$
+
+依照 @sec:4.3，先寻找只积累整体相位的定态：
+
+$$ {#eq-5.1.2}
+|\psi(t)\rangle=|E\rangle e^{-iEt/\hbar}.
+$$
+
+代回去，时间因子约掉，留下不含时间的本征值问题：
+
+$$ {#eq-5.1.3}
+H|E\rangle=\frac{P^2}{2m}|E\rangle=E|E\rangle.
+$$
+
+这里的“定”指概率分布不变，波函数自身仍有复相位变化。任意初态则可以用这些能量本征态叠加。
+
+### 同一个正能量对应两个动量方向
+
+动量本征态也是 $P^2$ 的本征态。试用 $|p\rangle$，本征方程变成
+
+$$ {#eq-5.1.4}
+\left(\frac{p^2}{2m}-E\right)|p\rangle=0,
+$$
+
+因此
+
+$$ {#eq-5.1.5}
+p=\pm(2mE)^{1/2}.
+$$
+
+对 $E>0$，两个方向可标为
+
+$$ {#eq-5.1.6}
+|E,+\rangle=|p=(2mE)^{1/2}\rangle,
+$$
+
+$$ {#eq-5.1.7}
+|E,-\rangle=|p=-(2mE)^{1/2}\rangle.
+$$
+
+这是能量的二重简并。边界 $E=0$ 时两个动量标签合为零，不能再算成两个独立方向；自由粒子的非负能量谱也不含负能量本征值。
+
+$$ {#eq-5.1.8}
+|E\rangle=\beta|p=(2mE)^{1/2}\rangle+\gamma|p=-(2mE)^{1/2}\rangle
+$$
+
+仍具有同一个能量。它描述一个粒子的态叠加，动量测量可能给出两个方向；不能把它直接解释成两粒子。用相容的 $P$ 补充标签最方便，而且给定 $p$ 就知道 $E=p^2/(2m)$，不必每次重复写能量标签。
+
+在位置表示中，这两项是 $e^{ipx/\hbar}$ 与 $e^{-ipx/\hbar}$。单个平面波在整条实线上不能归一化，须按 @sec:1.10 的广义本征态理解；可归一化的粒子准备需要波包。
+
+### 传播算符：给每种动量乘自己的相位
+
+动量基的完备关系把时间演化写成
+
+$$ {#eq-5.1.9}
+U(t)=\int_{-\infty}^{\infty}|p\rangle\langle p|e^{-iE(p)t/\hbar}\,dp
+=\int_{-\infty}^{\infty}|p\rangle\langle p|e^{-ip^2t/(2m\hbar)}\,dp.
+$$
+
+测量动量的权重不变，因为每个系数只乘单位模的复数；位置分布却可能改变，因为不同动量的相对相位在变化。
+
+把两侧夹在位置基之间，并用 $\langle x|p\rangle=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$，得到传播核：
+
+$$ {#eq-5.1.10}
+\begin{aligned}
+U(x,t;x')&=\langle x|U(t)|x'\rangle\\
+&=\frac1{2\pi\hbar}\int_{-\infty}^{\infty}
+e^{ip(x-x')/\hbar-ip^2t/(2m\hbar)}\,dp\\
+&=\left(\frac{m}{2\pi i\hbar t}\right)^{1/2}
+\exp\left[\frac{im(x-x')^2}{2\hbar t}\right].
+\end{aligned}
+$$
+
+最后一步可先对动量配方：指数等于
+
+$$
+-\frac{it}{2m\hbar}\left[p-\frac{m(x-x')}{t}\right]^2
++\frac{im(x-x')^2}{2\hbar t}.
+$$
+
+剩下的复 Gaussian 积分可先加很小的衰减因子再取极限；平方根选与连续时间演化一致的支。此表达式直接适用于 $t>0$，$t=0$ 的核以分布极限回到 $\delta(x-x')$，不能直接把零代入分母。
+
+### 从初始分布叠加出未来振幅
+
+传播核作用于初始波函数，给出
+
+$$ {#eq-5.1.11}
+\psi(x,t)=\int_{-\infty}^{\infty}U(x,t;x')\psi(x',0)\,dx'.
+$$
+
+若初始时刻不是零，则
+
+$$ {#eq-5.1.12}
+\psi(x,t)=\int_{-\infty}^{\infty}U(x,t;x',t')\psi(x',t')\,dx',
+\qquad U(x,t;x',t')=\langle x|U(t-t')|x'\rangle.
+$$
+
+自由系统没有选定绝对时刻的外部变化，核只依赖时间差。若哈密顿量显含时间，就不能直接照搬这个形式。
+
+形式上从 $\psi(x',t')=\delta(x'-x'_0)$ 出发，会得到
+
+$$ {#eq-5.1.13}
+\psi(x,t)=U(x,t;x'_0,t').
+$$
+
+这说明核是一项基到基的演化振幅；一般初态的未来振幅，要把所有初始位置的贡献按其初始振幅相干相加。delta 初态是计算用的理想广义态，核本身不是一个可在无限空间归一化的单粒子密度；不能只取它的模平方当作实际准备的完整概率分布。
+
+### 一个有限宽度的 Gaussian 准备
+
+选择平均位置为零、平均动量为 $p_0$ 的初态：
+
+$$ {#eq-5.1.14}
+\psi(x',0)=e^{ip_0x'/\hbar}\frac{e^{-x'^2/(2\Delta^2)}}{(\pi\Delta^2)^{1/4}}.
+$$
+
+注意 $\Delta$ 是这个写法的宽度参数，不等于位置标准差。模平方后指数变成 $-x'^2/\Delta^2$，于是
+
+$$
+\langle X\rangle_0=0,\qquad \sigma_X(0)=\frac{\Delta}{\sqrt2},
+\qquad \langle P\rangle_0=p_0,\qquad \sigma_P=\frac{\hbar}{\sqrt2\Delta}.
+$$
+
+因此初态饱和 $\sigma_X\sigma_P=\hbar/2$。把波包压窄会增加动量分散，平均动量则只由前面的复相位决定。
+
+将初态与传播核相乘后，对 $x'$ 配方。取 $t>0$，与 $x'$ 有关的指数为 $-Ax'^2+Bx'$，其中
+
+$$
+A=\frac1{2\Delta^2}-\frac{im}{2\hbar t},\qquad
+B=\frac{i}{\hbar}\left(p_0-\frac{mx}{t}\right).
+$$
+
+用 $-Ay^2+By=-A[y-B/(2A)]^2+B^2/(4A)$，以及 $\int e^{-Ay^2+By}\,dy=\sqrt{\pi/A}\,e^{B^2/(4A)}$（全实线积分，$\operatorname{Re}A>0$），再乘回不含 $x'$ 的因子，整理为
+
+$$ {#eq-5.1.15}
+\begin{aligned}
+\psi(x,t)&=\left[\pi^{1/2}\left(\Delta+\frac{i\hbar t}{m\Delta}\right)\right]^{-1/2}
+\exp\left[-\frac{(x-p_0t/m)^2}{2\Delta^2(1+i\hbar t/(m\Delta^2))}\right]\\
+&\quad\times\exp\left[\frac{ip_0}{\hbar}\left(x-\frac{p_0t}{2m}\right)\right].
+\end{aligned}
+$$
+
+检验这一步有两个简单入口：令 $t=0$ 必须恢复初态；每个指数内部必须没有物理量纲。
+
+### 密度的中心与宽度各自怎样演化
+
+把波函数乘其复共轭，相位项消失，余下
+
+$$ {#eq-5.1.16}
+P(x,t)=\frac{1}{\sqrt\pi\sqrt{\Delta^2+\hbar^2t^2/(m^2\Delta^2)}}
+\exp\left[-\frac{(x-p_0t/m)^2}{\Delta^2+\hbar^2t^2/(m^2\Delta^2)}\right].
+$$
+
+它在全实线上积分为一，平均位置遵循 $\langle X\rangle=p_0t/m=\langle P\rangle t/m$。这是期望值与经典运动关系相联系的一个例子，不代表每次测量都落在平均位置。
+
+标准差为
+
+$$ {#eq-5.1.17}
+\Delta X(t)=\frac{\Delta(t)}{\sqrt2}
+=\frac{\Delta}{\sqrt2}\left(1+\frac{\hbar^2t^2}{m^2\Delta^4}\right)^{1/2}.
+$$
+
+这里沿用原书 $\Delta X$ 的标准差记号，与我们的 $\sigma_X$ 相同。展宽时间尺度为 $m\Delta^2/\hbar$；很晚时 $\sigma_X\simeq\hbar |t|/(\sqrt2m\Delta)=\sigma_P|t|/m$。不同速度分量带来的位置分散随时间积累，即使 $p_0=0$ 也会发生。
+
+较大的质量使同样位置准备的展宽更慢。比如质量约一克、初始长度尺度约 $10^{-13}$ 厘米时，速度标准差约 $10^{-14}$ 厘米每秒，展宽至毫米量级需要数十万年。这个数量级说明宏观质量对自由展宽的抑制；实际宏观物体还会与环境相互作用。
+
+### 实验：平移与展宽是两件不同的事
+
+下面以长度 $\ell_0$、质量 $m_0$ 为基准，动量单位为 $\hbar/\ell_0$，时间单位为 $m_0\ell_0^2/\hbar$。控件中的 $m,\Delta,p_0,t$ 都是相应单位下的数值；位置图固定显示 $[-12,12]\ell_0$。蓝色是当前密度，橙色是同一准备的初始密度。
+
+:::interactive[准备更窄，后来一定更窄吗]
+
+<FreeGaussianLab />
+
+平均动量改变中心的移动，初始宽度同时控制位置分散与动量分散。较窄的初态可能在稍后反而更宽。图窗外仍有概率，窗内面积不会被人为补成一。
+
+:::
+
+### 一般势中，连接条件也是方程的一部分
+
+对一般 $V(x)$，定态方程可整理成
+
+$$
+\psi''(x)=-\frac{2m[E-V(x)]}{\hbar^2}\psi(x).
+$$
+
+在普通连续势中，给定一点的 $\psi,\psi'$ 后可积分延拓。有限阶跃允许 $\psi''$ 跳变，但对一个无限小区间积分，$\psi'$ 的变化趋于零，所以 $\psi$ 与 $\psi'$ 都连续。无限墙则不能照搬导数连续条件；delta 势也会造成导数有限跳跃。具体条件要由方程与势的极限共同决定。
+
+把 $U=e^{-iHt/\hbar}$ 当成微分算符幂级数时，还要关心它作用的函数是否在相应定义域、级数是否收敛。不能把区间内的普通导数结果直接延伸到有突变的边界，得出波包永远不向外扩展的结论。
+
+:::deepdive[传播算符的导数级数]
+
+对自由粒子，形式展开为
+
+$$ {#eq-5.1.18}
+U(t)=\exp\left[\frac{i\hbar t}{2m}\frac{d^2}{dx^2}\right]
+=\sum_{n=0}^{\infty}\frac1{n!}\left(\frac{i\hbar t}{2m}\right)^n\frac{d^{2n}}{dx^{2n}}.
+$$
+
+这是原书练习中的另一条计算路线。对合适的 Gaussian 可把各次偶导数重新求和，恢复同一个解析解；对边界不光滑的函数，逐项求导与无限求和未必可交换。这个可选公式不代替前面的传播核解法。
+
+:::
+
+### 自测：自由不等于没有分散
+
+::::quiz
+
+:::question{false}
+一个自由 Gaussian 的平均动量为零，它的位置密度就不会随时间改变。
+
+平均动量为零只让中心停在原处。动量仍有非零标准差，宽度随时间增长。
+:::
+
+:::question{true}
+固定质量与初始宽度，改变平均动量不改变这个 Gaussian 的展宽规律。
+
+标准差公式不含 $p_0$；$p_0$ 只移动中心。它会改变平均能量，不能说两个准备完全相同。
+:::
+
+:::question{false}
+传播核在每个终点的模平方都必须能在整条实线上积分为一。
+
+位置基是广义基，单个核不是归一化物理初态。先让核作用于可归一化波包，才得到实际概率密度。
+:::
+
+::::
+
+::source[依 Shankar, Principles of Quantum Mechanics, second edition (1994), Chapter 5, Section 5.1 独立改写；原练习未逐题复现。]

@@ -1,0 +1,180 @@
+import { TimeSlicingLab } from "./widgets/TimeSlicingLab";
+
+export const id = "8.4";
+export const title = "分时积分求自由粒子传播核";
+
+### 把一条路径改写成一组内部位置
+
+@sec:8.3 已由经典路径得到自由粒子核的形式。这一节实际完成全部路径积分，检查相位与归一因子是怎样共同出现的。固定 $x(t_0)=x_0$、$x(t_N)=x_N$，要计算
+
+$$ {#eq-8.4.1}
+\int_{x_0}^{x_N}e^{iS[x(t)]/\hbar}\mathcal D[x(t)].
+$$
+
+这里积分的对象是一整条函数。先把总时间 $T=t_N-t_0$ 分成 $N$ 段，每段 $\epsilon=T/N$，取 $t_j=t_0+j\epsilon$、$x_j=x(t_j)$，相邻节点间用直线连接。$N+1$ 个位置中两端固定，只剩 $N-1$ 个内部位置需要积分；每个位置的范围都是整个实轴。
+
+折线每段的速度为 $(x_{j+1}-x_j)/\epsilon$，所以自由粒子的作用量成为
+
+$$ {#eq-8.4.2}
+S_N=\sum_{j=0}^{N-1}\frac m2\left(\frac{x_{j+1}-x_j}{\epsilon}\right)^2\epsilon.
+$$
+
+于是路径积分先被写成有限维的多重积分，再取极限：
+
+$$ {#eq-8.4.3}
+\begin{aligned}
+U(x_N,t_N;x_0,t_0)
+&=\int_{x_0}^{x_N}e^{iS[x(t)]/\hbar}\mathcal D[x(t)]\\
+&=\lim_{\substack{N\to\infty\\N\epsilon=T}}A
+\int_{\mathbb R^{N-1}}\exp\!\left[\frac{im}{2\hbar\epsilon}
+\sum_{j=0}^{N-1}(x_{j+1}-x_j)^2\right]dx_1\cdots dx_{N-1}.
+\end{aligned}
+$$
+
+$A$ 是尚待确定、依赖分片的归一因子。节点处速度虽有突变，这个作用量没有加速度项，不会因此多出一个无限加速度贡献。这是分时定义的计算方式，不要求连续极限中的典型量子路径处处可微。
+
+### 换掉单位后，先完成一个平方
+
+令 $y_j=\sqrt{m/(2\hbar\epsilon)}x_j$，每个内部变量贡献 $dx_j=\sqrt{2\hbar\epsilon/m}\,dy_j$。因此 $A'=A(2\hbar\epsilon/m)^{(N-1)/2}$，积分变为
+
+$$ {#eq-8.4.4}
+\lim_{N\to\infty}A'\int_{\mathbb R^{N-1}}
+\exp\!\left[-\sum_{j=0}^{N-1}\frac{(y_{j+1}-y_j)^2}{i}\right]
+dy_1\cdots dy_{N-1}.
+$$
+
+分母 $i$ 是 :c[虚数单位]{#imaginary-unit}，$-1/i=i$，所以这里仍是振荡的复振幅。先只看包含 $y_1$ 的部分，用高中配方法有
+
+$$
+(y_2-y_1)^2+(y_1-y_0)^2
+=2\left(y_1-\frac{y_0+y_2}{2}\right)^2+\frac{(y_2-y_0)^2}{2}.
+$$
+
+于是第一次积分得到
+
+$$ {#eq-8.4.5}
+\int_{-\infty}^{\infty}e^{-[(y_2-y_1)^2+(y_1-y_0)^2]/i}\,dy_1
+=\left(\frac{i\pi}{2}\right)^{1/2}e^{-(y_2-y_0)^2/(2i)}.
+$$
+
+这个平方根的相位从哪里来？实 Gaussian 积分是 $\int e^{-az^2}dz=\sqrt{\pi/a}$。对振荡形式，先加入很小的正阻尼：
+
+$$
+\lim_{\eta\to0^+}\int_{-\infty}^{\infty}e^{-(\eta-ic)z^2}dz
+=e^{i\pi/4}\sqrt{\frac\pi c},\qquad c>0.
+$$
+
+这称为 Fresnel 积分的小阻尼解释。它保留连续选择的复平方根分支；未经这个约定，单说“在无穷远积分振荡函数”还没有说明怎样取极限。有限横坐标窗口上的数值求积也不能自动替代这个全空间极限。
+
+### 再积分一次，看清一般规律
+
+积掉 $y_1$ 后，$y_0$ 到 $y_2$ 的有效平方项系数变为原来的一半。再把它与下一段合起来，涉及 $y_2$ 的平方为
+
+$$
+(y_3-y_2)^2+\frac{(y_2-y_0)^2}{2}
+=\frac32\left(y_2-\frac{2y_3+y_0}{3}\right)^2
++\frac{(y_3-y_0)^2}{3}.
+$$
+
+因此
+
+$$ {#eq-8.4.6}
+\left(\frac{i\pi}{2}\right)^{1/2}
+\int e^{-(y_3-y_2)^2/i}e^{-(y_2-y_0)^2/(2i)}dy_2
+=\frac{(i\pi)^{2/2}}{\sqrt3}e^{-(y_3-y_0)^2/(3i)}.
+$$
+
+一般地，已经积完 $y_1,\ldots,y_r$ 时，结果含因子 $(i\pi)^{r/2}/\sqrt{r+1}$ 和指数 $-(y_{r+1}-y_0)^2/[(r+1)i]$。下一步配方的平方系数为 $(r+2)/(r+1)$，积分因子为 $\sqrt{i\pi(r+1)/(r+2)}$；两者相乘，就把 $r$ 换成 $r+1$。由此积完所有内部节点得到
+
+$$
+\frac{(i\pi)^{(N-1)/2}}{\sqrt N}
+\exp\!\left[-\frac{(y_N-y_0)^2}{Ni}\right].
+$$
+
+复幂始终沿每次积分的连续相位相乘，不能在最后任意改变平方根的正负。这一连串配方同时改变了指数中的有效时间和前面的系数；只保留指数会漏掉传播核的归一。
+
+### 每一段的归一因子为什么不可少
+
+换回 $x$ 并带上 $A'$，有限 $N$ 的结果是
+
+$$
+U_N=A\left(\frac{2\pi\hbar\epsilon i}{m}\right)^{N/2}
+\left(\frac{m}{2\pi\hbar iN\epsilon}\right)^{1/2}
+\exp\!\left[\frac{im(x_N-x_0)^2}{2\hbar N\epsilon}\right].
+$$
+
+要和 @sec:8.3 的自由传播核一致，必须选择
+
+$$ {#eq-8.4.7}
+A=\left(\frac{2\pi\hbar\epsilon i}{m}\right)^{-N/2}\equiv B^{-N}.
+$$
+
+它给出了路径积分测度的具体含义：
+
+$$
+\int\mathcal D[x(t)]=\lim_{\substack{N\to\infty\\N\epsilon=T}}
+\frac1B\int\cdots\int\frac{dx_1}{B}\cdots\frac{dx_{N-1}}B,
+$$
+
+$$ {#eq-8.4.8}
+B=\left(\frac{2\pi\hbar\epsilon i}{m}\right)^{1/2}.
+$$
+
+虽然只有 $N-1$ 个内部位置积分，却有 $N$ 段短时传播，因而需要 $N$ 个 $1/B$，还有一个因子留在整体前面。每段的核就是 $B^{-1}\exp[im(x_{j+1}-x_j)^2/(2\hbar\epsilon)]$。带齐这些因子，$N\epsilon=T$ 时
+
+$$
+U_N=\sqrt{\frac{m}{2\pi i\hbar T}}
+\exp\!\left[\frac{im(x_N-x_0)^2}{2\hbar T}\right].
+$$
+
+自由粒子很特殊：完成所有内部积分以后，每个有限 $N$ 已给出相同答案，因此取 $N\to\infty$ 不再改变它。这个结果没有把未积分的某条折线路径当成完整传播核；对其他作用量，连续极限仍是实际问题的一部分。
+
+### 用涨落矩阵检查同一组消元
+
+实验把 $m=\hbar=1$、端点固定为 $0\to1$。经典节点为 $x_j^{\rm cl}=j/N$；把一般内部节点写成经典位置加涨落 $\xi_j$，两端涨落为零。展开作用量，线性项逐段相消，得到
+
+$$
+S_N=\frac1{2T}+\frac12\boldsymbol\xi^{\mathsf T}H\boldsymbol\xi,
+\qquad H=\frac1\epsilon\operatorname{tridiag}(-1,2,-1).
+$$
+
+$H$ 是这个二次式的矩阵，也叫涨落 Hessian：对角元素为 $2/\epsilon$，左右紧邻的元素为 $-1/\epsilon$，其余为零。逐个配方就是逐个消去内部变量。若当前平方项系数是 $p_j$，配方会从下一项的系数中减去 $1/(\epsilon^2p_j)$，因此 $p_1=2/\epsilon$、$p_{j+1}=2/\epsilon-1/(\epsilon^2p_j)$，依次得到 $p_j=(j+1)/(j\epsilon)$。所以
+
+$$
+\det H=\prod_{j=1}^{N-1}p_j=\frac{N}{\epsilon^{N-1}},
+$$
+
+$$
+K_N=(2\pi i\epsilon)^{-N/2}\frac{(2\pi i)^{(N-1)/2}}{\sqrt{\det H}}e^{i/(2T)}
+=\frac{e^{-i\pi/4}}{\sqrt{2\pi T}}e^{i/(2T)}.
+$$
+
+这只是把前面的连续配方换成矩阵记账。把每段短时归一系数记为 $A_\epsilon=(2\pi i\epsilon)^{-1/2}$，测度相位 $-N\pi/4$ 与涨落积分相位 $(N-1)\pi/4$ 相加，留下 $-\pi/4$；模长的对数也抵消到只依赖 $T$。若仅让第 $k$ 个内部节点偏移 $d$，两个相邻增量一增一减，便有 $\Delta S=d^2/\epsilon$，但完整积分值与画出的这个截面无关。
+
+:::interactive[增添时间切片，完整核会改变吗]
+
+<TimeSlicingLab />
+
+固定 $T$ 比较不同 $N$，消元后的复数核保持相同，主元与测度的变化互相抵消。偏移一个节点会改变显示路径的局部相位，却不会改变已经对全部内部变量积分得到的结果。图中的折线只帮助辨认积分变量，不是少量路径求和得到传播核，也不是测量出的粒子轨迹。
+
+:::
+
+::::quiz
+:::question{false}
+把时间分成六段，只需要五个短时传播核，因为只有五个内部节点。
+
+有五次内部位置积分，却有六段传播；每段都带一个短时核。少一个归一因子会破坏最终核的尺度与单位。
+:::
+:::question{true}
+在自由粒子的这个分时定义中，完整积掉全部内部位置后，每个有限切片数已给出相同的自由核。
+
+连续Gaussian配方可精确完成。有限切片不等于有限条路径；每个内部节点仍在整个实轴上积分。
+:::
+:::question{false}
+选中一个内部节点偏离经典直线以后，实验算出的完整传播核也必须跟着这条路径的相位一起变化。
+
+单条路径的相位确实变化，但完整核是所有内部位置贡献的振荡积分。显示的一条路径只代表一个教学截面。
+:::
+::::
+
+::source[依据 Shankar 第二版本节独立编写；折线实验按原书分时路径示意独立重绘，涨落矩阵为同一Gaussian消元的教学表示。]

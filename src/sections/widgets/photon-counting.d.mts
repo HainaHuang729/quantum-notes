@@ -1,0 +1,11 @@
+export type PhotonMode='coherent'|'incoherent';
+export const PHOTON_BINS:number;
+export const PHOTON_DX:number;
+export const PHOTON_LEFT:number;
+export const PHOTON_RIGHT:number;
+export interface PhotonDistribution{mode:PhotonMode;normalization:number;probabilities:number[];cdf:number[];centers:number[];}
+export function photonWeight(x:number,mode:PhotonMode):number;
+export function photonDistribution(mode:PhotonMode):PhotonDistribution;
+export function seededPhotonRandom(seed:number):()=>number;
+export function photonSampleBin(u:number,distribution:PhotonDistribution):number;
+export function photonCounts(mode:PhotonMode,n:number,seed:number):{counts:number[];events:number[];distribution:PhotonDistribution;branch:'empty'|'few'|'many'};

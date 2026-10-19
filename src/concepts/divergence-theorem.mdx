@@ -1,0 +1,14 @@
+export const title = "散度定理";
+
+把一个区域内部各处的:c[净向外流率]{#divergence}累加，内部相邻小块之间的流出与流入会抵消，只留下整个边界的净流出。这就是散度定理的内容。
+
+对具有适当光滑边界的体积区域 $V$ 和光滑向量场 $\mathbf j$，
+
+$$
+\int_V\nabla\!\cdot\!\mathbf j\,dV
+=\int_{\partial V}\mathbf j\cdot\hat{\mathbf n}\,dS.
+$$
+
+$\partial V$ 表示边界，$\hat{\mathbf n}$ 是长度为一、指向区域外侧的法向量；右边把每小块面积上的向外流量相加。左边是体积:c[积分]{#integral}，右边是面积积分。
+
+一维版本更熟悉：$\int_a^b j'(x)dx=j(b)-j(a)$。右端流出减去左端流入，正是区间的净向外流率。

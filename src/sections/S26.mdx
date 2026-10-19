@@ -1,0 +1,73 @@
+import { CanonicalMomentumFigure } from "./widgets/ClassicalQuantumVisualGuides";
+
+export const id = "2.6";
+export const title = "电磁哈密顿量：矢量势藏在正则动量中";
+
+### 先做勒让德变换，再判断能量
+
+@sec:2.2 的拉格朗日量含有速度相关项，不能直接套用只依赖位置的势能公式。但 @sec:2.5 的勒让德变换仍然适用，因为正则动量与速度之间可以反解。沿用高斯单位制，电荷为 $q$，光速为 $c$，
+
+$$
+\mathcal L_{\mathrm{em}}=\frac12m\mathbf v^2-q\phi+\frac qc\mathbf v\cdot\mathbf A,\qquad
+\mathbf p=m\mathbf v+\frac qc\mathbf A.
+$$
+
+代入哈密顿量定义，速度线性项抵消：
+
+$$ {#eq-2.6.1}
+\begin{aligned}
+\mathcal H_{\mathrm{em}}&=\mathbf p\cdot\mathbf v-\mathcal L_{\mathrm{em}}\\
+&=m\mathbf v^2+\frac qc\mathbf v\cdot\mathbf A
+-\frac12m\mathbf v^2+q\phi-\frac qc\mathbf v\cdot\mathbf A\\
+&=\frac12m\mathbf v^2+q\phi=T+q\phi.
+\end{aligned}
+$$
+
+这说明以速度表示的数值是动能加电势项，并不说明矢量势对动力学没有影响。
+
+### 写成正则变量后，矢量势重新出现
+
+哈密顿量的独立变量是 $\mathbf r,\mathbf p,t$，所以必须使用 $\mathbf v=[\mathbf p-(q/c)\mathbf A]/m$ 消去速度：
+
+$$ {#eq-2.6.2}
+\mathcal H_{\mathrm{em}}(\mathbf r,\mathbf p,t)
+=\frac{\left|\mathbf p-\frac qc\mathbf A(\mathbf r,t)\right|^2}{2m}+q\phi(\mathbf r,t).
+$$
+
+<div className="visual-context">
+
+机械动量是 $\boldsymbol\pi=m\mathbf v=\mathbf p-(q/c)\mathbf A$。正是这个差出现在动能的平方中，而不是裸的 $\mathbf p$。例如在一维代数检验中，若 $m=2$、$qA/c=3$、$p=7$，则机械动量为 $4$，速度为 $2$，动能为 $4$，而 $p^2/(2m)$ 会错误地给出 $49/4$。这里的数值例子只检查动量与动能的区别，不假装是一维磁场实验。
+
+<CanonicalMomentumFigure caption="动能取决于 pₓ−g：比较各个规范下的 pₓ，必须同时保留它对应的势项 g。" />
+
+</div>
+
+### 哈密顿方程仍会读出正确速度
+
+固定位置和时间，对 $p_i$ 求偏导：
+
+$$
+\dot r_i=\frac{\partial\mathcal H_{\mathrm{em}}}{\partial p_i}
+=\frac{p_i-qA_i/c}{m}=v_i.
+$$
+
+对位置求偏导时，$\mathbf A$ 和 $\phi$ 都会参与；正则方程给出的 $\dot{\mathbf p}$ 还需减去 $(q/c)d\mathbf A/dt$，才成为机械动量的变化率。这与 @sec:2.2 的洛伦兹力推导是同一套动力学。矢量势没有消失，它由“拉格朗日量中的速度项”转移到了“正则动量与机械动量的差”中。
+
+### 数值上的能量关系不保证守恒
+
+当势显含时间时，哈密顿量一般也显含时间；写成 $T+q\phi$ 并不会自动使它沿运动保持不变。磁力不直接做功，电场却可以改变动能；用势描述电场时，还需保留 $-(1/c)\partial\mathbf A/\partial t$ 这一部分。判断守恒必须检查实际的时间依赖，而非只辨认公式中的字母。
+
+::::quiz
+:::question{false}
+电磁场中 $\mathcal H=T+q\phi$，因此在所有情况下都可以把它写成 $p^2/(2m)+q\phi$。
+
+在所用势满足 $q\mathbf A=0$ 时可以这样简化。一般必须保留 $|\mathbf p-q\mathbf A/c|^2/(2m)+q\phi$，不能把某个特殊状态下的偶然数值相等当作通用表达式。
+:::
+:::question{true}
+对于给定位置和势，增大正则动量会按 $\mathbf v=(\mathbf p-q\mathbf A/c)/m$ 改变速度。
+
+这是动量定义的反解，也直接由哈密顿量的动量偏导得到。求偏导时必须固定位置，因而固定该位置的矢量势。
+:::
+::::
+
+::source[依据 Shankar 第二版电磁力的哈密顿表示一节独立编写；电荷字母与广义坐标字母在正文中分开说明。]

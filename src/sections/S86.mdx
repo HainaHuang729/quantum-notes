@@ -1,0 +1,218 @@
+import { QuadraticKernelLab } from "./widgets/QuadraticKernelLab";
+
+export const id = "8.6";
+export const title = "可选：二次作用量的精确分解";
+
+### 可选路线：把路径的偏离作为新变量
+
+:::deepdive[为什么二次拉格朗日量特别容易处理？]
+
+原书注明本节可跳过而不影响后续阅读。本节全部推导、实验与自测均为可选内容。考虑至多含 $x,\dot x$ 二次项的拉格朗日量，其中系数可以随时间变化，质量 $m$ 固定。先写出传播振幅：
+
+$$ {#eq-8.6.1}
+U(x,t;x')=\int_{x'}^x e^{iS[x(t'')]/\hbar}\,\mathcal D[x(t'')].
+$$
+
+选定连接这对端点的经典解 $x_{\rm cl}$，并把其他路径写为它加上偏离：
+
+$$ {#eq-8.6.2}
+x(t'')=x_{\rm cl}(t'')+y(t''),
+$$
+
+$$ {#eq-8.6.3}
+\dot x(t'')=\dot x_{\rm cl}(t'')+\dot y(t'').
+$$
+
+端点固定意味着 $y(0)=y(t)=0$。离散切片中 $x_i=x_{\rm cl}(t_i)+y_i$ 是平移，因而 $dx_i=dy_i$。所以积分变量的更换不会额外产生一个依赖端点的雅可比因子：
+
+$$ {#eq-8.6.4}
+\int_{x'}^x\mathcal D[x(t'')]=\int_0^0\mathcal D[y(t'')].
+$$
+
+于是
+
+$$ {#eq-8.6.5}
+U(x,t;x')=\int_0^0\exp\!\left(\frac{i}{\hbar}S[x_{\rm cl}+y]\right)\mathcal D[y(t'')].
+$$
+
+这里的速度与展开可先理解为离散切片的代数运算及其极限；并不假定路径积分中的一般路径都有通常意义的导数。经典解本身则是光滑运动方程的解。
+
+:::
+
+### 驻定让一次项消失，二次性让展开终止
+
+:::deepdive[精确分离经典作用量与涨落]
+
+对 $\mathcal L$ 关于位置与速度作二元 :c[泰勒展开]{#taylor-expansion}。所有导数在经典路径上取值；二次多项式没有更高阶余项：
+
+$$ {#eq-8.6.6}
+\begin{aligned}
+S[x_{\rm cl}+y]
+=\int_0^t\Big[&\mathcal L_{\rm cl}
++\left(\mathcal L_x|_{\rm cl}\,y+\mathcal L_{\dot x}|_{\rm cl}\,\dot y\right)\\
+&+\frac12\left(\mathcal L_{xx}|_{\rm cl}\,y^2
++2\mathcal L_{x\dot x}|_{\rm cl}\,y\dot y
++\mathcal L_{\dot x\dot x}|_{\rm cl}\,\dot y^2\right)\Big]dt''.
+\end{aligned}
+$$
+
+第一项积分是 $S_{\rm cl}$。对一次项用 :c[分部积分]{#integration-by-parts}，得到
+
+$$
+\int_0^t(\mathcal L_x y+\mathcal L_{\dot x}\dot y)dt''
+=[\mathcal L_{\dot x}y]_0^t
++\int_0^t\left(\mathcal L_x-\frac{d}{dt''}\mathcal L_{\dot x}\right)y\,dt''=0.
+$$
+
+边界项由固定端点为零，积分项由经典欧拉方程为零。这里用到的是作用量**驻定**；没有要求每一种经典解都使作用量最小。
+
+源书讨论的具体形式为
+
+$$ {#eq-8.6.7}
+\mathcal L=\frac12m\dot x^2-a-bx-cx^2-d\dot x-ex\dot x.
+$$
+
+注意 $d$ 乘的是速度的一次项。于是
+
+$$ {#eq-8.6.8}
+\frac12\frac{\partial^2\mathcal L}{\partial x^2}=-c,
+$$
+
+$$ {#eq-8.6.9}
+\frac{\partial^2\mathcal L}{\partial x\partial\dot x}=-e,
+$$
+
+$$ {#eq-8.6.10}
+\frac12\frac{\partial^2\mathcal L}{\partial\dot x^2}=\frac m2.
+$$
+
+对动能求两次速度导数得到 $m$，再乘展开式中的 $1/2$，系数便为 $m/2$。一次速度项不会贡献这个二阶导数。
+
+:::
+
+### 涨落因子不再依赖端点
+
+:::deepdive[什么进入经典相位，什么进入共同因子？]
+
+将二阶系数代回展开，得到
+
+$$ {#eq-8.6.11}
+U(x,t;x')=e^{iS_{\rm cl}/\hbar}
+\int_0^0\exp\left\{\frac i\hbar\int_0^t
+\left(\frac m2\dot y^2-cy^2-ey\dot y\right)dt''\right\}\mathcal D[y(t'')].
+$$
+
+剩下的积分始末位置都是零，系数只由给定拉格朗日量决定。因此它不依赖 $x,x'$，可以记作
+
+$$ {#eq-8.6.12}
+U(x,t;x')=e^{iS_{\rm cl}/\hbar}A(t).
+$$
+
+若系数显含时间，$A$ 还依赖所选初始时刻与区间中的系数变化；写成 $A(t)$ 是已把初时刻固定为零的记号。$a,b,d$ 没有出现在二次涨落式中，但仍会影响经典运动或端点相位。若 $e$ 是常数，$ey\dot y$ 是边界导数，其积分因零端点消失；若 $e$ 随时间变化，则一般不能这样删去。
+
+对自由粒子，以及 $c=e=0$ 的位置线性势，剩余积分与自由粒子的相同：
+
+$$ {#eq-8.6.13}
+A(t)=\left(\frac{m}{2\pi\hbar it}\right)^{1/2}.
+$$
+
+振子的二次涨落积分则是
+
+$$ {#eq-8.6.14}
+A(t)=\int_0^0\exp\left\{\frac i\hbar\int_0^t
+\frac m2(\dot y^2-\omega^2y^2)dt''\right\}\mathcal D[y(t'')].
+$$
+
+它可直接与 @sec:7.3 已有的振子传播结果对照。在 $0<\omega t<\pi$ 这一分支，$A(t)=\sqrt{m\omega/(2\pi\hbar\sin\omega t)}e^{-i\pi/4}$；不能带着同一平方根相位越过 $\sin\omega t=0$ 的焦散时刻。
+
+即使暂时没有算出共同因子，也能对同一初态在固定时刻的空间分布形状作比较，再用全空间归一化确定概率密度。但核本身的归一化、跨时间的相位以及传播组合仍需要正确的 $A$，不能说共同因子可以任意忽略。多坐标、位置速度至多二次的系统也有类似分解，例如适当规范下的匀强磁场问题；接下来的实验只覆盖三个一维定系数特例。
+
+:::
+
+### 三个特例的经典相位从哪里来？
+
+:::deepdive[固定端点解与经典作用量]
+
+自由与恒力的解可由 $m\ddot x=f$ 直接积分。设传播时间 $T>0$，端点为 $x',x$，则
+
+$$
+x_{\rm cl}(s)=x'+\frac{x-x'}T s+\frac{f}{2m}s(s-T),\qquad 0\le s\le T.
+$$
+
+代入 $\int_0^T(m\dot x^2/2+fx)ds$，端点条件让混合的一次形变项抵消，得到
+
+$$
+S_{\rm cl}=\frac{m(x-x')^2}{2T}+\frac{fT(x+x')}{2}-\frac{f^2T^3}{24m}.
+$$
+
+取 $f=0$ 同时恢复自由直线路径与自由作用量。恒力的涨落因子仍是 @eq:8.6.13，因此这里的改动全部进入经典相位。
+
+对振子，经典方程 $\ddot x+\omega^2x=0$ 与两个端点给出
+
+$$
+x_{\rm cl}(s)=\frac{x'\sin[\omega(T-s)]+x\sin(\omega s)}{\sin(\omega T)},\qquad
+S_{\rm cl}=\frac{m\omega}{2\sin(\omega T)}\left[(x^2+x'^2)\cos(\omega T)-2xx'\right].
+$$
+
+计算作用量还有一个捷径：沿经典解，$m(\dot x^2-\omega^2x^2)/2=(m/2)d(x\dot x)/ds$，所以只需代入端点位置与速度。与自由情形不同，振子的涨落因子也随 $\omega$ 变化。以下实验取 $x'=0,x=1,m=\hbar=1$，并把 $\omega T$ 限制在 $\pi$ 之前；没有在焦散处使用这组表达式。
+
+:::
+
+### 可选实验：恒力改变相位，却不改变涨落模长
+
+:::::deepdive[三个解析特例与一族固定端点形变]
+
+::::interactive[比较经典作用量与完整传播核]
+
+取 $m=\hbar=1$，固定端点 $0\to1$，传播时间为 $T$。自由粒子取 $V=0$，恒力取 $V=-fx$，振子取 $V=\omega^2x^2/2$。蓝线是相应经典解，橙线是 $x_{\rm cl}(t)+a\sin(\pi t/T)$。$a$ 只改变拿来比较的路径，不改变物理系统。实部、虚部图显示完整解析核 $K=A_+e^{iS_{\rm cl}-i\pi/4}$，其中 $A_+>0$ 是核的模长。
+
+<QuadraticKernelLab />
+
+在相同时间下切换正负恒力，经典作用量改变而涨落因子保持自由粒子的值；振子的二次项则同时改变两者。对选定形变，自由与恒力有 $\Delta S=\pi^2a^2/(4T)$，振子有 $\Delta S=a^2[\pi^2-(\omega T)^2]/(4T)$。本实验的 $\omega T<\pi$ 使这族形变的二阶变化为正；一般的驻定作用量不保证是最小值。一个正弦形变参数没有代表全部路径，核也不是该路径的概率。
+
+::::
+
+::::quiz
+:::question{true}
+在同一个传播时间下，从自由粒子切换到恒力后，完整核的实部可以改变，而核的模长保持不变。
+
+恒力改变经典作用量，因而旋转复平面向量。其二次涨落仍与自由粒子相同，所以向量长度不变。
+:::
+::::
+
+::::quiz
+:::question{false}
+只要形变路径作用量比经典路径大，就能把它的探测概率说成更小。
+
+路径贡献按复相位相加，$e^{iS/\hbar}$ 的模长并不随 $S$ 增大而减小。单条比较路径没有在这里获得一个经典探测概率。
+:::
+::::
+
+:::::
+
+### 可选补充：从核看能量，以及中点的特殊作用
+
+:::deepdive[源书练习中的两个重要联系]
+
+核也可从完备能量本征态展开。对离散谱，插入单位算符并让每个本征态积累自己的时间相位，就得到
+
+$$ {#eq-8.6.15}
+U(x,t;x',t')=\sum_n\psi_n(x)\psi_n^*(x')
+\exp\left[-\frac{iE_n(t-t')}{\hbar}\right].
+$$
+
+这是源书练习中带编号的数学关系，此处独立解释它的含义而不复写练习。已知传播核的时间结构，有时能反过来识别能量和本征函数。然而只看某一对位置会丢失在那里振幅为零的态。例如居中振子在 $x=x'=0$ 时所有奇宇称态都不出现；不能据此说完整谱没有那些能级。
+
+源书另一项可选讨论提醒：标量势的切片取值位置与矢势的取值位置有不同的阶数。令 $\eta=x'-x$，在切片中把矢势取于 $x+\alpha\eta$，速度耦合产生相位
+
+$$
+\exp\left[-\frac{iq}{\hbar c}\eta A(x+\alpha\eta)\right].
+$$
+
+标量势前有 $\varepsilon$，其空间取值变化先带来 $\varepsilon\eta$；矢势这里前有 $\eta$，再展开一次就有 $\eta^2\sim\varepsilon$，会进入时间更新的一阶。因此不能照搬标量势的理由随意换取值点。中点 $\alpha=1/2$ 与 @sec:4.3 的笛卡尔最小耦合 $H=(P-qA/c)^2/(2m)+q\phi$ 的对称算符排列相容。这里保留源书的 Gaussian 电磁单位及光速 $c$，没有切换成 SI。
+
+:::
+
+::source[依据 Shankar 第二版可选二次作用量讨论独立编写，保留十五个源标签；实验与自测为原创。]
+
+

@@ -1,0 +1,5553 @@
+{
+ "version": 1,
+ "sections": {
+  "6": {
+   "num": "6",
+   "key": null,
+   "title": "经典极限",
+   "anchor": "sec-6",
+   "file": "src/sections/S6.mdx"
+  },
+  "1.1": {
+   "num": "1.1",
+   "key": null,
+   "title": "线性向量空间：从箭头到抽象对象",
+   "anchor": "sec-1.1",
+   "file": "src/sections/S11.mdx"
+  },
+  "1.10": {
+   "num": "1.10",
+   "key": null,
+   "title": "从有限个分量，到无限维函数空间",
+   "anchor": "sec-1.10",
+   "file": "src/sections/S110.mdx"
+  },
+  "1.2": {
+   "num": "1.2",
+   "key": null,
+   "title": "内积空间：给向量定义长度与正交",
+   "anchor": "sec-1.2",
+   "file": "src/sections/S12.mdx"
+  },
+  "1.3": {
+   "num": "1.3",
+   "key": null,
+   "title": "对偶空间与 Dirac 记号",
+   "anchor": "sec-1.3",
+   "file": "src/sections/S13.mdx"
+  },
+  "1.4": {
+   "num": "1.4",
+   "key": null,
+   "title": "子空间：在大空间里找一个小空间",
+   "anchor": "sec-1.4",
+   "file": "src/sections/S14.mdx"
+  },
+  "1.5": {
+   "num": "1.5",
+   "key": null,
+   "title": "线性算符：规定每个向量怎样改变",
+   "anchor": "sec-1.5",
+   "file": "src/sections/S15.mdx"
+  },
+  "1.6": {
+   "num": "1.6",
+   "key": null,
+   "title": "矩阵元：把算符变成可以计算的数表",
+   "anchor": "sec-1.6",
+   "file": "src/sections/S16.mdx"
+  },
+  "1.7": {
+   "num": "1.7",
+   "key": null,
+   "title": "主动与被动变换：移动向量，或改写算符",
+   "anchor": "sec-1.7",
+   "file": "src/sections/S17.mdx"
+  },
+  "1.8": {
+   "num": "1.8",
+   "key": null,
+   "title": "本征值问题：找出变化中保持形状的状态",
+   "anchor": "sec-1.8",
+   "file": "src/sections/S18.mdx"
+  },
+  "1.9": {
+   "num": "1.9",
+   "key": null,
+   "title": "算符也能代入函数",
+   "anchor": "sec-1.9",
+   "file": "src/sections/S19.mdx"
+  },
+  "2.1": {
+   "num": "2.1",
+   "key": null,
+   "title": "最小作用量与拉格朗日力学",
+   "anchor": "sec-2.1",
+   "file": "src/sections/S21.mdx"
+  },
+  "2.2": {
+   "num": "2.2",
+   "key": null,
+   "title": "电磁拉格朗日量：把速度相关的力放进来",
+   "anchor": "sec-2.2",
+   "file": "src/sections/S22.mdx"
+  },
+  "2.3": {
+   "num": "2.3",
+   "key": null,
+   "title": "二体问题：分开整体移动与相对运动",
+   "anchor": "sec-2.3",
+   "file": "src/sections/S23.mdx"
+  },
+  "2.4": {
+   "num": "2.4",
+   "key": null,
+   "title": "粒子需要预先知道整条路径吗",
+   "anchor": "sec-2.4",
+   "file": "src/sections/S24.mdx"
+  },
+  "2.5": {
+   "num": "2.5",
+   "key": null,
+   "title": "哈密顿形式：用位置与动量描述状态",
+   "anchor": "sec-2.5",
+   "file": "src/sections/S25.mdx"
+  },
+  "2.6": {
+   "num": "2.6",
+   "key": null,
+   "title": "电磁哈密顿量：矢量势藏在正则动量中",
+   "anchor": "sec-2.6",
+   "file": "src/sections/S26.mdx"
+  },
+  "2.7": {
+   "num": "2.7",
+   "key": null,
+   "title": "循环坐标、泊松括号与正则变换",
+   "anchor": "sec-2.7",
+   "file": "src/sections/S27.mdx"
+  },
+  "2.8": {
+   "num": "2.8",
+   "key": null,
+   "title": "对称性及其后果",
+   "anchor": "sec-2.8",
+   "file": "src/sections/S28.mdx"
+  },
+  "3.1": {
+   "num": "3.1",
+   "key": null,
+   "title": "经典物理中的粒子与波",
+   "anchor": "sec-3.1",
+   "file": "src/sections/S31.mdx"
+  },
+  "3.2": {
+   "num": "3.2",
+   "key": null,
+   "title": "经典双缝：波与粒子的不同预言",
+   "anchor": "sec-3.2",
+   "file": "src/sections/S32.mdx"
+  },
+  "3.3": {
+   "num": "3.3",
+   "key": null,
+   "title": "光的双缝实验",
+   "anchor": "sec-3.3",
+   "file": "src/sections/S33.mdx"
+  },
+  "3.4": {
+   "num": "3.4",
+   "key": null,
+   "title": "物质波",
+   "anchor": "sec-3.4",
+   "file": "src/sections/S34.mdx"
+  },
+  "3.5": {
+   "num": "3.5",
+   "key": null,
+   "title": "从实验走向量子态",
+   "anchor": "sec-3.5",
+   "file": "src/sections/S35.mdx"
+  },
+  "4.1": {
+   "num": "4.1",
+   "key": null,
+   "title": "量子力学的四条公设",
+   "anchor": "sec-4.1",
+   "file": "src/sections/S41.mdx"
+  },
+  "4.2": {
+   "num": "4.2",
+   "key": null,
+   "title": "态、可观测量与测量的统计意义",
+   "anchor": "sec-4.2",
+   "file": "src/sections/S42.mdx"
+  },
+  "4.3": {
+   "num": "4.3",
+   "key": null,
+   "title": "薛定谔方程与时间演化",
+   "anchor": "sec-4.3",
+   "file": "src/sections/S43.mdx"
+  },
+  "4.6": {
+   "num": "4.6",
+   "key": "scaling-maps",
+   "title": "A complete MDX section",
+   "anchor": "sec-4.6",
+   "file": "src/sections/_demo.mdx"
+  },
+  "5.1": {
+   "num": "5.1",
+   "key": null,
+   "title": "自由粒子：从平面波到会展宽的波包",
+   "anchor": "sec-5.1",
+   "file": "src/sections/S51.mdx"
+  },
+  "5.2": {
+   "num": "5.2",
+   "key": null,
+   "title": "箱中粒子：边界怎样选出离散能级",
+   "anchor": "sec-5.2",
+   "file": "src/sections/S52.mdx"
+  },
+  "5.3": {
+   "num": "5.3",
+   "key": null,
+   "title": "概率的连续性方程",
+   "anchor": "sec-5.3",
+   "file": "src/sections/S53.mdx"
+  },
+  "5.4": {
+   "num": "5.4",
+   "key": null,
+   "title": "单势阶：一个散射问题",
+   "anchor": "sec-5.4",
+   "file": "src/sections/S54.mdx"
+  },
+  "5.5": {
+   "num": "5.5",
+   "key": null,
+   "title": "重新理解双缝实验",
+   "anchor": "sec-5.5",
+   "file": "src/sections/S55.mdx"
+  },
+  "5.6": {
+   "num": "5.6",
+   "key": null,
+   "title": "一维本征态的几个定理",
+   "anchor": "sec-5.6",
+   "file": "src/sections/S56.mdx"
+  },
+  "7.1": {
+   "num": "7.1",
+   "key": null,
+   "title": "为什么研究谐振子",
+   "anchor": "sec-7.1",
+   "file": "src/sections/S71.mdx"
+  },
+  "7.2": {
+   "num": "7.2",
+   "key": null,
+   "title": "经典谐振子回顾",
+   "anchor": "sec-7.2",
+   "file": "src/sections/S72.mdx"
+  },
+  "7.3": {
+   "num": "7.3",
+   "key": null,
+   "title": "谐振子的量子化",
+   "anchor": "sec-7.3",
+   "file": "src/sections/S73.mdx"
+  },
+  "7.4": {
+   "num": "7.4",
+   "key": null,
+   "title": "能量基中的谐振子",
+   "anchor": "sec-7.4",
+   "file": "src/sections/S74.mdx"
+  },
+  "7.5": {
+   "num": "7.5",
+   "key": null,
+   "title": "从能量基到位置基",
+   "anchor": "sec-7.5",
+   "file": "src/sections/S75.mdx"
+  },
+  "8.1": {
+   "num": "8.1",
+   "key": null,
+   "title": "路径积分的配方",
+   "anchor": "sec-8.1",
+   "file": "src/sections/S81.mdx"
+  },
+  "8.2": {
+   "num": "8.2",
+   "key": null,
+   "title": "分析配方：经典路径附近为何特别",
+   "anchor": "sec-8.2",
+   "file": "src/sections/S82.mdx"
+  },
+  "8.3": {
+   "num": "8.3",
+   "key": null,
+   "title": "自由粒子传播子的驻相估计",
+   "anchor": "sec-8.3",
+   "file": "src/sections/S83.mdx"
+  },
+  "8.4": {
+   "num": "8.4",
+   "key": null,
+   "title": "分时积分求自由粒子传播核",
+   "anchor": "sec-8.4",
+   "file": "src/sections/S84.mdx"
+  },
+  "8.5": {
+   "num": "8.5",
+   "key": null,
+   "title": "从路径积分回到薛定谔方程",
+   "anchor": "sec-8.5",
+   "file": "src/sections/S85.mdx"
+  },
+  "8.6": {
+   "num": "8.6",
+   "key": null,
+   "title": "可选：二次作用量的精确分解",
+   "anchor": "sec-8.6",
+   "file": "src/sections/S86.mdx"
+  },
+  "scaling-maps": {
+   "num": "4.6",
+   "key": "scaling-maps",
+   "title": "A complete MDX section",
+   "anchor": "sec-scaling-maps",
+   "file": "src/sections/_demo.mdx"
+  }
+ },
+ "envs": {
+  "1.10.1": {
+   "num": "1.10.1",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 220,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "函数空间中的正常模",
+   "label": "1.10.1 (函数空间中的正常模)",
+   "anchor": "env-1.10.1"
+  },
+  "1.4.1": {
+   "num": "1.4.1",
+   "section": "1.4",
+   "file": "src/sections/S14.mdx",
+   "line": 20,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "穿过原点的直线与平面",
+   "label": "1.4.1 (穿过原点的直线与平面)",
+   "anchor": "env-1.4.1"
+  },
+  "1.4.2": {
+   "num": "1.4.2",
+   "section": "1.4",
+   "file": "src/sections/S14.mdx",
+   "line": 34,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "两条坐标轴生成一个平面",
+   "label": "1.4.2 (两条坐标轴生成一个平面)",
+   "anchor": "env-1.4.2"
+  },
+  "1.5.1": {
+   "num": "1.5.1",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 46,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "不动与旋转",
+   "label": "1.5.1 (不动与旋转)",
+   "anchor": "env-1.5.1"
+  },
+  "1.6.1": {
+   "num": "1.6.1",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 43,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "从基的去向写旋转矩阵",
+   "label": "1.6.1 (从基的去向写旋转矩阵)",
+   "anchor": "env-1.6.1"
+  },
+  "1.8.1": {
+   "num": "1.8.1",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 26,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "单位算符",
+   "label": "1.8.1 (单位算符)",
+   "anchor": "env-1.8.1"
+  },
+  "1.8.2": {
+   "num": "1.8.2",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 30,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "投影算符",
+   "label": "1.8.2 (投影算符)",
+   "anchor": "env-1.8.2"
+  },
+  "1.8.3": {
+   "num": "1.8.3",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 34,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "实图像可能漏掉复方向",
+   "label": "1.8.3 (实图像可能漏掉复方向)",
+   "anchor": "env-1.8.3"
+  },
+  "1.8.4": {
+   "num": "1.8.4",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 92,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "把旋转算完",
+   "label": "1.8.4 (把旋转算完)",
+   "anchor": "env-1.8.4"
+  },
+  "1.8.5": {
+   "num": "1.8.5",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 192,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "二重简并的完整计算",
+   "label": "1.8.5 (二重简并的完整计算)",
+   "anchor": "env-1.8.5"
+  },
+  "1.8.6": {
+   "num": "1.8.6",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 305,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "两个质量块的正常模",
+   "label": "1.8.6 (两个质量块的正常模)",
+   "anchor": "env-1.8.6"
+  },
+  "2.1.1": {
+   "num": "2.1.1",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 213,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "同一个平面运动的两种坐标",
+   "label": "2.1.1 (同一个平面运动的两种坐标)",
+   "anchor": "env-2.1.1"
+  },
+  "4.2.1": {
+   "num": "4.2.1",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 64,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "在不同本征基上读取同一态",
+   "label": "4.2.1 (在不同本征基上读取同一态)",
+   "anchor": "env-4.2.1"
+  },
+  "4.2.2": {
+   "num": "4.2.2",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 210,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "双缝检测作为系综实验",
+   "label": "4.2.2 (双缝检测作为系综实验)",
+   "anchor": "env-4.2.2"
+  },
+  "4.2.3": {
+   "num": "4.2.3",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 216,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "被盖住的骰子与量子系综",
+   "label": "4.2.3 (被盖住的骰子与量子系综)",
+   "anchor": "env-4.2.3"
+  },
+  "4.2.4": {
+   "num": "4.2.4",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 479,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "Gaussian 波包",
+   "label": "4.2.4 (Gaussian 波包)",
+   "anchor": "env-4.2.4"
+  },
+  "4.2.5": {
+   "num": "4.2.5",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 607,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "路径探测与干涉",
+   "label": "4.2.5 (路径探测与干涉)",
+   "anchor": "env-4.2.5"
+  },
+  "4.6": {
+   "num": "4.6",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 45,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "Scaling map",
+   "label": "4.6 (Scaling map)",
+   "anchor": "env-4.6"
+  },
+  "6.1": {
+   "num": "6.1",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 256,
+   "fixed": true,
+   "kind": "Example",
+   "directive": "example",
+   "name": "位置平方揭示没有消失的宽度",
+   "label": "6.1 (位置平方揭示没有消失的宽度)",
+   "anchor": "env-6.1"
+  },
+  "basis-independent-check": {
+   "num": "1.1.1",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 160,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "1.1.1",
+   "anchor": "env-basis-independent-check"
+  },
+  "complex-normalization-check": {
+   "num": "1.2.1",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 127,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "1.2.1",
+   "anchor": "env-complex-normalization-check"
+  },
+  "definition:1": {
+   "num": "1",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 12,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "线性向量空间",
+   "label": "1 (线性向量空间)",
+   "anchor": "env-definition-1"
+  },
+  "definition:10": {
+   "num": "10",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 60,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "正交归一基",
+   "label": "10 (正交归一基)",
+   "anchor": "env-definition-10"
+  },
+  "definition:11": {
+   "num": "11",
+   "section": "1.4",
+   "file": "src/sections/S14.mdx",
+   "line": 8,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "子空间",
+   "label": "11 (子空间)",
+   "anchor": "env-definition-11"
+  },
+  "definition:12": {
+   "num": "12",
+   "section": "1.4",
+   "file": "src/sections/S14.mdx",
+   "line": 28,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "子空间的和",
+   "label": "12 (子空间的和)",
+   "anchor": "env-definition-12"
+  },
+  "definition:13": {
+   "num": "13",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 202,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "厄米算符",
+   "label": "13 (厄米算符)",
+   "anchor": "env-definition-13"
+  },
+  "definition:14": {
+   "num": "14",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 206,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "反厄米算符",
+   "label": "14 (反厄米算符)",
+   "anchor": "env-definition-14"
+  },
+  "definition:15": {
+   "num": "15",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 225,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "酉算符",
+   "label": "15 (酉算符)",
+   "anchor": "env-definition-15"
+  },
+  "definition:2": {
+   "num": "2",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 33,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "标量域",
+   "label": "2 (标量域)",
+   "anchor": "env-definition-2"
+  },
+  "definition:3": {
+   "num": "3",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 62,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "线性无关",
+   "label": "3 (线性无关)",
+   "anchor": "env-definition-3"
+  },
+  "definition:4": {
+   "num": "4",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 74,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "维数",
+   "label": "4 (维数)",
+   "anchor": "env-definition-4"
+  },
+  "definition:5": {
+   "num": "5",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 93,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "基",
+   "label": "5 (基)",
+   "anchor": "env-definition-5"
+  },
+  "definition:6": {
+   "num": "6",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 97,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "分量",
+   "label": "6 (分量)",
+   "anchor": "env-definition-6"
+  },
+  "definition:7": {
+   "num": "7",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 35,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "内积空间",
+   "label": "7 (内积空间)",
+   "anchor": "env-definition-7"
+  },
+  "definition:8": {
+   "num": "8",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 52,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "正交",
+   "label": "8 (正交)",
+   "anchor": "env-definition-8"
+  },
+  "definition:9": {
+   "num": "9",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 56,
+   "fixed": true,
+   "kind": "Definition",
+   "directive": "definition",
+   "name": "范数与归一化",
+   "label": "9 (范数与归一化)",
+   "anchor": "env-definition-9"
+  },
+  "eigen-joint-labels": {
+   "num": "1.8.7",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 299,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "1.8.7",
+   "anchor": "env-eigen-joint-labels"
+  },
+  "gram-schmidt-worked": {
+   "num": "1.3.1",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 164,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "1.3.1",
+   "anchor": "env-gram-schmidt-worked"
+  },
+  "pb-free-particle": {
+   "num": "2.7.1",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 61,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "2.7.1",
+   "anchor": "env-pb-free-particle"
+  },
+  "scaling-twice": {
+   "num": "4.6.1",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 50,
+   "fixed": false,
+   "kind": "Example",
+   "directive": "example",
+   "name": null,
+   "label": "4.6.1",
+   "anchor": "env-scaling-twice"
+  },
+  "theorem:1": {
+   "num": "1",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 87,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "完整的一组独立向量能够张成空间",
+   "label": "1 (完整的一组独立向量能够张成空间)",
+   "anchor": "env-theorem-1"
+  },
+  "theorem:10": {
+   "num": "10",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 140,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "厄米算符存在正交归一本征基",
+   "label": "10 (厄米算符存在正交归一本征基)",
+   "anchor": "env-theorem-10"
+  },
+  "theorem:11": {
+   "num": "11",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 225,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "酉本征值的模为一",
+   "label": "11 (酉本征值的模为一)",
+   "anchor": "env-theorem-11"
+  },
+  "theorem:12": {
+   "num": "12",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 229,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "酉本征向量的正交性",
+   "label": "12 (酉本征向量的正交性)",
+   "anchor": "env-theorem-12"
+  },
+  "theorem:13": {
+   "num": "13",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 270,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "对易厄米算符有共同本征基",
+   "label": "13 (对易厄米算符有共同本征基)",
+   "anchor": "env-theorem-13"
+  },
+  "theorem:15": {
+   "num": "15",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 11,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "一维束缚态无简并",
+   "label": "15 (一维束缚态无简并)",
+   "anchor": "env-theorem-15"
+  },
+  "theorem:16": {
+   "num": "16",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 72,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "实本征函数的选择",
+   "label": "16 (实本征函数的选择)",
+   "anchor": "env-theorem-16"
+  },
+  "theorem:2": {
+   "num": "2",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 105,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "固定基下的展开唯一",
+   "label": "2 (固定基下的展开唯一)",
+   "anchor": "env-theorem-2"
+  },
+  "theorem:3": {
+   "num": "3",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 74,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "Gram–Schmidt 正交化",
+   "label": "3 (Gram–Schmidt 正交化)",
+   "anchor": "env-theorem-3"
+  },
+  "theorem:4": {
+   "num": "4",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 168,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "维数与正交方向",
+   "label": "4 (维数与正交方向)",
+   "anchor": "env-theorem-4"
+  },
+  "theorem:5": {
+   "num": "5",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 176,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "Schwarz 不等式",
+   "label": "5 (Schwarz 不等式)",
+   "anchor": "env-theorem-5"
+  },
+  "theorem:6": {
+   "num": "6",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 184,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "三角不等式",
+   "label": "6 (三角不等式)",
+   "anchor": "env-theorem-6"
+  },
+  "theorem:7": {
+   "num": "7",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 241,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "酉变换保持内积",
+   "label": "7 (酉变换保持内积)",
+   "anchor": "env-theorem-7"
+  },
+  "theorem:8": {
+   "num": "8",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 256,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "酉矩阵的行列正交归一",
+   "label": "8 (酉矩阵的行列正交归一)",
+   "anchor": "env-theorem-8"
+  },
+  "theorem:9": {
+   "num": "9",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 120,
+   "fixed": true,
+   "kind": "Theorem",
+   "directive": "theorem",
+   "name": "厄米算符的本征值为实数",
+   "label": "9 (厄米算符的本征值为实数)",
+   "anchor": "env-theorem-9"
+  }
+ },
+ "eqs": {
+  "1.1.1": {
+   "num": "1.1.1",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 58,
+   "fixed": true,
+   "anchor": "eq-1.1.1"
+  },
+  "1.1.10": {
+   "num": "1.1.10",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 156,
+   "fixed": true,
+   "anchor": "eq-1.1.10"
+  },
+  "1.1.2": {
+   "num": "1.1.2",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-1.1.2"
+  },
+  "1.1.3": {
+   "num": "1.1.3",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 101,
+   "fixed": true,
+   "anchor": "eq-1.1.3"
+  },
+  "1.1.4": {
+   "num": "1.1.4",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 111,
+   "fixed": true,
+   "anchor": "eq-1.1.4"
+  },
+  "1.1.5": {
+   "num": "1.1.5",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 117,
+   "fixed": true,
+   "anchor": "eq-1.1.5"
+  },
+  "1.1.6": {
+   "num": "1.1.6",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 123,
+   "fixed": true,
+   "anchor": "eq-1.1.6"
+  },
+  "1.1.7": {
+   "num": "1.1.7",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 140,
+   "fixed": true,
+   "anchor": "eq-1.1.7"
+  },
+  "1.1.8": {
+   "num": "1.1.8",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 144,
+   "fixed": true,
+   "anchor": "eq-1.1.8"
+  },
+  "1.1.9": {
+   "num": "1.1.9",
+   "section": "1.1",
+   "file": "src/sections/S11.mdx",
+   "line": 150,
+   "fixed": true,
+   "anchor": "eq-1.1.9"
+  },
+  "1.10.1": {
+   "num": "1.10.1",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-1.10.1"
+  },
+  "1.10.11": {
+   "num": "1.10.11",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 62,
+   "fixed": true,
+   "anchor": "eq-1.10.11"
+  },
+  "1.10.12": {
+   "num": "1.10.12",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-1.10.12"
+  },
+  "1.10.17": {
+   "num": "1.10.17",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 74,
+   "fixed": true,
+   "anchor": "eq-1.10.17"
+  },
+  "1.10.18": {
+   "num": "1.10.18",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 78,
+   "fixed": true,
+   "anchor": "eq-1.10.18"
+  },
+  "1.10.19": {
+   "num": "1.10.19",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 86,
+   "fixed": true,
+   "anchor": "eq-1.10.19"
+  },
+  "1.10.20": {
+   "num": "1.10.20",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 104,
+   "fixed": true,
+   "anchor": "eq-1.10.20"
+  },
+  "1.10.21": {
+   "num": "1.10.21",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 108,
+   "fixed": true,
+   "anchor": "eq-1.10.21"
+  },
+  "1.10.24": {
+   "num": "1.10.24",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 120,
+   "fixed": true,
+   "anchor": "eq-1.10.24"
+  },
+  "1.10.25": {
+   "num": "1.10.25",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 124,
+   "fixed": true,
+   "anchor": "eq-1.10.25"
+  },
+  "1.10.26": {
+   "num": "1.10.26",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 130,
+   "fixed": true,
+   "anchor": "eq-1.10.26"
+  },
+  "1.10.3": {
+   "num": "1.10.3",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-1.10.3"
+  },
+  "1.10.32": {
+   "num": "1.10.32",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 178,
+   "fixed": true,
+   "anchor": "eq-1.10.32"
+  },
+  "1.10.33": {
+   "num": "1.10.33",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 184,
+   "fixed": true,
+   "anchor": "eq-1.10.33"
+  },
+  "1.10.4": {
+   "num": "1.10.4",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-1.10.4"
+  },
+  "1.10.46": {
+   "num": "1.10.46",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 226,
+   "fixed": true,
+   "anchor": "eq-1.10.46"
+  },
+  "1.10.47": {
+   "num": "1.10.47",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 230,
+   "fixed": true,
+   "anchor": "eq-1.10.47"
+  },
+  "1.10.5": {
+   "num": "1.10.5",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-1.10.5"
+  },
+  "1.10.50": {
+   "num": "1.10.50",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 236,
+   "fixed": true,
+   "anchor": "eq-1.10.50"
+  },
+  "1.10.51": {
+   "num": "1.10.51",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 240,
+   "fixed": true,
+   "anchor": "eq-1.10.51"
+  },
+  "1.10.56": {
+   "num": "1.10.56",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 268,
+   "fixed": true,
+   "anchor": "eq-1.10.56"
+  },
+  "1.10.57": {
+   "num": "1.10.57",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 274,
+   "fixed": true,
+   "anchor": "eq-1.10.57"
+  },
+  "1.10.58": {
+   "num": "1.10.58",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 280,
+   "fixed": true,
+   "anchor": "eq-1.10.58"
+  },
+  "1.10.7": {
+   "num": "1.10.7",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-1.10.7"
+  },
+  "1.10.8": {
+   "num": "1.10.8",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-1.10.8"
+  },
+  "1.10.9": {
+   "num": "1.10.9",
+   "section": "1.10",
+   "file": "src/sections/S110.mdx",
+   "line": 52,
+   "fixed": true,
+   "anchor": "eq-1.10.9"
+  },
+  "1.2.1": {
+   "num": "1.2.1",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 8,
+   "fixed": true,
+   "anchor": "eq-1.2.1"
+  },
+  "1.2.2": {
+   "num": "1.2.2",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 14,
+   "fixed": true,
+   "anchor": "eq-1.2.2"
+  },
+  "1.2.3": {
+   "num": "1.2.3",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 41,
+   "fixed": true,
+   "anchor": "eq-1.2.3"
+  },
+  "1.2.4": {
+   "num": "1.2.4",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-1.2.4"
+  },
+  "1.2.5": {
+   "num": "1.2.5",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 86,
+   "fixed": true,
+   "anchor": "eq-1.2.5"
+  },
+  "1.2.6": {
+   "num": "1.2.6",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 92,
+   "fixed": true,
+   "anchor": "eq-1.2.6"
+  },
+  "1.2.7": {
+   "num": "1.2.7",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 111,
+   "fixed": true,
+   "anchor": "eq-1.2.7"
+  },
+  "1.2.8": {
+   "num": "1.2.8",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 115,
+   "fixed": true,
+   "anchor": "eq-1.2.8"
+  },
+  "1.2.9": {
+   "num": "1.2.9",
+   "section": "1.2",
+   "file": "src/sections/S12.mdx",
+   "line": 121,
+   "fixed": true,
+   "anchor": "eq-1.2.9"
+  },
+  "1.3.1": {
+   "num": "1.3.1",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 13,
+   "fixed": true,
+   "anchor": "eq-1.3.1"
+  },
+  "1.3.10": {
+   "num": "1.3.10",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 91,
+   "fixed": true,
+   "anchor": "eq-1.3.10"
+  },
+  "1.3.11": {
+   "num": "1.3.11",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 97,
+   "fixed": true,
+   "anchor": "eq-1.3.11"
+  },
+  "1.3.12": {
+   "num": "1.3.12",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 103,
+   "fixed": true,
+   "anchor": "eq-1.3.12"
+  },
+  "1.3.13": {
+   "num": "1.3.13",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 110,
+   "fixed": true,
+   "anchor": "eq-1.3.13"
+  },
+  "1.3.14": {
+   "num": "1.3.14",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 116,
+   "fixed": true,
+   "anchor": "eq-1.3.14"
+  },
+  "1.3.15": {
+   "num": "1.3.15",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 179,
+   "fixed": true,
+   "anchor": "eq-1.3.15"
+  },
+  "1.3.16": {
+   "num": "1.3.16",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 187,
+   "fixed": true,
+   "anchor": "eq-1.3.16"
+  },
+  "1.3.17": {
+   "num": "1.3.17",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 196,
+   "fixed": true,
+   "anchor": "eq-1.3.17"
+  },
+  "1.3.18": {
+   "num": "1.3.18",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 202,
+   "fixed": true,
+   "anchor": "eq-1.3.18"
+  },
+  "1.3.19": {
+   "num": "1.3.19",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 215,
+   "fixed": true,
+   "anchor": "eq-1.3.19"
+  },
+  "1.3.2": {
+   "num": "1.3.2",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 35,
+   "fixed": true,
+   "anchor": "eq-1.3.2"
+  },
+  "1.3.3": {
+   "num": "1.3.3",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 41,
+   "fixed": true,
+   "anchor": "eq-1.3.3"
+  },
+  "1.3.4": {
+   "num": "1.3.4",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-1.3.4"
+  },
+  "1.3.5": {
+   "num": "1.3.5",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 52,
+   "fixed": true,
+   "anchor": "eq-1.3.5"
+  },
+  "1.3.6": {
+   "num": "1.3.6",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 60,
+   "fixed": true,
+   "anchor": "eq-1.3.6"
+  },
+  "1.3.7": {
+   "num": "1.3.7",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 64,
+   "fixed": true,
+   "anchor": "eq-1.3.7"
+  },
+  "1.3.8": {
+   "num": "1.3.8",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 75,
+   "fixed": true,
+   "anchor": "eq-1.3.8"
+  },
+  "1.3.9": {
+   "num": "1.3.9",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 85,
+   "fixed": true,
+   "anchor": "eq-1.3.9"
+  },
+  "1.5.1": {
+   "num": "1.5.1",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 8,
+   "fixed": true,
+   "anchor": "eq-1.5.1"
+  },
+  "1.5.10": {
+   "num": "1.5.10",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 109,
+   "fixed": true,
+   "anchor": "eq-1.5.10"
+  },
+  "1.5.11": {
+   "num": "1.5.11",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 113,
+   "fixed": true,
+   "anchor": "eq-1.5.11"
+  },
+  "1.5.12": {
+   "num": "1.5.12",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 123,
+   "fixed": true,
+   "anchor": "eq-1.5.12"
+  },
+  "1.5.13": {
+   "num": "1.5.13",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 131,
+   "fixed": true,
+   "anchor": "eq-1.5.13"
+  },
+  "1.5.2": {
+   "num": "1.5.2",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 14,
+   "fixed": true,
+   "anchor": "eq-1.5.2"
+  },
+  "1.5.3a": {
+   "num": "1.5.3a",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-1.5.3a"
+  },
+  "1.5.3b": {
+   "num": "1.5.3b",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-1.5.3b"
+  },
+  "1.5.4a": {
+   "num": "1.5.4a",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 35,
+   "fixed": true,
+   "anchor": "eq-1.5.4a"
+  },
+  "1.5.4b": {
+   "num": "1.5.4b",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 39,
+   "fixed": true,
+   "anchor": "eq-1.5.4b"
+  },
+  "1.5.5": {
+   "num": "1.5.5",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 49,
+   "fixed": true,
+   "anchor": "eq-1.5.5"
+  },
+  "1.5.6": {
+   "num": "1.5.6",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 53,
+   "fixed": true,
+   "anchor": "eq-1.5.6"
+  },
+  "1.5.7a": {
+   "num": "1.5.7a",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 59,
+   "fixed": true,
+   "anchor": "eq-1.5.7a"
+  },
+  "1.5.7b": {
+   "num": "1.5.7b",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 63,
+   "fixed": true,
+   "anchor": "eq-1.5.7b"
+  },
+  "1.5.7c": {
+   "num": "1.5.7c",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 67,
+   "fixed": true,
+   "anchor": "eq-1.5.7c"
+  },
+  "1.5.8": {
+   "num": "1.5.8",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 90,
+   "fixed": true,
+   "anchor": "eq-1.5.8"
+  },
+  "1.5.9": {
+   "num": "1.5.9",
+   "section": "1.5",
+   "file": "src/sections/S15.mdx",
+   "line": 101,
+   "fixed": true,
+   "anchor": "eq-1.5.9"
+  },
+  "1.6.1": {
+   "num": "1.6.1",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-1.6.1"
+  },
+  "1.6.10": {
+   "num": "1.6.10",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 94,
+   "fixed": true,
+   "anchor": "eq-1.6.10"
+  },
+  "1.6.11": {
+   "num": "1.6.11",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 114,
+   "fixed": true,
+   "anchor": "eq-1.6.11"
+  },
+  "1.6.12": {
+   "num": "1.6.12",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 121,
+   "fixed": true,
+   "anchor": "eq-1.6.12"
+  },
+  "1.6.13": {
+   "num": "1.6.13",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 132,
+   "fixed": true,
+   "anchor": "eq-1.6.13"
+  },
+  "1.6.14": {
+   "num": "1.6.14",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 147,
+   "fixed": true,
+   "anchor": "eq-1.6.14"
+  },
+  "1.6.15": {
+   "num": "1.6.15",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 161,
+   "fixed": true,
+   "anchor": "eq-1.6.15"
+  },
+  "1.6.16": {
+   "num": "1.6.16",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 176,
+   "fixed": true,
+   "anchor": "eq-1.6.16"
+  },
+  "1.6.17a": {
+   "num": "1.6.17a",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 184,
+   "fixed": true,
+   "anchor": "eq-1.6.17a"
+  },
+  "1.6.17b": {
+   "num": "1.6.17b",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 192,
+   "fixed": true,
+   "anchor": "eq-1.6.17b"
+  },
+  "1.6.18": {
+   "num": "1.6.18",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 214,
+   "fixed": true,
+   "anchor": "eq-1.6.18"
+  },
+  "1.6.19": {
+   "num": "1.6.19",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 228,
+   "fixed": true,
+   "anchor": "eq-1.6.19"
+  },
+  "1.6.2": {
+   "num": "1.6.2",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 20,
+   "fixed": true,
+   "anchor": "eq-1.6.2"
+  },
+  "1.6.20": {
+   "num": "1.6.20",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 234,
+   "fixed": true,
+   "anchor": "eq-1.6.20"
+  },
+  "1.6.21": {
+   "num": "1.6.21",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 247,
+   "fixed": true,
+   "anchor": "eq-1.6.21"
+  },
+  "1.6.22": {
+   "num": "1.6.22",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 264,
+   "fixed": true,
+   "anchor": "eq-1.6.22"
+  },
+  "1.6.3": {
+   "num": "1.6.3",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-1.6.3"
+  },
+  "1.6.4": {
+   "num": "1.6.4",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-1.6.4"
+  },
+  "1.6.5": {
+   "num": "1.6.5",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 58,
+   "fixed": true,
+   "anchor": "eq-1.6.5"
+  },
+  "1.6.6": {
+   "num": "1.6.6",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 66,
+   "fixed": true,
+   "anchor": "eq-1.6.6"
+  },
+  "1.6.7": {
+   "num": "1.6.7",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 72,
+   "fixed": true,
+   "anchor": "eq-1.6.7"
+  },
+  "1.6.8": {
+   "num": "1.6.8",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 82,
+   "fixed": true,
+   "anchor": "eq-1.6.8"
+  },
+  "1.6.9": {
+   "num": "1.6.9",
+   "section": "1.6",
+   "file": "src/sections/S16.mdx",
+   "line": 88,
+   "fixed": true,
+   "anchor": "eq-1.6.9"
+  },
+  "1.7.1": {
+   "num": "1.7.1",
+   "section": "1.7",
+   "file": "src/sections/S17.mdx",
+   "line": 8,
+   "fixed": true,
+   "anchor": "eq-1.7.1"
+  },
+  "1.7.2": {
+   "num": "1.7.2",
+   "section": "1.7",
+   "file": "src/sections/S17.mdx",
+   "line": 14,
+   "fixed": true,
+   "anchor": "eq-1.7.2"
+  },
+  "1.7.3": {
+   "num": "1.7.3",
+   "section": "1.7",
+   "file": "src/sections/S17.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-1.7.3"
+  },
+  "1.8.1": {
+   "num": "1.8.1",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-1.8.1"
+  },
+  "1.8.10": {
+   "num": "1.8.10",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 101,
+   "fixed": true,
+   "anchor": "eq-1.8.10"
+  },
+  "1.8.11": {
+   "num": "1.8.11",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 128,
+   "fixed": true,
+   "anchor": "eq-1.8.11"
+  },
+  "1.8.12": {
+   "num": "1.8.12",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 159,
+   "fixed": true,
+   "anchor": "eq-1.8.12"
+  },
+  "1.8.15": {
+   "num": "1.8.15",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 169,
+   "fixed": true,
+   "anchor": "eq-1.8.15"
+  },
+  "1.8.17": {
+   "num": "1.8.17",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 175,
+   "fixed": true,
+   "anchor": "eq-1.8.17"
+  },
+  "1.8.19": {
+   "num": "1.8.19",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 237,
+   "fixed": true,
+   "anchor": "eq-1.8.19"
+  },
+  "1.8.2": {
+   "num": "1.8.2",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-1.8.2"
+  },
+  "1.8.21": {
+   "num": "1.8.21",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 254,
+   "fixed": true,
+   "anchor": "eq-1.8.21"
+  },
+  "1.8.22": {
+   "num": "1.8.22",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 278,
+   "fixed": true,
+   "anchor": "eq-1.8.22"
+  },
+  "1.8.23": {
+   "num": "1.8.23",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 284,
+   "fixed": true,
+   "anchor": "eq-1.8.23"
+  },
+  "1.8.24a": {
+   "num": "1.8.24a",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 308,
+   "fixed": true,
+   "anchor": "eq-1.8.24a"
+  },
+  "1.8.24b": {
+   "num": "1.8.24b",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 312,
+   "fixed": true,
+   "anchor": "eq-1.8.24b"
+  },
+  "1.8.25a": {
+   "num": "1.8.25a",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 318,
+   "fixed": true,
+   "anchor": "eq-1.8.25a"
+  },
+  "1.8.26": {
+   "num": "1.8.26",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 323,
+   "fixed": true,
+   "anchor": "eq-1.8.26"
+  },
+  "1.8.29": {
+   "num": "1.8.29",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 329,
+   "fixed": true,
+   "anchor": "eq-1.8.29"
+  },
+  "1.8.3": {
+   "num": "1.8.3",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-1.8.3"
+  },
+  "1.8.31a": {
+   "num": "1.8.31a",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 335,
+   "fixed": true,
+   "anchor": "eq-1.8.31a"
+  },
+  "1.8.31b": {
+   "num": "1.8.31b",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 341,
+   "fixed": true,
+   "anchor": "eq-1.8.31b"
+  },
+  "1.8.32": {
+   "num": "1.8.32",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 351,
+   "fixed": true,
+   "anchor": "eq-1.8.32"
+  },
+  "1.8.35": {
+   "num": "1.8.35",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 357,
+   "fixed": true,
+   "anchor": "eq-1.8.35"
+  },
+  "1.8.36": {
+   "num": "1.8.36",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 363,
+   "fixed": true,
+   "anchor": "eq-1.8.36"
+  },
+  "1.8.38a": {
+   "num": "1.8.38a",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 378,
+   "fixed": true,
+   "anchor": "eq-1.8.38a"
+  },
+  "1.8.38b": {
+   "num": "1.8.38b",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 383,
+   "fixed": true,
+   "anchor": "eq-1.8.38b"
+  },
+  "1.8.39": {
+   "num": "1.8.39",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 403,
+   "fixed": true,
+   "anchor": "eq-1.8.39"
+  },
+  "1.8.4": {
+   "num": "1.8.4",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-1.8.4"
+  },
+  "1.8.40": {
+   "num": "1.8.40",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 411,
+   "fixed": true,
+   "anchor": "eq-1.8.40"
+  },
+  "1.8.41a": {
+   "num": "1.8.41a",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 417,
+   "fixed": true,
+   "anchor": "eq-1.8.41a"
+  },
+  "1.8.43": {
+   "num": "1.8.43",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 424,
+   "fixed": true,
+   "anchor": "eq-1.8.43"
+  },
+  "1.8.5": {
+   "num": "1.8.5",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 58,
+   "fixed": true,
+   "anchor": "eq-1.8.5"
+  },
+  "1.8.6": {
+   "num": "1.8.6",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 66,
+   "fixed": true,
+   "anchor": "eq-1.8.6"
+  },
+  "1.8.7": {
+   "num": "1.8.7",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 72,
+   "fixed": true,
+   "anchor": "eq-1.8.7"
+  },
+  "1.8.8": {
+   "num": "1.8.8",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 78,
+   "fixed": true,
+   "anchor": "eq-1.8.8"
+  },
+  "1.8.9": {
+   "num": "1.8.9",
+   "section": "1.8",
+   "file": "src/sections/S18.mdx",
+   "line": 84,
+   "fixed": true,
+   "anchor": "eq-1.8.9"
+  },
+  "1.9.1": {
+   "num": "1.9.1",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-1.9.1"
+  },
+  "1.9.2": {
+   "num": "1.9.2",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-1.9.2"
+  },
+  "1.9.3": {
+   "num": "1.9.3",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-1.9.3"
+  },
+  "1.9.4": {
+   "num": "1.9.4",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-1.9.4"
+  },
+  "1.9.5": {
+   "num": "1.9.5",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-1.9.5"
+  },
+  "1.9.6": {
+   "num": "1.9.6",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 54,
+   "fixed": true,
+   "anchor": "eq-1.9.6"
+  },
+  "1.9.7": {
+   "num": "1.9.7",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 87,
+   "fixed": true,
+   "anchor": "eq-1.9.7"
+  },
+  "1.9.8": {
+   "num": "1.9.8",
+   "section": "1.9",
+   "file": "src/sections/S19.mdx",
+   "line": 99,
+   "fixed": true,
+   "anchor": "eq-1.9.8"
+  },
+  "2.1.1": {
+   "num": "2.1.1",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-2.1.1"
+  },
+  "2.1.10": {
+   "num": "2.1.10",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 166,
+   "fixed": true,
+   "anchor": "eq-2.1.10"
+  },
+  "2.1.11": {
+   "num": "2.1.11",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 177,
+   "fixed": true,
+   "anchor": "eq-2.1.11"
+  },
+  "2.1.12": {
+   "num": "2.1.12",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 188,
+   "fixed": true,
+   "anchor": "eq-2.1.12"
+  },
+  "2.1.13": {
+   "num": "2.1.13",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 194,
+   "fixed": true,
+   "anchor": "eq-2.1.13"
+  },
+  "2.1.14": {
+   "num": "2.1.14",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 204,
+   "fixed": true,
+   "anchor": "eq-2.1.14"
+  },
+  "2.1.15": {
+   "num": "2.1.15",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 216,
+   "fixed": true,
+   "anchor": "eq-2.1.15"
+  },
+  "2.1.16": {
+   "num": "2.1.16",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 223,
+   "fixed": true,
+   "anchor": "eq-2.1.16"
+  },
+  "2.1.17": {
+   "num": "2.1.17",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 227,
+   "fixed": true,
+   "anchor": "eq-2.1.17"
+  },
+  "2.1.18": {
+   "num": "2.1.18",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 238,
+   "fixed": true,
+   "anchor": "eq-2.1.18"
+  },
+  "2.1.19": {
+   "num": "2.1.19",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 242,
+   "fixed": true,
+   "anchor": "eq-2.1.19"
+  },
+  "2.1.2": {
+   "num": "2.1.2",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-2.1.2"
+  },
+  "2.1.20": {
+   "num": "2.1.20",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 266,
+   "fixed": true,
+   "anchor": "eq-2.1.20"
+  },
+  "2.1.21": {
+   "num": "2.1.21",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 276,
+   "fixed": true,
+   "anchor": "eq-2.1.21"
+  },
+  "2.1.22": {
+   "num": "2.1.22",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 280,
+   "fixed": true,
+   "anchor": "eq-2.1.22"
+  },
+  "2.1.3": {
+   "num": "2.1.3",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 44,
+   "fixed": true,
+   "anchor": "eq-2.1.3"
+  },
+  "2.1.4": {
+   "num": "2.1.4",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 71,
+   "fixed": true,
+   "anchor": "eq-2.1.4"
+  },
+  "2.1.5": {
+   "num": "2.1.5",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 79,
+   "fixed": true,
+   "anchor": "eq-2.1.5"
+  },
+  "2.1.6": {
+   "num": "2.1.6",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 86,
+   "fixed": true,
+   "anchor": "eq-2.1.6"
+  },
+  "2.1.7": {
+   "num": "2.1.7",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 97,
+   "fixed": true,
+   "anchor": "eq-2.1.7"
+  },
+  "2.1.8": {
+   "num": "2.1.8",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 134,
+   "fixed": true,
+   "anchor": "eq-2.1.8"
+  },
+  "2.1.9": {
+   "num": "2.1.9",
+   "section": "2.1",
+   "file": "src/sections/S21.mdx",
+   "line": 147,
+   "fixed": true,
+   "anchor": "eq-2.1.9"
+  },
+  "2.2.1": {
+   "num": "2.2.1",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-2.2.1"
+  },
+  "2.2.2": {
+   "num": "2.2.2",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 20,
+   "fixed": true,
+   "anchor": "eq-2.2.2"
+  },
+  "2.2.3": {
+   "num": "2.2.3",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-2.2.3"
+  },
+  "2.2.4": {
+   "num": "2.2.4",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-2.2.4"
+  },
+  "2.2.5": {
+   "num": "2.2.5",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 40,
+   "fixed": true,
+   "anchor": "eq-2.2.5"
+  },
+  "2.2.6": {
+   "num": "2.2.6",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-2.2.6"
+  },
+  "2.2.7": {
+   "num": "2.2.7",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 55,
+   "fixed": true,
+   "anchor": "eq-2.2.7"
+  },
+  "2.2.8": {
+   "num": "2.2.8",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 71,
+   "fixed": true,
+   "anchor": "eq-2.2.8"
+  },
+  "2.2.9": {
+   "num": "2.2.9",
+   "section": "2.2",
+   "file": "src/sections/S22.mdx",
+   "line": 89,
+   "fixed": true,
+   "anchor": "eq-2.2.9"
+  },
+  "2.3.1": {
+   "num": "2.3.1",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-2.3.1"
+  },
+  "2.3.2": {
+   "num": "2.3.2",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-2.3.2"
+  },
+  "2.3.3": {
+   "num": "2.3.3",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-2.3.3"
+  },
+  "2.3.4": {
+   "num": "2.3.4",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-2.3.4"
+  },
+  "2.3.5": {
+   "num": "2.3.5",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-2.3.5"
+  },
+  "2.3.6": {
+   "num": "2.3.6",
+   "section": "2.3",
+   "file": "src/sections/S23.mdx",
+   "line": 57,
+   "fixed": true,
+   "anchor": "eq-2.3.6"
+  },
+  "2.5.1": {
+   "num": "2.5.1",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-2.5.1"
+  },
+  "2.5.10": {
+   "num": "2.5.10",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 82,
+   "fixed": true,
+   "anchor": "eq-2.5.10"
+  },
+  "2.5.11": {
+   "num": "2.5.11",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 95,
+   "fixed": true,
+   "anchor": "eq-2.5.11"
+  },
+  "2.5.12": {
+   "num": "2.5.12",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 111,
+   "fixed": true,
+   "anchor": "eq-2.5.12"
+  },
+  "2.5.13": {
+   "num": "2.5.13",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 122,
+   "fixed": true,
+   "anchor": "eq-2.5.13"
+  },
+  "2.5.14": {
+   "num": "2.5.14",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 128,
+   "fixed": true,
+   "anchor": "eq-2.5.14"
+  },
+  "2.5.15": {
+   "num": "2.5.15",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 138,
+   "fixed": true,
+   "anchor": "eq-2.5.15"
+  },
+  "2.5.16": {
+   "num": "2.5.16",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 144,
+   "fixed": true,
+   "anchor": "eq-2.5.16"
+  },
+  "2.5.17": {
+   "num": "2.5.17",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 148,
+   "fixed": true,
+   "anchor": "eq-2.5.17"
+  },
+  "2.5.2": {
+   "num": "2.5.2",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 16,
+   "fixed": true,
+   "anchor": "eq-2.5.2"
+  },
+  "2.5.3": {
+   "num": "2.5.3",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-2.5.3"
+  },
+  "2.5.4": {
+   "num": "2.5.4",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-2.5.4"
+  },
+  "2.5.5": {
+   "num": "2.5.5",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 38,
+   "fixed": true,
+   "anchor": "eq-2.5.5"
+  },
+  "2.5.6": {
+   "num": "2.5.6",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-2.5.6"
+  },
+  "2.5.7": {
+   "num": "2.5.7",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 55,
+   "fixed": true,
+   "anchor": "eq-2.5.7"
+  },
+  "2.5.8": {
+   "num": "2.5.8",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 65,
+   "fixed": true,
+   "anchor": "eq-2.5.8"
+  },
+  "2.5.9": {
+   "num": "2.5.9",
+   "section": "2.5",
+   "file": "src/sections/S25.mdx",
+   "line": 75,
+   "fixed": true,
+   "anchor": "eq-2.5.9"
+  },
+  "2.6.1": {
+   "num": "2.6.1",
+   "section": "2.6",
+   "file": "src/sections/S26.mdx",
+   "line": 17,
+   "fixed": true,
+   "anchor": "eq-2.6.1"
+  },
+  "2.6.2": {
+   "num": "2.6.2",
+   "section": "2.6",
+   "file": "src/sections/S26.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-2.6.2"
+  },
+  "2.7.1": {
+   "num": "2.7.1",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-2.7.1"
+  },
+  "2.7.10": {
+   "num": "2.7.10",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 129,
+   "fixed": true,
+   "anchor": "eq-2.7.10"
+  },
+  "2.7.11": {
+   "num": "2.7.11",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 136,
+   "fixed": true,
+   "anchor": "eq-2.7.11"
+  },
+  "2.7.12": {
+   "num": "2.7.12",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 147,
+   "fixed": true,
+   "anchor": "eq-2.7.12"
+  },
+  "2.7.13": {
+   "num": "2.7.13",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 157,
+   "fixed": true,
+   "anchor": "eq-2.7.13"
+  },
+  "2.7.14": {
+   "num": "2.7.14",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 163,
+   "fixed": true,
+   "anchor": "eq-2.7.14"
+  },
+  "2.7.15a": {
+   "num": "2.7.15a",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 172,
+   "fixed": true,
+   "anchor": "eq-2.7.15a"
+  },
+  "2.7.15b": {
+   "num": "2.7.15b",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 177,
+   "fixed": true,
+   "anchor": "eq-2.7.15b"
+  },
+  "2.7.16": {
+   "num": "2.7.16",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 186,
+   "fixed": true,
+   "anchor": "eq-2.7.16"
+  },
+  "2.7.17": {
+   "num": "2.7.17",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 190,
+   "fixed": true,
+   "anchor": "eq-2.7.17"
+  },
+  "2.7.18": {
+   "num": "2.7.18",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 196,
+   "fixed": true,
+   "anchor": "eq-2.7.18"
+  },
+  "2.7.19": {
+   "num": "2.7.19",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 217,
+   "fixed": true,
+   "anchor": "eq-2.7.19"
+  },
+  "2.7.2": {
+   "num": "2.7.2",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 20,
+   "fixed": true,
+   "anchor": "eq-2.7.2"
+  },
+  "2.7.20": {
+   "num": "2.7.20",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 225,
+   "fixed": true,
+   "anchor": "eq-2.7.20"
+  },
+  "2.7.21": {
+   "num": "2.7.21",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 239,
+   "fixed": true,
+   "anchor": "eq-2.7.21"
+  },
+  "2.7.3": {
+   "num": "2.7.3",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 39,
+   "fixed": true,
+   "anchor": "eq-2.7.3"
+  },
+  "2.7.4a": {
+   "num": "2.7.4a",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 69,
+   "fixed": true,
+   "anchor": "eq-2.7.4a"
+  },
+  "2.7.4b": {
+   "num": "2.7.4b",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 73,
+   "fixed": true,
+   "anchor": "eq-2.7.4b"
+  },
+  "2.7.5a": {
+   "num": "2.7.5a",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 79,
+   "fixed": true,
+   "anchor": "eq-2.7.5a"
+  },
+  "2.7.5b": {
+   "num": "2.7.5b",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 83,
+   "fixed": true,
+   "anchor": "eq-2.7.5b"
+  },
+  "2.7.6a": {
+   "num": "2.7.6a",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 93,
+   "fixed": true,
+   "anchor": "eq-2.7.6a"
+  },
+  "2.7.6b": {
+   "num": "2.7.6b",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 99,
+   "fixed": true,
+   "anchor": "eq-2.7.6b"
+  },
+  "2.7.7": {
+   "num": "2.7.7",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 105,
+   "fixed": true,
+   "anchor": "eq-2.7.7"
+  },
+  "2.7.8": {
+   "num": "2.7.8",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 113,
+   "fixed": true,
+   "anchor": "eq-2.7.8"
+  },
+  "2.7.9": {
+   "num": "2.7.9",
+   "section": "2.7",
+   "file": "src/sections/S27.mdx",
+   "line": 119,
+   "fixed": true,
+   "anchor": "eq-2.7.9"
+  },
+  "2.8.1": {
+   "num": "2.8.1",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-2.8.1"
+  },
+  "2.8.10": {
+   "num": "2.8.10",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 118,
+   "fixed": true,
+   "anchor": "eq-2.8.10"
+  },
+  "2.8.11": {
+   "num": "2.8.11",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 128,
+   "fixed": true,
+   "anchor": "eq-2.8.11"
+  },
+  "2.8.12": {
+   "num": "2.8.12",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 140,
+   "fixed": true,
+   "anchor": "eq-2.8.12"
+  },
+  "2.8.13": {
+   "num": "2.8.13",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 147,
+   "fixed": true,
+   "anchor": "eq-2.8.13"
+  },
+  "2.8.14": {
+   "num": "2.8.14",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 153,
+   "fixed": true,
+   "anchor": "eq-2.8.14"
+  },
+  "2.8.15": {
+   "num": "2.8.15",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 166,
+   "fixed": true,
+   "anchor": "eq-2.8.15"
+  },
+  "2.8.16": {
+   "num": "2.8.16",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 173,
+   "fixed": true,
+   "anchor": "eq-2.8.16"
+  },
+  "2.8.17": {
+   "num": "2.8.17",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 179,
+   "fixed": true,
+   "anchor": "eq-2.8.17"
+  },
+  "2.8.18": {
+   "num": "2.8.18",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 201,
+   "fixed": true,
+   "anchor": "eq-2.8.18"
+  },
+  "2.8.2": {
+   "num": "2.8.2",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 23,
+   "fixed": true,
+   "anchor": "eq-2.8.2"
+  },
+  "2.8.3": {
+   "num": "2.8.3",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 34,
+   "fixed": true,
+   "anchor": "eq-2.8.3"
+  },
+  "2.8.4": {
+   "num": "2.8.4",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 54,
+   "fixed": true,
+   "anchor": "eq-2.8.4"
+  },
+  "2.8.5": {
+   "num": "2.8.5",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 62,
+   "fixed": true,
+   "anchor": "eq-2.8.5"
+  },
+  "2.8.6": {
+   "num": "2.8.6",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 70,
+   "fixed": true,
+   "anchor": "eq-2.8.6"
+  },
+  "2.8.7": {
+   "num": "2.8.7",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 78,
+   "fixed": true,
+   "anchor": "eq-2.8.7"
+  },
+  "2.8.8": {
+   "num": "2.8.8",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 88,
+   "fixed": true,
+   "anchor": "eq-2.8.8"
+  },
+  "2.8.9": {
+   "num": "2.8.9",
+   "section": "2.8",
+   "file": "src/sections/S28.mdx",
+   "line": 113,
+   "fixed": true,
+   "anchor": "eq-2.8.9"
+  },
+  "3.1.1": {
+   "num": "3.1.1",
+   "section": "3.1",
+   "file": "src/sections/S31.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-3.1.1"
+  },
+  "3.1.2": {
+   "num": "3.1.2",
+   "section": "3.1",
+   "file": "src/sections/S31.mdx",
+   "line": 35,
+   "fixed": true,
+   "anchor": "eq-3.1.2"
+  },
+  "3.3.1": {
+   "num": "3.3.1",
+   "section": "3.3",
+   "file": "src/sections/S33.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-3.3.1"
+  },
+  "3.3.2": {
+   "num": "3.3.2",
+   "section": "3.3",
+   "file": "src/sections/S33.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-3.3.2"
+  },
+  "3.3.3": {
+   "num": "3.3.3",
+   "section": "3.3",
+   "file": "src/sections/S33.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-3.3.3"
+  },
+  "4.12": {
+   "num": "4.12",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-4.12"
+  },
+  "4.2.1": {
+   "num": "4.2.1",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 19,
+   "fixed": true,
+   "anchor": "eq-4.2.1"
+  },
+  "4.2.10": {
+   "num": "4.2.10",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 273,
+   "fixed": true,
+   "anchor": "eq-4.2.10"
+  },
+  "4.2.11": {
+   "num": "4.2.11",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 311,
+   "fixed": true,
+   "anchor": "eq-4.2.11"
+  },
+  "4.2.12": {
+   "num": "4.2.12",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 315,
+   "fixed": true,
+   "anchor": "eq-4.2.12"
+  },
+  "4.2.13": {
+   "num": "4.2.13",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 321,
+   "fixed": true,
+   "anchor": "eq-4.2.13"
+  },
+  "4.2.14": {
+   "num": "4.2.14",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 333,
+   "fixed": true,
+   "anchor": "eq-4.2.14"
+  },
+  "4.2.15a": {
+   "num": "4.2.15a",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 345,
+   "fixed": true,
+   "anchor": "eq-4.2.15a"
+  },
+  "4.2.15b": {
+   "num": "4.2.15b",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 351,
+   "fixed": true,
+   "anchor": "eq-4.2.15b"
+  },
+  "4.2.16": {
+   "num": "4.2.16",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 371,
+   "fixed": true,
+   "anchor": "eq-4.2.16"
+  },
+  "4.2.17": {
+   "num": "4.2.17",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 377,
+   "fixed": true,
+   "anchor": "eq-4.2.17"
+  },
+  "4.2.18": {
+   "num": "4.2.18",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 384,
+   "fixed": true,
+   "anchor": "eq-4.2.18"
+  },
+  "4.2.19": {
+   "num": "4.2.19",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 391,
+   "fixed": true,
+   "anchor": "eq-4.2.19"
+  },
+  "4.2.2": {
+   "num": "4.2.2",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-4.2.2"
+  },
+  "4.2.20": {
+   "num": "4.2.20",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 414,
+   "fixed": true,
+   "anchor": "eq-4.2.20"
+  },
+  "4.2.21": {
+   "num": "4.2.21",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 420,
+   "fixed": true,
+   "anchor": "eq-4.2.21"
+  },
+  "4.2.22": {
+   "num": "4.2.22",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 426,
+   "fixed": true,
+   "anchor": "eq-4.2.22"
+  },
+  "4.2.23": {
+   "num": "4.2.23",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 440,
+   "fixed": true,
+   "anchor": "eq-4.2.23"
+  },
+  "4.2.24": {
+   "num": "4.2.24",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 671,
+   "fixed": true,
+   "anchor": "eq-4.2.24"
+  },
+  "4.2.25": {
+   "num": "4.2.25",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 677,
+   "fixed": true,
+   "anchor": "eq-4.2.25"
+  },
+  "4.2.26": {
+   "num": "4.2.26",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 683,
+   "fixed": true,
+   "anchor": "eq-4.2.26"
+  },
+  "4.2.27": {
+   "num": "4.2.27",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 702,
+   "fixed": true,
+   "anchor": "eq-4.2.27"
+  },
+  "4.2.3a": {
+   "num": "4.2.3a",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 94,
+   "fixed": true,
+   "anchor": "eq-4.2.3a"
+  },
+  "4.2.3b": {
+   "num": "4.2.3b",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 100,
+   "fixed": true,
+   "anchor": "eq-4.2.3b"
+  },
+  "4.2.4": {
+   "num": "4.2.4",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 120,
+   "fixed": true,
+   "anchor": "eq-4.2.4"
+  },
+  "4.2.5": {
+   "num": "4.2.5",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 228,
+   "fixed": true,
+   "anchor": "eq-4.2.5"
+  },
+  "4.2.6": {
+   "num": "4.2.6",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 247,
+   "fixed": true,
+   "anchor": "eq-4.2.6"
+  },
+  "4.2.7": {
+   "num": "4.2.7",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 257,
+   "fixed": true,
+   "anchor": "eq-4.2.7"
+  },
+  "4.2.8": {
+   "num": "4.2.8",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 263,
+   "fixed": true,
+   "anchor": "eq-4.2.8"
+  },
+  "4.2.9": {
+   "num": "4.2.9",
+   "section": "4.2",
+   "file": "src/sections/S42.mdx",
+   "line": 267,
+   "fixed": true,
+   "anchor": "eq-4.2.9"
+  },
+  "4.3.1": {
+   "num": "4.3.1",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-4.3.1"
+  },
+  "4.3.10": {
+   "num": "4.3.10",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 76,
+   "fixed": true,
+   "anchor": "eq-4.3.10"
+  },
+  "4.3.11a": {
+   "num": "4.3.11a",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 87,
+   "fixed": true,
+   "anchor": "eq-4.3.11a"
+  },
+  "4.3.11b": {
+   "num": "4.3.11b",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 93,
+   "fixed": true,
+   "anchor": "eq-4.3.11b"
+  },
+  "4.3.12": {
+   "num": "4.3.12",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 99,
+   "fixed": true,
+   "anchor": "eq-4.3.12"
+  },
+  "4.3.13": {
+   "num": "4.3.13",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 125,
+   "fixed": true,
+   "anchor": "eq-4.3.13"
+  },
+  "4.3.14": {
+   "num": "4.3.14",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 131,
+   "fixed": true,
+   "anchor": "eq-4.3.14"
+  },
+  "4.3.15": {
+   "num": "4.3.15",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 137,
+   "fixed": true,
+   "anchor": "eq-4.3.15"
+  },
+  "4.3.16": {
+   "num": "4.3.16",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 190,
+   "fixed": true,
+   "anchor": "eq-4.3.16"
+  },
+  "4.3.17": {
+   "num": "4.3.17",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 203,
+   "fixed": true,
+   "anchor": "eq-4.3.17"
+  },
+  "4.3.18": {
+   "num": "4.3.18",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 209,
+   "fixed": true,
+   "anchor": "eq-4.3.18"
+  },
+  "4.3.19": {
+   "num": "4.3.19",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 215,
+   "fixed": true,
+   "anchor": "eq-4.3.19"
+  },
+  "4.3.2": {
+   "num": "4.3.2",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-4.3.2"
+  },
+  "4.3.20": {
+   "num": "4.3.20",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 221,
+   "fixed": true,
+   "anchor": "eq-4.3.20"
+  },
+  "4.3.21": {
+   "num": "4.3.21",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 231,
+   "fixed": true,
+   "anchor": "eq-4.3.21"
+  },
+  "4.3.22": {
+   "num": "4.3.22",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 237,
+   "fixed": true,
+   "anchor": "eq-4.3.22"
+  },
+  "4.3.23": {
+   "num": "4.3.23",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 243,
+   "fixed": true,
+   "anchor": "eq-4.3.23"
+  },
+  "4.3.3": {
+   "num": "4.3.3",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-4.3.3"
+  },
+  "4.3.4": {
+   "num": "4.3.4",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-4.3.4"
+  },
+  "4.3.5": {
+   "num": "4.3.5",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 38,
+   "fixed": true,
+   "anchor": "eq-4.3.5"
+  },
+  "4.3.6": {
+   "num": "4.3.6",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-4.3.6"
+  },
+  "4.3.7": {
+   "num": "4.3.7",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 54,
+   "fixed": true,
+   "anchor": "eq-4.3.7"
+  },
+  "4.3.8": {
+   "num": "4.3.8",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 64,
+   "fixed": true,
+   "anchor": "eq-4.3.8"
+  },
+  "4.3.9": {
+   "num": "4.3.9",
+   "section": "4.3",
+   "file": "src/sections/S43.mdx",
+   "line": 70,
+   "fixed": true,
+   "anchor": "eq-4.3.9"
+  },
+  "5.1.1": {
+   "num": "5.1.1",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-5.1.1"
+  },
+  "5.1.10": {
+   "num": "5.1.10",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 77,
+   "fixed": true,
+   "anchor": "eq-5.1.10"
+  },
+  "5.1.11": {
+   "num": "5.1.11",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 100,
+   "fixed": true,
+   "anchor": "eq-5.1.11"
+  },
+  "5.1.12": {
+   "num": "5.1.12",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 106,
+   "fixed": true,
+   "anchor": "eq-5.1.12"
+  },
+  "5.1.13": {
+   "num": "5.1.13",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 115,
+   "fixed": true,
+   "anchor": "eq-5.1.13"
+  },
+  "5.1.14": {
+   "num": "5.1.14",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 125,
+   "fixed": true,
+   "anchor": "eq-5.1.14"
+  },
+  "5.1.15": {
+   "num": "5.1.15",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 147,
+   "fixed": true,
+   "anchor": "eq-5.1.15"
+  },
+  "5.1.16": {
+   "num": "5.1.16",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 161,
+   "fixed": true,
+   "anchor": "eq-5.1.16"
+  },
+  "5.1.17": {
+   "num": "5.1.17",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 170,
+   "fixed": true,
+   "anchor": "eq-5.1.17"
+  },
+  "5.1.18": {
+   "num": "5.1.18",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 207,
+   "fixed": true,
+   "anchor": "eq-5.1.18"
+  },
+  "5.1.2": {
+   "num": "5.1.2",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-5.1.2"
+  },
+  "5.1.3": {
+   "num": "5.1.3",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-5.1.3"
+  },
+  "5.1.4": {
+   "num": "5.1.4",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 34,
+   "fixed": true,
+   "anchor": "eq-5.1.4"
+  },
+  "5.1.5": {
+   "num": "5.1.5",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 40,
+   "fixed": true,
+   "anchor": "eq-5.1.5"
+  },
+  "5.1.6": {
+   "num": "5.1.6",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-5.1.6"
+  },
+  "5.1.7": {
+   "num": "5.1.7",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 50,
+   "fixed": true,
+   "anchor": "eq-5.1.7"
+  },
+  "5.1.8": {
+   "num": "5.1.8",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 56,
+   "fixed": true,
+   "anchor": "eq-5.1.8"
+  },
+  "5.1.9": {
+   "num": "5.1.9",
+   "section": "5.1",
+   "file": "src/sections/S51.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-5.1.9"
+  },
+  "5.2.1": {
+   "num": "5.2.1",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-5.2.1"
+  },
+  "5.2.10": {
+   "num": "5.2.10",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 80,
+   "fixed": true,
+   "anchor": "eq-5.2.10"
+  },
+  "5.2.11": {
+   "num": "5.2.11",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 87,
+   "fixed": true,
+   "anchor": "eq-5.2.11"
+  },
+  "5.2.12": {
+   "num": "5.2.12",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 93,
+   "fixed": true,
+   "anchor": "eq-5.2.12"
+  },
+  "5.2.13": {
+   "num": "5.2.13",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 103,
+   "fixed": true,
+   "anchor": "eq-5.2.13"
+  },
+  "5.2.14": {
+   "num": "5.2.14",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 109,
+   "fixed": true,
+   "anchor": "eq-5.2.14"
+  },
+  "5.2.15": {
+   "num": "5.2.15",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 115,
+   "fixed": true,
+   "anchor": "eq-5.2.15"
+  },
+  "5.2.16": {
+   "num": "5.2.16",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 119,
+   "fixed": true,
+   "anchor": "eq-5.2.16"
+  },
+  "5.2.17a": {
+   "num": "5.2.17a",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 129,
+   "fixed": true,
+   "anchor": "eq-5.2.17a"
+  },
+  "5.2.17b": {
+   "num": "5.2.17b",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 133,
+   "fixed": true,
+   "anchor": "eq-5.2.17b"
+  },
+  "5.2.17c": {
+   "num": "5.2.17c",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 137,
+   "fixed": true,
+   "anchor": "eq-5.2.17c"
+  },
+  "5.2.18": {
+   "num": "5.2.18",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 159,
+   "fixed": true,
+   "anchor": "eq-5.2.18"
+  },
+  "5.2.19": {
+   "num": "5.2.19",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 165,
+   "fixed": true,
+   "anchor": "eq-5.2.19"
+  },
+  "5.2.2": {
+   "num": "5.2.2",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 16,
+   "fixed": true,
+   "anchor": "eq-5.2.2"
+  },
+  "5.2.20": {
+   "num": "5.2.20",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 177,
+   "fixed": true,
+   "anchor": "eq-5.2.20"
+  },
+  "5.2.21": {
+   "num": "5.2.21",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 187,
+   "fixed": true,
+   "anchor": "eq-5.2.21"
+  },
+  "5.2.22": {
+   "num": "5.2.22",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 194,
+   "fixed": true,
+   "anchor": "eq-5.2.22"
+  },
+  "5.2.23": {
+   "num": "5.2.23",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 226,
+   "fixed": true,
+   "anchor": "eq-5.2.23"
+  },
+  "5.2.24": {
+   "num": "5.2.24",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 232,
+   "fixed": true,
+   "anchor": "eq-5.2.24"
+  },
+  "5.2.25": {
+   "num": "5.2.25",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 238,
+   "fixed": true,
+   "anchor": "eq-5.2.25"
+  },
+  "5.2.3": {
+   "num": "5.2.3",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-5.2.3"
+  },
+  "5.2.4": {
+   "num": "5.2.4",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-5.2.4"
+  },
+  "5.2.5": {
+   "num": "5.2.5",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 45,
+   "fixed": true,
+   "anchor": "eq-5.2.5"
+  },
+  "5.2.6": {
+   "num": "5.2.6",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 52,
+   "fixed": true,
+   "anchor": "eq-5.2.6"
+  },
+  "5.2.7": {
+   "num": "5.2.7",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 58,
+   "fixed": true,
+   "anchor": "eq-5.2.7"
+  },
+  "5.2.8": {
+   "num": "5.2.8",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 62,
+   "fixed": true,
+   "anchor": "eq-5.2.8"
+  },
+  "5.2.9a": {
+   "num": "5.2.9a",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-5.2.9a"
+  },
+  "5.2.9b": {
+   "num": "5.2.9b",
+   "section": "5.2",
+   "file": "src/sections/S52.mdx",
+   "line": 72,
+   "fixed": true,
+   "anchor": "eq-5.2.9b"
+  },
+  "5.3.1": {
+   "num": "5.3.1",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-5.3.1"
+  },
+  "5.3.2": {
+   "num": "5.3.2",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 16,
+   "fixed": true,
+   "anchor": "eq-5.3.2"
+  },
+  "5.3.3": {
+   "num": "5.3.3",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-5.3.3"
+  },
+  "5.3.4": {
+   "num": "5.3.4",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-5.3.4"
+  },
+  "5.3.5": {
+   "num": "5.3.5",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 40,
+   "fixed": true,
+   "anchor": "eq-5.3.5"
+  },
+  "5.3.6": {
+   "num": "5.3.6",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 44,
+   "fixed": true,
+   "anchor": "eq-5.3.6"
+  },
+  "5.3.7": {
+   "num": "5.3.7",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 56,
+   "fixed": true,
+   "anchor": "eq-5.3.7"
+  },
+  "5.3.8": {
+   "num": "5.3.8",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 60,
+   "fixed": true,
+   "anchor": "eq-5.3.8"
+  },
+  "5.3.9": {
+   "num": "5.3.9",
+   "section": "5.3",
+   "file": "src/sections/S53.mdx",
+   "line": 71,
+   "fixed": true,
+   "anchor": "eq-5.3.9"
+  },
+  "5.4.1": {
+   "num": "5.4.1",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-5.4.1"
+  },
+  "5.4.10": {
+   "num": "5.4.10",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 73,
+   "fixed": true,
+   "anchor": "eq-5.4.10"
+  },
+  "5.4.11": {
+   "num": "5.4.11",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 84,
+   "fixed": true,
+   "anchor": "eq-5.4.11"
+  },
+  "5.4.12": {
+   "num": "5.4.12",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 90,
+   "fixed": true,
+   "anchor": "eq-5.4.12"
+  },
+  "5.4.13": {
+   "num": "5.4.13",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 97,
+   "fixed": true,
+   "anchor": "eq-5.4.13"
+  },
+  "5.4.14": {
+   "num": "5.4.14",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 107,
+   "fixed": true,
+   "anchor": "eq-5.4.14"
+  },
+  "5.4.15": {
+   "num": "5.4.15",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 114,
+   "fixed": true,
+   "anchor": "eq-5.4.15"
+  },
+  "5.4.16": {
+   "num": "5.4.16",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 120,
+   "fixed": true,
+   "anchor": "eq-5.4.16"
+  },
+  "5.4.17": {
+   "num": "5.4.17",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 130,
+   "fixed": true,
+   "anchor": "eq-5.4.17"
+  },
+  "5.4.18": {
+   "num": "5.4.18",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 138,
+   "fixed": true,
+   "anchor": "eq-5.4.18"
+  },
+  "5.4.19": {
+   "num": "5.4.19",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 150,
+   "fixed": true,
+   "anchor": "eq-5.4.19"
+  },
+  "5.4.2": {
+   "num": "5.4.2",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-5.4.2"
+  },
+  "5.4.20": {
+   "num": "5.4.20",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 158,
+   "fixed": true,
+   "anchor": "eq-5.4.20"
+  },
+  "5.4.21": {
+   "num": "5.4.21",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 164,
+   "fixed": true,
+   "anchor": "eq-5.4.21"
+  },
+  "5.4.22": {
+   "num": "5.4.22",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 175,
+   "fixed": true,
+   "anchor": "eq-5.4.22"
+  },
+  "5.4.23": {
+   "num": "5.4.23",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 182,
+   "fixed": true,
+   "anchor": "eq-5.4.23"
+  },
+  "5.4.24": {
+   "num": "5.4.24",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 186,
+   "fixed": true,
+   "anchor": "eq-5.4.24"
+  },
+  "5.4.25": {
+   "num": "5.4.25",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 190,
+   "fixed": true,
+   "anchor": "eq-5.4.25"
+  },
+  "5.4.26": {
+   "num": "5.4.26",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 196,
+   "fixed": true,
+   "anchor": "eq-5.4.26"
+  },
+  "5.4.27": {
+   "num": "5.4.27",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 200,
+   "fixed": true,
+   "anchor": "eq-5.4.27"
+  },
+  "5.4.28": {
+   "num": "5.4.28",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 219,
+   "fixed": true,
+   "anchor": "eq-5.4.28"
+  },
+  "5.4.29": {
+   "num": "5.4.29",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 226,
+   "fixed": true,
+   "anchor": "eq-5.4.29"
+  },
+  "5.4.3": {
+   "num": "5.4.3",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-5.4.3"
+  },
+  "5.4.30": {
+   "num": "5.4.30",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 248,
+   "fixed": true,
+   "anchor": "eq-5.4.30"
+  },
+  "5.4.31": {
+   "num": "5.4.31",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 254,
+   "fixed": true,
+   "anchor": "eq-5.4.31"
+  },
+  "5.4.4": {
+   "num": "5.4.4",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 34,
+   "fixed": true,
+   "anchor": "eq-5.4.4"
+  },
+  "5.4.5": {
+   "num": "5.4.5",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-5.4.5"
+  },
+  "5.4.6": {
+   "num": "5.4.6",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 50,
+   "fixed": true,
+   "anchor": "eq-5.4.6"
+  },
+  "5.4.7": {
+   "num": "5.4.7",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 58,
+   "fixed": true,
+   "anchor": "eq-5.4.7"
+  },
+  "5.4.8": {
+   "num": "5.4.8",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 62,
+   "fixed": true,
+   "anchor": "eq-5.4.8"
+  },
+  "5.4.9": {
+   "num": "5.4.9",
+   "section": "5.4",
+   "file": "src/sections/S54.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-5.4.9"
+  },
+  "5.6.1": {
+   "num": "5.6.1",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-5.6.1"
+  },
+  "5.6.2": {
+   "num": "5.6.2",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 26,
+   "fixed": true,
+   "anchor": "eq-5.6.2"
+  },
+  "5.6.3": {
+   "num": "5.6.3",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 38,
+   "fixed": true,
+   "anchor": "eq-5.6.3"
+  },
+  "5.6.4": {
+   "num": "5.6.4",
+   "section": "5.6",
+   "file": "src/sections/S56.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-5.6.4"
+  },
+  "6.1": {
+   "num": "6.1",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 19,
+   "fixed": true,
+   "anchor": "eq-6.1"
+  },
+  "6.10": {
+   "num": "6.10",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 134,
+   "fixed": true,
+   "anchor": "eq-6.10"
+  },
+  "6.11": {
+   "num": "6.11",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 141,
+   "fixed": true,
+   "anchor": "eq-6.11"
+  },
+  "6.12": {
+   "num": "6.12",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 150,
+   "fixed": true,
+   "anchor": "eq-6.12"
+  },
+  "6.2": {
+   "num": "6.2",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 41,
+   "fixed": true,
+   "anchor": "eq-6.2"
+  },
+  "6.3": {
+   "num": "6.3",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 51,
+   "fixed": true,
+   "anchor": "eq-6.3"
+  },
+  "6.4": {
+   "num": "6.4",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 61,
+   "fixed": true,
+   "anchor": "eq-6.4"
+  },
+  "6.5": {
+   "num": "6.5",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 73,
+   "fixed": true,
+   "anchor": "eq-6.5"
+  },
+  "6.6": {
+   "num": "6.6",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 79,
+   "fixed": true,
+   "anchor": "eq-6.6"
+  },
+  "6.7": {
+   "num": "6.7",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 98,
+   "fixed": true,
+   "anchor": "eq-6.7"
+  },
+  "6.8": {
+   "num": "6.8",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 104,
+   "fixed": true,
+   "anchor": "eq-6.8"
+  },
+  "6.9": {
+   "num": "6.9",
+   "section": "6",
+   "file": "src/sections/S6.mdx",
+   "line": 115,
+   "fixed": true,
+   "anchor": "eq-6.9"
+  },
+  "7.1.1": {
+   "num": "7.1.1",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 19,
+   "fixed": true,
+   "anchor": "eq-7.1.1"
+  },
+  "7.1.10": {
+   "num": "7.1.10",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 129,
+   "fixed": true,
+   "anchor": "eq-7.1.10"
+  },
+  "7.1.11": {
+   "num": "7.1.11",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 134,
+   "fixed": true,
+   "anchor": "eq-7.1.11"
+  },
+  "7.1.2": {
+   "num": "7.1.2",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 27,
+   "fixed": true,
+   "anchor": "eq-7.1.2"
+  },
+  "7.1.3": {
+   "num": "7.1.3",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-7.1.3"
+  },
+  "7.1.4": {
+   "num": "7.1.4",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 72,
+   "fixed": true,
+   "anchor": "eq-7.1.4"
+  },
+  "7.1.5a": {
+   "num": "7.1.5a",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 82,
+   "fixed": true,
+   "anchor": "eq-7.1.5a"
+  },
+  "7.1.5b": {
+   "num": "7.1.5b",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 85,
+   "fixed": true,
+   "anchor": "eq-7.1.5b"
+  },
+  "7.1.6": {
+   "num": "7.1.6",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 94,
+   "fixed": true,
+   "anchor": "eq-7.1.6"
+  },
+  "7.1.7": {
+   "num": "7.1.7",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 109,
+   "fixed": true,
+   "anchor": "eq-7.1.7"
+  },
+  "7.1.8": {
+   "num": "7.1.8",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 114,
+   "fixed": true,
+   "anchor": "eq-7.1.8"
+  },
+  "7.1.9": {
+   "num": "7.1.9",
+   "section": "7.1",
+   "file": "src/sections/S71.mdx",
+   "line": 124,
+   "fixed": true,
+   "anchor": "eq-7.1.9"
+  },
+  "7.2.1": {
+   "num": "7.2.1",
+   "section": "7.2",
+   "file": "src/sections/S72.mdx",
+   "line": 9,
+   "fixed": true,
+   "anchor": "eq-7.2.1"
+  },
+  "7.2.2": {
+   "num": "7.2.2",
+   "section": "7.2",
+   "file": "src/sections/S72.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-7.2.2"
+  },
+  "7.2.3": {
+   "num": "7.2.3",
+   "section": "7.2",
+   "file": "src/sections/S72.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-7.2.3"
+  },
+  "7.2.4": {
+   "num": "7.2.4",
+   "section": "7.2",
+   "file": "src/sections/S72.mdx",
+   "line": 38,
+   "fixed": true,
+   "anchor": "eq-7.2.4"
+  },
+  "7.2.5": {
+   "num": "7.2.5",
+   "section": "7.2",
+   "file": "src/sections/S72.mdx",
+   "line": 60,
+   "fixed": true,
+   "anchor": "eq-7.2.5"
+  },
+  "7.3.1": {
+   "num": "7.3.1",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 32,
+   "fixed": true,
+   "anchor": "eq-7.3.1"
+  },
+  "7.3.10": {
+   "num": "7.3.10",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 118,
+   "fixed": true,
+   "anchor": "eq-7.3.10"
+  },
+  "7.3.11": {
+   "num": "7.3.11",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 128,
+   "fixed": true,
+   "anchor": "eq-7.3.11"
+  },
+  "7.3.12": {
+   "num": "7.3.12",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 136,
+   "fixed": true,
+   "anchor": "eq-7.3.12"
+  },
+  "7.3.13": {
+   "num": "7.3.13",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 140,
+   "fixed": true,
+   "anchor": "eq-7.3.13"
+  },
+  "7.3.14": {
+   "num": "7.3.14",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 151,
+   "fixed": true,
+   "anchor": "eq-7.3.14"
+  },
+  "7.3.15": {
+   "num": "7.3.15",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 156,
+   "fixed": true,
+   "anchor": "eq-7.3.15"
+  },
+  "7.3.16": {
+   "num": "7.3.16",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 164,
+   "fixed": true,
+   "anchor": "eq-7.3.16"
+  },
+  "7.3.17": {
+   "num": "7.3.17",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 177,
+   "fixed": true,
+   "anchor": "eq-7.3.17"
+  },
+  "7.3.18": {
+   "num": "7.3.18",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 200,
+   "fixed": true,
+   "anchor": "eq-7.3.18"
+  },
+  "7.3.19": {
+   "num": "7.3.19",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 204,
+   "fixed": true,
+   "anchor": "eq-7.3.19"
+  },
+  "7.3.2": {
+   "num": "7.3.2",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-7.3.2"
+  },
+  "7.3.20": {
+   "num": "7.3.20",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 212,
+   "fixed": true,
+   "anchor": "eq-7.3.20"
+  },
+  "7.3.21": {
+   "num": "7.3.21",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 220,
+   "fixed": true,
+   "anchor": "eq-7.3.21"
+  },
+  "7.3.22": {
+   "num": "7.3.22",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 234,
+   "fixed": true,
+   "anchor": "eq-7.3.22"
+  },
+  "7.3.23": {
+   "num": "7.3.23",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 241,
+   "fixed": true,
+   "anchor": "eq-7.3.23"
+  },
+  "7.3.24": {
+   "num": "7.3.24",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 259,
+   "fixed": true,
+   "anchor": "eq-7.3.24"
+  },
+  "7.3.25": {
+   "num": "7.3.25",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 262,
+   "fixed": true,
+   "anchor": "eq-7.3.25"
+  },
+  "7.3.26": {
+   "num": "7.3.26",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 266,
+   "fixed": true,
+   "anchor": "eq-7.3.26"
+  },
+  "7.3.27": {
+   "num": "7.3.27",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 279,
+   "fixed": true,
+   "anchor": "eq-7.3.27"
+  },
+  "7.3.28": {
+   "num": "7.3.28",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 288,
+   "fixed": true,
+   "anchor": "eq-7.3.28"
+  },
+  "7.3.29": {
+   "num": "7.3.29",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 324,
+   "fixed": true,
+   "anchor": "eq-7.3.29"
+  },
+  "7.3.3": {
+   "num": "7.3.3",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 46,
+   "fixed": true,
+   "anchor": "eq-7.3.3"
+  },
+  "7.3.30": {
+   "num": "7.3.30",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 329,
+   "fixed": true,
+   "anchor": "eq-7.3.30"
+  },
+  "7.3.31": {
+   "num": "7.3.31",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 332,
+   "fixed": true,
+   "anchor": "eq-7.3.31"
+  },
+  "7.3.32": {
+   "num": "7.3.32",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 340,
+   "fixed": true,
+   "anchor": "eq-7.3.32"
+  },
+  "7.3.33": {
+   "num": "7.3.33",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 345,
+   "fixed": true,
+   "anchor": "eq-7.3.33"
+  },
+  "7.3.34": {
+   "num": "7.3.34",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 353,
+   "fixed": true,
+   "anchor": "eq-7.3.34"
+  },
+  "7.3.35": {
+   "num": "7.3.35",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 357,
+   "fixed": true,
+   "anchor": "eq-7.3.35"
+  },
+  "7.3.36": {
+   "num": "7.3.36",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 363,
+   "fixed": true,
+   "anchor": "eq-7.3.36"
+  },
+  "7.3.37": {
+   "num": "7.3.37",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 373,
+   "fixed": true,
+   "anchor": "eq-7.3.37"
+  },
+  "7.3.38": {
+   "num": "7.3.38",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 380,
+   "fixed": true,
+   "anchor": "eq-7.3.38"
+  },
+  "7.3.39": {
+   "num": "7.3.39",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 384,
+   "fixed": true,
+   "anchor": "eq-7.3.39"
+  },
+  "7.3.4": {
+   "num": "7.3.4",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 59,
+   "fixed": true,
+   "anchor": "eq-7.3.4"
+  },
+  "7.3.40": {
+   "num": "7.3.40",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 392,
+   "fixed": true,
+   "anchor": "eq-7.3.40"
+  },
+  "7.3.41": {
+   "num": "7.3.41",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 404,
+   "fixed": true,
+   "anchor": "eq-7.3.41"
+  },
+  "7.3.42": {
+   "num": "7.3.42",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 409,
+   "fixed": true,
+   "anchor": "eq-7.3.42"
+  },
+  "7.3.43": {
+   "num": "7.3.43",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 414,
+   "fixed": true,
+   "anchor": "eq-7.3.43"
+  },
+  "7.3.44": {
+   "num": "7.3.44",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 420,
+   "fixed": true,
+   "anchor": "eq-7.3.44"
+  },
+  "7.3.45": {
+   "num": "7.3.45",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 464,
+   "fixed": true,
+   "anchor": "eq-7.3.45"
+  },
+  "7.3.5": {
+   "num": "7.3.5",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 63,
+   "fixed": true,
+   "anchor": "eq-7.3.5"
+  },
+  "7.3.6": {
+   "num": "7.3.6",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-7.3.6"
+  },
+  "7.3.7": {
+   "num": "7.3.7",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 72,
+   "fixed": true,
+   "anchor": "eq-7.3.7"
+  },
+  "7.3.8": {
+   "num": "7.3.8",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 76,
+   "fixed": true,
+   "anchor": "eq-7.3.8"
+  },
+  "7.3.9": {
+   "num": "7.3.9",
+   "section": "7.3",
+   "file": "src/sections/S73.mdx",
+   "line": 84,
+   "fixed": true,
+   "anchor": "eq-7.3.9"
+  },
+  "7.4.1": {
+   "num": "7.4.1",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 14,
+   "fixed": true,
+   "anchor": "eq-7.4.1"
+  },
+  "7.4.10": {
+   "num": "7.4.10",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 88,
+   "fixed": true,
+   "anchor": "eq-7.4.10"
+  },
+  "7.4.11": {
+   "num": "7.4.11",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 102,
+   "fixed": true,
+   "anchor": "eq-7.4.11"
+  },
+  "7.4.12": {
+   "num": "7.4.12",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 112,
+   "fixed": true,
+   "anchor": "eq-7.4.12"
+  },
+  "7.4.13": {
+   "num": "7.4.13",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 118,
+   "fixed": true,
+   "anchor": "eq-7.4.13"
+  },
+  "7.4.14": {
+   "num": "7.4.14",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 124,
+   "fixed": true,
+   "anchor": "eq-7.4.14"
+  },
+  "7.4.15": {
+   "num": "7.4.15",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 138,
+   "fixed": true,
+   "anchor": "eq-7.4.15"
+  },
+  "7.4.16": {
+   "num": "7.4.16",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 150,
+   "fixed": true,
+   "anchor": "eq-7.4.16"
+  },
+  "7.4.17": {
+   "num": "7.4.17",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 160,
+   "fixed": true,
+   "anchor": "eq-7.4.17"
+  },
+  "7.4.18": {
+   "num": "7.4.18",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 169,
+   "fixed": true,
+   "anchor": "eq-7.4.18"
+  },
+  "7.4.19a": {
+   "num": "7.4.19a",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 179,
+   "fixed": true,
+   "anchor": "eq-7.4.19a"
+  },
+  "7.4.19b": {
+   "num": "7.4.19b",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 185,
+   "fixed": true,
+   "anchor": "eq-7.4.19b"
+  },
+  "7.4.2": {
+   "num": "7.4.2",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 20,
+   "fixed": true,
+   "anchor": "eq-7.4.2"
+  },
+  "7.4.20": {
+   "num": "7.4.20",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 191,
+   "fixed": true,
+   "anchor": "eq-7.4.20"
+  },
+  "7.4.21": {
+   "num": "7.4.21",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 202,
+   "fixed": true,
+   "anchor": "eq-7.4.21"
+  },
+  "7.4.22": {
+   "num": "7.4.22",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 208,
+   "fixed": true,
+   "anchor": "eq-7.4.22"
+  },
+  "7.4.23": {
+   "num": "7.4.23",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 218,
+   "fixed": true,
+   "anchor": "eq-7.4.23"
+  },
+  "7.4.24": {
+   "num": "7.4.24",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 222,
+   "fixed": true,
+   "anchor": "eq-7.4.24"
+  },
+  "7.4.25": {
+   "num": "7.4.25",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 228,
+   "fixed": true,
+   "anchor": "eq-7.4.25"
+  },
+  "7.4.26": {
+   "num": "7.4.26",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 240,
+   "fixed": true,
+   "anchor": "eq-7.4.26"
+  },
+  "7.4.27": {
+   "num": "7.4.27",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 244,
+   "fixed": true,
+   "anchor": "eq-7.4.27"
+  },
+  "7.4.28": {
+   "num": "7.4.28",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 254,
+   "fixed": true,
+   "anchor": "eq-7.4.28"
+  },
+  "7.4.29": {
+   "num": "7.4.29",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 258,
+   "fixed": true,
+   "anchor": "eq-7.4.29"
+  },
+  "7.4.3": {
+   "num": "7.4.3",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-7.4.3"
+  },
+  "7.4.30": {
+   "num": "7.4.30",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 264,
+   "fixed": true,
+   "anchor": "eq-7.4.30"
+  },
+  "7.4.31": {
+   "num": "7.4.31",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 275,
+   "fixed": true,
+   "anchor": "eq-7.4.31"
+  },
+  "7.4.32": {
+   "num": "7.4.32",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 291,
+   "fixed": true,
+   "anchor": "eq-7.4.32"
+  },
+  "7.4.33": {
+   "num": "7.4.33",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 303,
+   "fixed": true,
+   "anchor": "eq-7.4.33"
+  },
+  "7.4.34": {
+   "num": "7.4.34",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 317,
+   "fixed": true,
+   "anchor": "eq-7.4.34"
+  },
+  "7.4.35": {
+   "num": "7.4.35",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 343,
+   "fixed": true,
+   "anchor": "eq-7.4.35"
+  },
+  "7.4.36a": {
+   "num": "7.4.36a",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 386,
+   "fixed": true,
+   "anchor": "eq-7.4.36a"
+  },
+  "7.4.36b": {
+   "num": "7.4.36b",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 390,
+   "fixed": true,
+   "anchor": "eq-7.4.36b"
+  },
+  "7.4.37a": {
+   "num": "7.4.37a",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 416,
+   "fixed": true,
+   "anchor": "eq-7.4.37a"
+  },
+  "7.4.37b": {
+   "num": "7.4.37b",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 422,
+   "fixed": true,
+   "anchor": "eq-7.4.37b"
+  },
+  "7.4.38": {
+   "num": "7.4.38",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 430,
+   "fixed": true,
+   "anchor": "eq-7.4.38"
+  },
+  "7.4.39": {
+   "num": "7.4.39",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 436,
+   "fixed": true,
+   "anchor": "eq-7.4.39"
+  },
+  "7.4.4": {
+   "num": "7.4.4",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 35,
+   "fixed": true,
+   "anchor": "eq-7.4.4"
+  },
+  "7.4.40": {
+   "num": "7.4.40",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 446,
+   "fixed": true,
+   "anchor": "eq-7.4.40"
+  },
+  "7.4.41": {
+   "num": "7.4.41",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 546,
+   "fixed": true,
+   "anchor": "eq-7.4.41"
+  },
+  "7.4.42": {
+   "num": "7.4.42",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 572,
+   "fixed": true,
+   "anchor": "eq-7.4.42"
+  },
+  "7.4.43": {
+   "num": "7.4.43",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 634,
+   "fixed": true,
+   "anchor": "eq-7.4.43"
+  },
+  "7.4.44": {
+   "num": "7.4.44",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 651,
+   "fixed": true,
+   "anchor": "eq-7.4.44"
+  },
+  "7.4.5": {
+   "num": "7.4.5",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 44,
+   "fixed": true,
+   "anchor": "eq-7.4.5"
+  },
+  "7.4.6": {
+   "num": "7.4.6",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 62,
+   "fixed": true,
+   "anchor": "eq-7.4.6"
+  },
+  "7.4.7": {
+   "num": "7.4.7",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 68,
+   "fixed": true,
+   "anchor": "eq-7.4.7"
+  },
+  "7.4.8": {
+   "num": "7.4.8",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 74,
+   "fixed": true,
+   "anchor": "eq-7.4.8"
+  },
+  "7.4.9": {
+   "num": "7.4.9",
+   "section": "7.4",
+   "file": "src/sections/S74.mdx",
+   "line": 84,
+   "fixed": true,
+   "anchor": "eq-7.4.9"
+  },
+  "7.5.1": {
+   "num": "7.5.1",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 13,
+   "fixed": true,
+   "anchor": "eq-7.5.1"
+  },
+  "7.5.2": {
+   "num": "7.5.2",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 33,
+   "fixed": true,
+   "anchor": "eq-7.5.2"
+  },
+  "7.5.3": {
+   "num": "7.5.3",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 55,
+   "fixed": true,
+   "anchor": "eq-7.5.3"
+  },
+  "7.5.4": {
+   "num": "7.5.4",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 59,
+   "fixed": true,
+   "anchor": "eq-7.5.4"
+  },
+  "7.5.5": {
+   "num": "7.5.5",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 76,
+   "fixed": true,
+   "anchor": "eq-7.5.5"
+  },
+  "7.5.6": {
+   "num": "7.5.6",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 111,
+   "fixed": true,
+   "anchor": "eq-7.5.6"
+  },
+  "7.5.7": {
+   "num": "7.5.7",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 126,
+   "fixed": true,
+   "anchor": "eq-7.5.7"
+  },
+  "7.5.8": {
+   "num": "7.5.8",
+   "section": "7.5",
+   "file": "src/sections/S75.mdx",
+   "line": 137,
+   "fixed": true,
+   "anchor": "eq-7.5.8"
+  },
+  "8.1.1": {
+   "num": "8.1.1",
+   "section": "8.1",
+   "file": "src/sections/S81.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-8.1.1"
+  },
+  "8.2.1": {
+   "num": "8.2.1",
+   "section": "8.2",
+   "file": "src/sections/S82.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-8.2.1"
+  },
+  "8.2.2": {
+   "num": "8.2.2",
+   "section": "8.2",
+   "file": "src/sections/S82.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-8.2.2"
+  },
+  "8.3.1": {
+   "num": "8.3.1",
+   "section": "8.3",
+   "file": "src/sections/S83.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-8.3.1"
+  },
+  "8.3.2": {
+   "num": "8.3.2",
+   "section": "8.3",
+   "file": "src/sections/S83.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-8.3.2"
+  },
+  "8.3.3": {
+   "num": "8.3.3",
+   "section": "8.3",
+   "file": "src/sections/S83.mdx",
+   "line": 30,
+   "fixed": true,
+   "anchor": "eq-8.3.3"
+  },
+  "8.3.4": {
+   "num": "8.3.4",
+   "section": "8.3",
+   "file": "src/sections/S83.mdx",
+   "line": 51,
+   "fixed": true,
+   "anchor": "eq-8.3.4"
+  },
+  "8.4.1": {
+   "num": "8.4.1",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-8.4.1"
+  },
+  "8.4.2": {
+   "num": "8.4.2",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-8.4.2"
+  },
+  "8.4.3": {
+   "num": "8.4.3",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 24,
+   "fixed": true,
+   "anchor": "eq-8.4.3"
+  },
+  "8.4.4": {
+   "num": "8.4.4",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 40,
+   "fixed": true,
+   "anchor": "eq-8.4.4"
+  },
+  "8.4.5": {
+   "num": "8.4.5",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 55,
+   "fixed": true,
+   "anchor": "eq-8.4.5"
+  },
+  "8.4.6": {
+   "num": "8.4.6",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 81,
+   "fixed": true,
+   "anchor": "eq-8.4.6"
+  },
+  "8.4.7": {
+   "num": "8.4.7",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 108,
+   "fixed": true,
+   "anchor": "eq-8.4.7"
+  },
+  "8.4.8": {
+   "num": "8.4.8",
+   "section": "8.4",
+   "file": "src/sections/S84.mdx",
+   "line": 119,
+   "fixed": true,
+   "anchor": "eq-8.4.8"
+  },
+  "8.5.1": {
+   "num": "8.5.1",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 10,
+   "fixed": true,
+   "anchor": "eq-8.5.1"
+  },
+  "8.5.2": {
+   "num": "8.5.2",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 17,
+   "fixed": true,
+   "anchor": "eq-8.5.2"
+  },
+  "8.5.3": {
+   "num": "8.5.3",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-8.5.3"
+  },
+  "8.5.4": {
+   "num": "8.5.4",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 34,
+   "fixed": true,
+   "anchor": "eq-8.5.4"
+  },
+  "8.5.5": {
+   "num": "8.5.5",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 42,
+   "fixed": true,
+   "anchor": "eq-8.5.5"
+  },
+  "8.5.6": {
+   "num": "8.5.6",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 51,
+   "fixed": true,
+   "anchor": "eq-8.5.6"
+  },
+  "8.5.7": {
+   "num": "8.5.7",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 63,
+   "fixed": true,
+   "anchor": "eq-8.5.7"
+  },
+  "8.5.8": {
+   "num": "8.5.8",
+   "section": "8.5",
+   "file": "src/sections/S85.mdx",
+   "line": 104,
+   "fixed": true,
+   "anchor": "eq-8.5.8"
+  },
+  "8.6.1": {
+   "num": "8.6.1",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 12,
+   "fixed": true,
+   "anchor": "eq-8.6.1"
+  },
+  "8.6.10": {
+   "num": "8.6.10",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 85,
+   "fixed": true,
+   "anchor": "eq-8.6.10"
+  },
+  "8.6.11": {
+   "num": "8.6.11",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 99,
+   "fixed": true,
+   "anchor": "eq-8.6.11"
+  },
+  "8.6.12": {
+   "num": "8.6.12",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 107,
+   "fixed": true,
+   "anchor": "eq-8.6.12"
+  },
+  "8.6.13": {
+   "num": "8.6.13",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 115,
+   "fixed": true,
+   "anchor": "eq-8.6.13"
+  },
+  "8.6.14": {
+   "num": "8.6.14",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 121,
+   "fixed": true,
+   "anchor": "eq-8.6.14"
+  },
+  "8.6.15": {
+   "num": "8.6.15",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 199,
+   "fixed": true,
+   "anchor": "eq-8.6.15"
+  },
+  "8.6.2": {
+   "num": "8.6.2",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 18,
+   "fixed": true,
+   "anchor": "eq-8.6.2"
+  },
+  "8.6.3": {
+   "num": "8.6.3",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 22,
+   "fixed": true,
+   "anchor": "eq-8.6.3"
+  },
+  "8.6.4": {
+   "num": "8.6.4",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 28,
+   "fixed": true,
+   "anchor": "eq-8.6.4"
+  },
+  "8.6.5": {
+   "num": "8.6.5",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 34,
+   "fixed": true,
+   "anchor": "eq-8.6.5"
+  },
+  "8.6.6": {
+   "num": "8.6.6",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 48,
+   "fixed": true,
+   "anchor": "eq-8.6.6"
+  },
+  "8.6.7": {
+   "num": "8.6.7",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 71,
+   "fixed": true,
+   "anchor": "eq-8.6.7"
+  },
+  "8.6.8": {
+   "num": "8.6.8",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 77,
+   "fixed": true,
+   "anchor": "eq-8.6.8"
+  },
+  "8.6.9": {
+   "num": "8.6.9",
+   "section": "8.6",
+   "file": "src/sections/S86.mdx",
+   "line": 81,
+   "fixed": true,
+   "anchor": "eq-8.6.9"
+  },
+  "two-step": {
+   "num": "4.6.1",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 37,
+   "fixed": false,
+   "anchor": "eq-two-step"
+  }
+ },
+ "subs": {
+  "1.3.1": {
+   "num": "1.3.1",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 31,
+   "fixed": true,
+   "title": "在正交归一基下展开",
+   "depth": 3,
+   "anchor": "sec-1.3.1"
+  },
+  "1.3.2": {
+   "num": "1.3.2",
+   "section": "1.3",
+   "file": "src/sections/S13.mdx",
+   "line": 71,
+   "fixed": true,
+   "title": "伴随操作",
+   "depth": 3,
+   "anchor": "sec-1.3.2"
+  },
+  "4.6.1": {
+   "num": "4.6.1",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 15,
+   "fixed": true,
+   "title": "What this file demonstrates",
+   "depth": 3,
+   "anchor": "sec-4.6.1"
+  },
+  "why-counted": {
+   "num": "4.6.2",
+   "section": "4.6",
+   "file": "src/sections/_demo.mdx",
+   "line": 54,
+   "fixed": false,
+   "title": "Why the counter matters",
+   "depth": 3,
+   "anchor": "sec-why-counted"
+  }
+ }
+}

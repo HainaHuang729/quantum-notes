@@ -1,0 +1,153 @@
+import { RotationWidget } from "./widgets/OperatorWidgets";
+
+export const id = "1.5";
+export const title = "线性算符：规定每个向量怎样改变";
+
+算符是一条对向量执行的规则。写成
+
+$$ {#eq-1.5.1}
+\Omega|V\rangle=|V'\rangle
+$$
+
+时，$\Omega$ 是规则，$|V\rangle$ 是输入，$|V'\rangle$ 是输出。撇号表示“变换后”，这里不是 :c[导数]{#derivative}。本节只考虑把向量送回同一个空间的算符。算符也可从左侧接受 bra：
+
+$$ {#eq-1.5.2}
+\langle V|\Omega=\langle V''|.
+$$
+
+注意 $V''$ 与 $V'$ 特意写成不同符号。将 ket 变成 bra 会涉及共轭，不能直接认为 $\langle V|\Omega$ 是 $\Omega|V\rangle$ 对应的 bra；@sec:1.6 会定义所需的伴随算符。
+
+### 线性把“叠加”与“变换”连接起来
+
+线性意味着，先按系数混合输入再变换，等于先分别变换再按相同系数混合。对于任意 :c[标量]{#scalar} $\alpha,\beta$，
+
+$$ {#eq-1.5.3a}
+\Omega\alpha|V_i\rangle=\alpha\Omega|V_i\rangle,
+$$
+
+$$ {#eq-1.5.3b}
+\Omega(\alpha|V_i\rangle+\beta|V_j\rangle)
+=\alpha\Omega|V_i\rangle+\beta\Omega|V_j\rangle.
+$$
+
+bra 的线性作用相应满足
+
+$$ {#eq-1.5.4a}
+(\langle V_i|\alpha)\Omega=(\langle V_i|\Omega)\alpha,
+$$
+
+$$ {#eq-1.5.4b}
+(\alpha\langle V_i|+\beta\langle V_j|)\Omega
+=\alpha\langle V_i|\Omega+\beta\langle V_j|\Omega.
+$$
+
+这里的系数没有额外取 :c[共轭]{#conjugate}，因为是在已有的 bra 之间做线性组合。只有从 ket 转为对应 bra 的那一步才会共轭系数。线性还立即给出 $\Omega|0\rangle=|0\rangle$：把任意输入的系数取成零即可。因此平移“把每个箭头末端都移到右边一个单位”不是线性算符。
+
+:::example[1.5.1 (不动与旋转)]
+恒等算符 $I$ 对所有输入都不作改变：
+
+$$ {#eq-1.5.5}
+I|V\rangle=|V\rangle,
+$$
+
+$$ {#eq-1.5.6}
+\langle V|I=\langle V|.
+$$
+
+再看三维实空间里的旋转。$R(\boldsymbol\theta)$ 的旋转角是 $|\boldsymbol\theta|$，旋转轴是 $\boldsymbol\theta$ 的方向。按右手规则绕 $x$ 轴旋转正向四分之一圈，记成 $R=R(\frac\pi2\mathbf i)$。对于沿 $x,y,z$ 方向的基向量，
+
+$$ {#eq-1.5.7a}
+R|1\rangle=|1\rangle,
+$$
+
+$$ {#eq-1.5.7b}
+R|2\rangle=|3\rangle,
+$$
+
+$$ {#eq-1.5.7c}
+R|3\rangle=-|2\rangle.
+$$
+
+轴上的向量保持不动，另外两个方向在垂直于轴的平面内旋转。旋转保持平行四边形的相加关系，因此满足线性。
+:::
+
+只观察 $y$–$z$ 平面就能看清后两条规则。下图中蓝、橙向量分别表示两条旋转后的单位基向量，绿色表示它们的和。
+
+:::interactive[旋转为什么能逐项作用]
+
+<RotationWidget />
+
+正向四分之一圈时，$y$ 方向变为 $z$，$z$ 方向变为负 $y$，两者的和变为 $(-1,1)$，此处坐标顺序是 $(y,z)$。整条和向量只转一次，与两条分量分别转后再相加得到相同结果。
+
+:::
+
+::source[依据 Shankar 图 1.3 重新绘制的垂直于旋转轴的二维视图。]
+
+### 知道基向量的去向就知道整个算符
+
+设一组基为 $|i\rangle$，而 $\Omega|i\rangle=|i'\rangle$ 已知。把任意向量展开成 $|V\rangle=\sum_i v_i|i\rangle$ 后，反复用线性即可得到
+
+$$ {#eq-1.5.8}
+\Omega|V\rangle=\sum_i\Omega v_i|i\rangle
+=\sum_i v_i\Omega|i\rangle=\sum_i v_i|i'\rangle.
+$$
+
+这把“对无穷多个输入逐一规定输出”的任务，缩成“规定有限条基的输出”。对上面的旋转，任意 $(v_1,v_2,v_3)$ 会变为 $(v_1,-v_3,v_2)$。
+
+### 算符相乘表示依次执行
+
+乘积 $\Lambda\Omega$ 的含义是先执行右边的 $\Omega$，再执行左边的 $\Lambda$：
+
+$$ {#eq-1.5.9}
+\Lambda\Omega|V\rangle=\Lambda(\Omega|V\rangle).
+$$
+
+顺序不能随便交换。例如从 $z$ 方向出发，先绕 $x$ 轴转四分之一圈，再绕 $y$ 轴转四分之一圈，会到负 $y$；反过来先绕 $y$ 再绕 $x$，会到正 $x$。输入相同，输出不同，两次操作不对易。
+
+把顺序差写成一个新算符，便得到对易子 $[\Omega,\Lambda]=\Omega\Lambda-\Lambda\Omega$。对易子为零的意思是对每一个输入两种顺序都一样，不能只凭某一个输入碰巧相等就下结论。对乘积有两条常用展开式：
+
+$$ {#eq-1.5.10}
+[\Omega,\Lambda\Theta]=\Lambda[\Omega,\Theta]+[\Omega,\Lambda]\Theta,
+$$
+
+$$ {#eq-1.5.11}
+[\Lambda\Omega,\Theta]=\Lambda[\Omega,\Theta]+[\Lambda,\Theta]\Omega.
+$$
+
+核查第一条时，把右侧展开成 $\Lambda\Omega\Theta-\Lambda\Theta\Omega+\Omega\Lambda\Theta-\Lambda\Omega\Theta$。首尾的两项抵消，剩下 $\Omega\Lambda\Theta-\Lambda\Theta\Omega$，正是左侧。这个过程只用了结合律，完全没有交换两个算符。
+
+### 逆算符如何撤销操作
+
+若存在 $\Omega^{-1}$，使得
+
+$$ {#eq-1.5.12}
+\Omega\Omega^{-1}=\Omega^{-1}\Omega=I,
+$$
+
+它就叫逆算符。旋转的逆是绕同轴转相反角度；把所有向量投到一条轴上的操作则没有逆，因为被丢弃的横向分量无法恢复。有限维空间中，线性算符可逆等价于它的零空间只含零向量；此时不同输入不会被压到相同输出。在同一个有限维空间内，方阵的一侧逆成立也会推出另一侧成立；无限维时不能直接沿用这个结论。
+
+如果两次操作都可逆，撤销它们必须倒序进行：
+
+$$ {#eq-1.5.13}
+(\Omega\Lambda)^{-1}=\Lambda^{-1}\Omega^{-1}.
+$$
+
+例如 $(\Omega\Lambda)(\Lambda^{-1}\Omega^{-1})=\Omega I\Omega^{-1}=I$。如果不倒序，中间通常找不到互相抵消的相邻因子。
+
+::::quiz
+
+:::question{false}
+把实数坐标 $(x,y)$ 变为 $(x^2,y)$ 是线性算符。
+
+输入 $(1,0)$ 的两倍先送进去，得到 $(4,0)$；先送进去再把输出加倍，得到 $(2,0)$。数乘条件已经不成立。
+:::
+
+:::question{true}
+若线性算符把所有基向量都变成零，它就是零算符。
+
+任何输入都能展开为基向量的线性组合。应用线性后，输出是若干零向量的线性组合，因此总为零。
+:::
+
+::::
+
+::source[依据 Shankar 第二版线性算符一节独立编写，保留核对过的公式标签。]

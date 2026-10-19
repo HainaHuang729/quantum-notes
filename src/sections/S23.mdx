@@ -1,0 +1,101 @@
+import { ReducedMassLab } from "./widgets/MechanicsCoordinateLabs";
+
+export const id = "2.3";
+export const title = "二体问题：分开整体移动与相对运动";
+
+### 两个粒子，先换一种坐标
+
+考虑没有外力的两个粒子，质量为 $m_1,m_2>0$，位置为 $\mathbf r_1,\mathbf r_2$。假定相互作用势只依赖相对位置 $V(\mathbf r_1-\mathbf r_2)$；同时平移两粒子不会改变势。这里不额外假设球对称，所以不一定只能写成 $V(|\mathbf r|)$。
+
+把六个位置分量改写成相对位置
+
+$$ {#eq-2.3.1}
+\mathbf r=\mathbf r_1-\mathbf r_2
+$$
+
+以及质心位置
+
+$$ {#eq-2.3.2}
+\mathbf r_{\mathrm{CM}}=\frac{m_1\mathbf r_1+m_2\mathbf r_2}{m_1+m_2}.
+$$
+
+质心是按质量加权的位置平均。等质量时它在中点，某一粒子更重时就向该粒子靠近。为缩短公式，以下记 $M=m_1+m_2$，$\mathbf R=\mathbf r_{\mathrm{CM}}$。
+
+### 新坐标不会丢失原来的位置
+
+联立前两式可反解为
+
+$$ {#eq-2.3.3}
+\mathbf r_1=\mathbf R+\frac{m_2}{M}\mathbf r,
+$$
+
+$$ {#eq-2.3.4}
+\mathbf r_2=\mathbf R-\frac{m_1}{M}\mathbf r.
+$$
+
+相减时 $\mathbf R$ 消去并得到 $\mathbf r$；按质量加权相加时，两个相对项消去并得到 $M\mathbf R$。所以新旧两套坐标包含相同信息。对时间求导，也立即得到速度的对应关系。
+
+### 动能中的交叉项为什么消失
+
+原来的拉格朗日量是
+
+$$ {#eq-2.3.5}
+\mathcal L=\frac12m_1|\dot{\mathbf r}_1|^2+\frac12m_2|\dot{\mathbf r}_2|^2-V(\mathbf r_1-\mathbf r_2).
+$$
+
+代入新速度，把平方展开：
+
+$$
+\begin{aligned}
+T={}&\frac12m_1\left[|\dot{\mathbf R}|^2+2\frac{m_2}{M}\dot{\mathbf R}\cdot\dot{\mathbf r}+\frac{m_2^2}{M^2}|\dot{\mathbf r}|^2\right]\\
+&+\frac12m_2\left[|\dot{\mathbf R}|^2-2\frac{m_1}{M}\dot{\mathbf R}\cdot\dot{\mathbf r}+\frac{m_1^2}{M^2}|\dot{\mathbf r}|^2\right].
+\end{aligned}
+$$
+
+交叉项的总系数为 $m_1m_2/M-m_2m_1/M=0$。相对速度平方的系数则合成 $m_1m_2/(2M)$。因此
+
+$$ {#eq-2.3.6}
+\mathcal L=\frac12M|\dot{\mathbf R}|^2+\frac12\frac{m_1m_2}{M}|\dot{\mathbf r}|^2-V(\mathbf r).
+$$
+
+第一项只包含整体移动，后两项只包含相对运动。这不是忽略某些小量，而是准确的变量替换。
+
+### 约化质量把相对运动化成一个粒子
+
+定义约化质量 $\mu=m_1m_2/M$。两组运动方程各自独立：
+
+$$
+\mathbf P_{\mathrm{CM}}=M\dot{\mathbf R}=\text{常向量},\qquad
+\mu\ddot{\mathbf r}=-\boldsymbol\nabla_{\mathbf r}V(\mathbf r).
+$$
+
+质心的三个坐标没有显式出现在 $\mathcal L$ 中，因此相应动量守恒；它就是两个粒子的总动量。第二个方程相当于一个质量为 $\mu$ 的假想粒子在势 $V$ 中运动，正则相对动量为 $\mathbf p=\mu\dot{\mathbf r}$。它不是凭空增加第三个粒子，而是给原来两粒子的相对坐标换一种描述。可以在惯性的质心参考系取 $\dot{\mathbf R}=0$，先解相对运动，再用反解公式恢复各粒子位置。
+
+### 质量相差很大时，谁几乎不动
+
+等质量 $m_1=m_2=m$ 时，$\mu=m/2$；若 $m_2\gg m_1$，则 $\mu=m_1/(1+m_1/m_2)$ 接近 $m_1$。很重的粒子靠近质心，较轻粒子承担大部分相对运动，但有限质量比下两者仍都会动。
+
+:::interactive[质心与相对坐标]
+
+<ReducedMassLab />
+
+图中固定质心在原点，仅显示同一直线上的位置，这是一般三维坐标关系的一维截面。取相对速度为一时，分别计算两粒子的动能与约化质量的动能会得到相同结果；改变质量比可以看到这个等价关系持续成立。
+
+:::
+
+::source[依据 Shankar 图 2.4 的质心与相对位置关系重新绘制为一维可调示意。]
+
+::::quiz
+:::question{false}
+两个质量都为 $3$ 的粒子，约化质量也是 $3$。
+
+应为 $\mu=3\times3/(3+3)=1.5$。相对坐标同时包含两粒子的运动，不能直接把其中一个质量原样代入。
+:::
+:::question{true}
+只要势只依赖两粒子的相对位置且没有外力，质心速度就保持不变。
+
+质心坐标在拉格朗日量中为循环坐标，$M\dot{\mathbf R}$ 守恒。其余相对运动可以很复杂，并不影响这个结论。
+:::
+::::
+
+::source[依据 Shankar 第二版二体问题一节独立编写，补充了动能展开的中间步骤。]

@@ -1,0 +1,12 @@
+export type FreeParameters={delta:number;p:number;mass:number;time:number};
+export const FREE_WINDOW: [number,number];
+export const FREE_PRESETS:(FreeParameters&{label:string})[];
+export function integrate(f:(x:number)=>number,a:number,b:number,n?:number):number;
+export function freePacket(p:FreeParameters):{mean:number;width:number;sigmaX:number;sigmaP:number;density:(x:number)=>number;initial:(x:number)=>number;momentum:(x:number)=>number;windowMass:number;tail:number;momentumTail:number;energy:number;product:number;branch:string};
+export type BoxParameters={L:number;n:number;weight:number;time:number;phasePi:number};
+export const BOX_PRESETS:(BoxParameters&{label:string})[];
+export function boxEnergy(n:number,L:number,mass?:number):number;
+export function boxEnergyReference(n:number,L:number):{reference:number;ratio:number};
+export function boxEigen(n:number,L:number,x:number):number;
+export function boxCrossX(n:number,L:number):number;
+export function boxState(p:BoxParameters):{m:number;En:number;Em:number;theta:number;density:(x:number)=>number;mean:number;sigmaX:number;energy:number;period:number;branch:string};

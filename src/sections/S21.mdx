@@ -1,0 +1,322 @@
+import { ActionPathLab, PolarStepFigure } from "./widgets/ActionPathLab";
+
+export const id = "2.1";
+export const title = "最小作用量与拉格朗日力学";
+
+### 从牛顿力学走向量子力学
+
+上一章建立了描述量子态的数学语言。这一章先回到经典运动，把熟悉的牛顿定律改写成拉格朗日与哈密顿形式。这些形式在适用条件相同时给出相同的物理预测，却更方便处理复杂坐标，也为量子理论提供入口：本书主要沿哈密顿形式前进，作用量形式则连接到路径积分。
+
+先看一维、质量恒定的粒子。若势能为 $V(x)$，力等于势能对位置的负 :c[导数]{#derivative}，于是牛顿第二定律为
+
+$$ {#eq-2.1.1}
+m\frac{d^2x}{dt^2}=-\frac{dV}{dx}.
+$$
+
+点号是对时间求导的简写：$\dot x=dx/dt$ 是速度，$\ddot x=d^2x/dt^2$ 是加速度。给定某时刻的位置与速度，便可以从这个 :c[微分方程]{#differential-equation} 求运动。短时间内，$x(t_i+\Delta t)\approx x(t_i)+\dot x(t_i)\Delta t$；再用力更新速度，重复向前推进，就得到一种数值求解思路。
+
+### 用一条曲线记录整个系统
+
+对于多个粒子，把每个独立位置分量依次记为 $x_1,\ldots,x_n$。这些数共同确定系统的一种配置；把它们当作某个 $n$ 维空间中的坐标，便得到“配置空间”。它的维数不一定等于日常空间的维数，例如两个可在三维空间自由运动的粒子需要六个位置坐标。
+
+$$ {#eq-2.1.2}
+m_j\frac{d^2x_j}{dt^2}=-\frac{\partial V}{\partial x_j}.
+$$
+
+其中 $m_j$ 是对应坐标所属粒子的质量。符号 $\partial$ 表示 :c[偏导数]{#partial-derivative}：只改变 $x_j$，暂时固定其他输入。配置空间中的一条曲线，记录的就是整个系统随时间的变化。
+
+### 把动能与势能放进一个函数
+
+拉格朗日方法不再逐步问“下一瞬间怎样走”，而是先比较连接两个给定时空端点的整条路径。我们固定 $x(t_i)=x_i$、$x(t_f)=x_f$，寻找满足运动方程的路径 $x_{\mathrm{cl}}(t)$。端点条件是一种不同于指定初始位置与速度的提问方式；它并不保证在任意系统、任意时长下都有唯一解。
+
+对势能只依赖位置的普通粒子，定义拉格朗日函数
+
+$$
+\mathcal L=T-V=\frac12m\dot x^2-V(x).
+$$
+
+这里 $T$ 是动能，别与后面实验中的总时长混淆。$\mathcal L$ 的输入是位置和速度，输出是一个数。更一般时，它也可以显含时间，写作 $\mathcal L(x,\dot x,t)$；本节最初先不加这个显式时间依赖。
+
+### 作用量接收的是整条路径
+
+沿一条候选路径，把每一时刻的 $\mathcal L$ 用 :c[积分]{#integral} 累加，定义作用量：
+
+$$ {#eq-2.1.3}
+S[x(t)]=\int_{t_i}^{t_f}\mathcal L(x,\dot x)\,dt.
+$$
+
+普通函数输入一个数，比如 $f(2)$；这里的 $S$ 输入整条函数 $x(t)$，所以称为“泛函”，用方括号提醒这一点。同一个端点可以由许多不同路径连接；中途位置和速度不同，得到的作用量通常也不同。作用量的量纲是能量乘时间，不能把它当成路程或耗时。
+
+### “最小作用量”首先要求驻定
+
+原理真正用于推导的条件是：**实际路径附近任意满足端点约束的微小改变，都不产生一阶作用量变化。** 这叫作用量驻定，简记 $\delta S=0$。驻定点可能是局部最小，也可能是鞍点；一阶变化为零本身不能判定最小。
+
+可以用高中函数类比：$f(a)=a^2$ 与 $g(a)=-a^2$ 在 $a=0$ 的斜率都为零，但一个向上弯，一个向下弯。在路径空间里，甚至可以沿某些变形增大作用量，沿另一些变形减小它。
+
+下面的实验固定两个端点都在 $x=0$。选择单位使 $m=1$，比较静止的经典路径 $x_{\mathrm{cl}}=0$ 与 $x_a(t)=a\sin(n\pi t/T_{\mathrm{end}})$。$a$ 是变形幅度，$n$ 是半波个数，$T_{\mathrm{end}}$ 是总时长。势能统一写成 $V=\omega^2x^2/2$：自由粒子取 $\omega=0$；谐振子取 $\omega=1$。两者都允许这条静止的经典路径。
+
+:::interactive[改变路径，比较作用量]
+
+<ActionPathLab />
+
+此路径族的作用量为 $S(a)=\frac{a^2}{4}(n^2\pi^2/T_{\mathrm{end}}-\omega^2T_{\mathrm{end}})$。同一时长下，若不同 $n$ 产生正、负两种作用量差，零路径就是鞍点；单独一族不能证明对所有允许路径最小。
+
+::source[路径图按 Shankar 图 2.1、图 2.2 的固定端点与邻近路径思想重绘；数值模型与参数为本版原创。]
+:::
+
+### 先用有限多个变量理解一阶变化
+
+若 $f$ 依赖 $n$ 个变量，把输入从 $x^0$ 改成 $x^0+\eta$。这里 $x^0$ 代表全部分量，$\eta_i$ 表示第 $i$ 个方向的微小改变。:c[泰勒展开]{#taylor-expansion} 给出
+
+$$ {#eq-2.1.4}
+f(x^0+\eta)=f(x^0)+\sum_{i=1}^{n}
+\left.\frac{\partial f}{\partial x_i}\right|_{x^0}\eta_i
++\text{关于 }\eta\text{ 的高阶项}.
+$$
+
+一阶变化就是其中只含一份微小量的部分。在驻定点，
+
+$$ {#eq-2.1.5}
+\delta f^{(1)}=\sum_{i=1}^{n}
+\left.\frac{\partial f}{\partial x_i}\right|_{x^0}\eta_i=0.
+$$
+
+这必须对每一种方向都成立。只让一个 $\eta_i$ 非零，就能逐个推出
+
+$$ {#eq-2.1.6}
+\left.\frac{\partial f}{\partial x_i}\right|_{x^0}=0,
+\qquad i=1,\ldots,n.
+$$
+
+由此往路径空间推广时，离散的“每个分量”变成“每个时刻的位置值”，求和变成积分。
+
+### 变分只能改变中途，不能移动端点
+
+让邻近路径为 $x_{\mathrm{cl}}(t)+\eta(t)$。这里 $\eta(t)$ 不是某一个数，而是随时间变化的小函数。为了保留给定的出发位置与终点，必须满足
+
+$$ {#eq-2.1.7}
+\eta(t_i)=\eta(t_f)=0.
+$$
+
+中途的 $\eta(t)$ 可以任意选择，只需足够光滑。这与“速度变化也必须在端点为零”不同，本推导没有额外固定端点速度。严格地说，可以先写 $\eta(t)=\epsilon h(t)$，再对实参数 $\epsilon$ 在零处求导；一阶变分就是那一项。
+
+### 对路径与速度一起展开
+
+路径改变后，速度也会改变为 $\dot x_{\mathrm{cl}}+\dot\eta$。把它们同时代入 $\mathcal L$ 并保留一阶项：
+
+$$
+\begin{aligned}
+S[x_{\mathrm{cl}}+\eta]
+&=\int_{t_i}^{t_f}\mathcal L(x_{\mathrm{cl}}+\eta,
+\dot x_{\mathrm{cl}}+\dot\eta)\,dt\\
+&=S[x_{\mathrm{cl}}]+\int_{t_i}^{t_f}
+\left[\frac{\partial\mathcal L}{\partial x}\eta
++\frac{\partial\mathcal L}{\partial\dot x}\dot\eta\right]_{x_{\mathrm{cl}}}dt
++\text{高阶项}.
+\end{aligned}
+$$
+
+下标 $x_{\mathrm{cl}}$ 提醒我们：偏导数算好以后，要在经典路径的位置与速度上取值。计算 $\partial\mathcal L/\partial x$ 时，把 $\dot x$ 暂当独立输入；计算 $\partial\mathcal L/\partial\dot x$ 时则固定 $x$。这只是对拉格朗日函数求偏导的规则，并不否认真实轨迹上二者之间的导数关系。
+
+### 分部积分把速度扰动换成位置扰动
+
+一阶变化同时含 $\eta$ 与 $\dot\eta$，但我们希望只用任意的 $\eta$ 表示条件。利用 :c[分部积分]{#integration-by-parts}，
+
+$$
+\int_{t_i}^{t_f}\frac{\partial\mathcal L}{\partial\dot x}\dot\eta\,dt
+=\left[\frac{\partial\mathcal L}{\partial\dot x}\eta\right]_{t_i}^{t_f}
+-\int_{t_i}^{t_f}\frac{d}{dt}
+\left(\frac{\partial\mathcal L}{\partial\dot x}\right)\eta\,dt.
+$$
+
+边界项因 @eq:2.1.7 消失，所以驻定条件变成
+
+$$ {#eq-2.1.8}
+0=\delta S^{(1)}=\int_{t_i}^{t_f}
+\left[\frac{\partial\mathcal L}{\partial x}
+-\frac{d}{dt}\left(\frac{\partial\mathcal L}{\partial\dot x}\right)\right]_{x_{\mathrm{cl}}}
+\eta(t)\,dt.
+$$
+
+固定端点并非装饰条件：它正是在这一行把额外的边界贡献去掉。
+
+### 任意扰动给出 Euler–Lagrange 方程
+
+若方括号内某一时段始终为正，可以只在那里放一小段正的光滑 $\eta(t)$，使积分为正；若始终为负，也可以相应选择扰动，使积分不为零。因此在通常的光滑性条件下，要使 @eq:2.1.8 对所有允许的 $\eta$ 都成立，方括号必须处处为零：
+
+$$ {#eq-2.1.9}
+\left[\frac{\partial\mathcal L}{\partial x}
+-\frac{d}{dt}\left(\frac{\partial\mathcal L}{\partial\dot x}\right)\right]_{x_{\mathrm{cl}}}=0,
+\qquad t_i\le t\le t_f.
+$$
+
+这就是 Euler–Lagrange 方程。注意这里的 $d/dt$ 是沿轨迹的总时间导数；里面的量可能同时通过位置、速度与显式时间而变化，需要按 :c[链式法则]{#chain-rule} 一起计算。
+
+### 检查它是否给回牛顿定律
+
+代入 $\mathcal L=\frac12m\dot x^2-V(x)$，有
+
+$$
+\frac{\partial\mathcal L}{\partial\dot x}=m\dot x,
+\qquad \frac{\partial\mathcal L}{\partial x}=-\frac{dV}{dx}.
+$$
+
+所以 @eq:2.1.9 成为 $d(m\dot x)/dt=-dV/dx$，正是 @eq:2.1.1。对多个直角坐标，同样的推导对每个 $x_i$ 分别进行：
+
+$$ {#eq-2.1.10}
+\frac{d}{dt}\left(\frac{\partial\mathcal L}{\partial\dot x_i}\right)
+=\frac{\partial\mathcal L}{\partial x_i},\qquad i=1,\ldots,n.
+$$
+
+此时 $T=\frac12\sum_i m_i\dot x_i^2$、$V=V(x_1,\ldots,x_n)$，方程给出 $d(m_i\dot x_i)/dt=-\partial V/\partial x_i$。这个检查假设势能不依赖速度；磁力等速度相关的作用需要更一般的拉格朗日函数，不能强行保持“普通动能减位置势能”的形式。
+
+### 让坐标适应运动
+
+整个变分过程没有要求坐标轴必须是直角坐标。改用任意合适的独立广义坐标 $q_1,\ldots,q_n$，只需先把 $\mathcal L$ 用新坐标与新速度正确表达，方程仍保持
+
+$$ {#eq-2.1.11}
+\frac{d}{dt}\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)
+=\frac{\partial\mathcal L}{\partial q_i}.
+$$
+
+广义坐标可以是长度，也可以是角度。用什么变量描述系统，不会改变物理运动。这里保持的是方程的形式；具体的动能函数会变，例如极坐标动能同时依赖半径与角速度。
+
+### 广义动量不总是质量乘速度
+
+把与广义速度相对应的偏导数命名为正则动量，也叫共轭动量：
+
+$$ {#eq-2.1.12}
+p_i=\frac{\partial\mathcal L}{\partial\dot q_i}.
+$$
+
+相应地定义本节记号下的广义力：
+
+$$ {#eq-2.1.13}
+F_i=\frac{\partial\mathcal L}{\partial q_i}.
+$$
+
+于是 @eq:2.1.11 变成 $\dot p_i=F_i$。只有在常见的直角坐标、速度无关势能等条件下，$p_i$ 才直接是 $m_i\dot q_i$。若 $q_i$ 是角度，$p_i$ 可以是角动量，$F_i$ 可以是力矩；若动能依赖该坐标，$\partial\mathcal L/\partial q_i$ 还包含动能的几何项，不能一概当成某个普通力的直角分量。
+
+### 缺席的坐标带来守恒量
+
+如果 $\mathcal L$ 中不出现 $q_i$，即 $\partial\mathcal L/\partial q_i=0$，那么 $q_i$ 称为循环坐标。它的速度 $\dot q_i$ 仍可以出现。直接应用运动方程，
+
+$$ {#eq-2.1.14}
+\frac{d}{dt}\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)
+=\frac{dp_i}{dt}=\frac{\partial\mathcal L}{\partial q_i}=0.
+$$
+
+因此共轭动量 $p_i$ 守恒。“循环”不是说坐标值必须来回摆动，而是说它在拉格朗日函数中缺席。比如中心势只依赖到原点的距离，不依赖方位角，适合的坐标会让角动量守恒直接显现。
+
+### 平面运动：先写直角坐标版本
+
+:::example[2.1.1 (同一个平面运动的两种坐标)]
+设一个质量为 $m$ 的粒子在平面中运动，势能为 $V(x,y)$。直角坐标下的拉格朗日函数为
+
+$$ {#eq-2.1.15}
+\mathcal L=\frac12m(\dot x^2+\dot y^2)-V(x,y)
+=\frac12m\mathbf v\cdot\mathbf v-V(x,y).
+$$
+
+分别对 $x$ 和 $y$ 使用运动方程，得到
+
+$$ {#eq-2.1.16}
+m\ddot x=-\frac{\partial V}{\partial x},
+$$
+
+$$ {#eq-2.1.17}
+m\ddot y=-\frac{\partial V}{\partial y}.
+$$
+
+接下来的卡片把这同一个例子改写为半径 $\rho$ 与方位角 $\phi$。
+:::
+
+### 直接换坐标后出现的几何项
+
+极坐标通过 $x=\rho\cos\phi$、$y=\rho\sin\phi$ 与直角坐标联系，角度用 :c[弧度]{#trigonometry}。若直接把直角坐标的牛顿方程改写到这些变量，结果为
+
+$$ {#eq-2.1.18}
+m\ddot\rho=-\frac{\partial V}{\partial\rho}+m\rho\dot\phi^2,
+$$
+
+$$ {#eq-2.1.19}
+m\ddot\phi=-\frac{1}{\rho^2}\frac{\partial V}{\partial\phi}
+-\frac{2m\dot\rho\dot\phi}{\rho},\qquad\rho>0.
+$$
+
+这些额外项来自径向与切向单位方向随运动改变，并不是另加了某种相互作用。接下来改从拉格朗日函数出发，可以更直接地得到它们。
+
+### 极坐标的速度为什么有半径因子
+
+在极坐标中，一个微小位移包含互相垂直的两份：沿径向的 $d\rho$，以及沿切向的 $\rho\,d\phi$。因此局部的长度关系为
+
+$$
+d\ell^2=d\rho^2+\rho^2d\phi^2,
+\qquad v^2=\dot\rho^2+\rho^2\dot\phi^2.
+$$
+
+<PolarStepFigure />
+
+::source[根据 Shankar 图 2.3 重绘。所画三角形表示局部微分位移，不把有限角度的圆弧当成直线。]
+
+### 极坐标下的拉格朗日量
+
+因而同一个拉格朗日函数变为
+
+$$ {#eq-2.1.20}
+\mathcal L=\frac12m(\dot\rho^2+\rho^2\dot\phi^2)-V(\rho,\phi).
+$$
+
+即使角速度相同，半径越大，切向速度 $\rho\dot\phi$ 也越大。由此动能会显含坐标 $\rho$，不能把所有坐标都当成直角坐标来套 $\frac12m\dot q^2$。
+
+### 极坐标运动方程中的几何项
+
+对 @eq:2.1.20 求偏导，有 $p_\rho=m\dot\rho$、$p_\phi=m\rho^2\dot\phi$。于是两条运动方程为
+
+$$ {#eq-2.1.21}
+\frac{d}{dt}(m\dot\rho)=-\frac{\partial V}{\partial\rho}+m\rho\dot\phi^2,
+$$
+
+$$ {#eq-2.1.22}
+\frac{d}{dt}(m\rho^2\dot\phi)=-\frac{\partial V}{\partial\phi}.
+$$
+
+第一条已是 @eq:2.1.18；第二条展开 $d(\rho^2\dot\phi)/dt=2\rho\dot\rho\dot\phi+\rho^2\ddot\phi$ 后，便得到 @eq:2.1.19。拉格朗日方法把这些几何项自动包含在动能的坐标依赖中。
+
+### 中心势中的角动量守恒
+
+若 $V(\rho,\phi)=V(\rho)$，动能与势能都不显含 $\phi$，所以 $\phi$ 是循环坐标。由 @eq:2.1.22 立即得到
+
+$$
+p_\phi=m\rho^2\dot\phi=\text{常数}.
+$$
+
+这正是垂直平面方向的角动量。半径减小时，为保持相同角动量，角速度一般需要增大。“角动量守恒”与“角速度守恒”应当分开判断。
+
+例如 $m=1$，某时刻 $\rho=2$、$\dot\phi=3$，则 $p_\phi=12$。如果运动中半径后来变成 $1$，角速度必须为 $12$。这只用到了角动量守恒；能否到达该半径，还要结合能量与具体势能判断。
+
+### 检查是否真正理解变分
+
+::::quiz
+
+:::question{false}
+只要找到一条路径，使作用量的一阶变化为零，就已经证明它比所有其他路径的作用量小。
+
+一阶变化为零只说明驻定。谐振子的长时间例子可以沿不同变形方向分别降低或提高作用量。要证明最小值，还须进一步考察允许变分下的二阶变化等条件。
+:::
+
+:::question{true}
+对于 $\mathcal L=\frac12m\dot q^2-\frac12kq^2$，运动方程是 $m\ddot q=-kq$。
+
+先算 $\partial\mathcal L/\partial\dot q=m\dot q$ 与 $\partial\mathcal L/\partial q=-kq$，再代入 Euler–Lagrange 方程。$k>0$ 时这是回复力指向平衡位置的谐振子。
+:::
+
+:::question{false}
+如果中心势中的角度 $\phi$ 是循环坐标，那么 $\dot\phi$ 必须恒定。
+
+守恒的是 $m\rho^2\dot\phi$。半径变化时，角速度通常会随之变化。
+:::
+
+::::
+
+::source[数学内容依据 Shankar 第二版第 2 章引言与本节，纸本页 75 至 83。原书方程编号均经扫描页核对；正文与自测独立编写，未逐题复制章末习题。]

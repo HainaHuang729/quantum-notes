@@ -1,0 +1,265 @@
+import { CanonicalScaleLab } from "./widgets/CanonicalSymmetryLabs";
+
+export const id = "2.7";
+export const title = "循环坐标、泊松括号与正则变换";
+
+### 坐标没有出现在哈密顿量中，会发生什么
+
+在 @sec:2.5 中，状态由位置 $q_i$ 与正则动量 $p_i$ 一起给出。若 $\mathcal H$ 不含某个坐标 $q_i$，哈密顿方程立即给出
+
+$$ {#eq-2.7.1}
+\dot p_i=-\frac{\partial\mathcal H}{\partial q_i}=0.
+$$
+
+这样的坐标叫循环坐标，其共轭动量守恒。但守恒量不一定直接写成某一个 $p_i$。例如圆对称势中的角动量 $l_z=xp_y-yp_x$，在直角坐标中是一个组合；改用极坐标，它才成为角坐标的共轭动量。我们需要一种可以检查任意状态函数的统一方法。
+
+### 沿着轨道变化，与公式显含时间不同
+
+取一个函数 $\omega(q,p)$，字母 $\omega$ 在这里仅是函数的名字，不特指角频率。它虽然没有写出时间 $t$，但轨道上的 $q(t),p(t)$ 会改变，所以它的值仍可能变化。根据:c[链式法则]{#chain-rule}，再代入哈密顿方程，
+
+$$ {#eq-2.7.2}
+\frac{d\omega}{dt}
+=\sum_i\left(\frac{\partial\omega}{\partial q_i}\dot q_i+\frac{\partial\omega}{\partial p_i}\dot p_i\right)
+=\sum_i\left(\frac{\partial\omega}{\partial q_i}\frac{\partial\mathcal H}{\partial p_i}-\frac{\partial\omega}{\partial p_i}\frac{\partial\mathcal H}{\partial q_i}\right)
+\equiv\{\omega,\mathcal H\}.
+$$
+
+右边把运动信息全部收进了一个新的运算。若函数本身还显含 $t$，链式法则会多一项，必须使用
+
+$$
+\frac{d\omega(q,p,t)}{dt}=\{\omega,\mathcal H\}+\frac{\partial\omega}{\partial t}.
+$$
+
+总导数 $d/dt$ 沿着真实运动计算；:c[偏导数]{#partial-derivative} $\partial/\partial t$ 则暂时固定 $q,p$，只检查公式中直接出现的 $t$。例如 $\omega=q+t$ 即使位置不动，也会因显含时间而变化。
+
+### 泊松括号怎样计算
+
+对于任意两个状态函数 $\omega(q,p),\lambda(q,p)$，定义泊松括号
+
+$$ {#eq-2.7.3}
+\{\omega,\lambda\}=\sum_i\left(\frac{\partial\omega}{\partial q_i}\frac{\partial\lambda}{\partial p_i}-\frac{\partial\omega}{\partial p_i}\frac{\partial\lambda}{\partial q_i}\right).
+$$
+
+花括号在这里表示这个运算，不是普通乘法或集合。每个指标 $i$ 都对应一对坐标、动量，先算两项的差，再对全部自由度求和。交换两函数会变号：$\{\omega,\lambda\}=-\{\lambda,\omega\}$。此外它对相加线性，对乘积满足
+
+$$
+\{\omega,\lambda\sigma\}=\{\omega,\lambda\}\sigma+\lambda\{\omega,\sigma\}.
+$$
+
+这些性质由偏导数的加法和乘法规则直接得到，形式上与 @sec:1.5 中的对易子有相似之处。比如单自由度中，$\{q^2,p^2\}=(2q)(2p)-0=4qp$，而 $\{p^2,q^2\}=-4qp$。
+
+### 用括号检验守恒量
+
+如果 $\omega$ 不显含时间，那么 $\{\omega,\mathcal H\}=0$ 就意味着 $\omega$ 沿运动守恒。特别地，反对称性使 $\{\mathcal H,\mathcal H\}=0$，所以
+
+$$
+\frac{d\mathcal H}{dt}=\frac{\partial\mathcal H}{\partial t}.
+$$
+
+哈密顿量不显含时间时便守恒；如果它又等于系统能量，这就是能量守恒。不要漏掉条件：显含时间的函数即使与 $\mathcal H$ 的括号为零，也可能因为自己的显式时间项而不守恒。
+
+:::example[#pb-free-particle]
+无外力粒子有 $\mathcal H=p^2/(2m)$。于是 $\{p,\mathcal H\}=0$，动量守恒；$\{q,\mathcal H\}=p/m$，位置一般不守恒。取 $F=q-pt/m$，虽然 $\{F,\mathcal H\}=p/m$ 非零，但 $\partial F/\partial t=-p/m$ 恰好抵消，所以 $F$ 仍是守恒量。它记录初始位置，说明显含时间时必须把两项合起来看。
+:::
+
+### 基本泊松括号就是坐标之间的规则
+
+在相空间中，$q_i,p_i$ 是独立变量。求关于 $q_i$ 的偏导时，所有动量都暂时固定。因此
+
+$$ {#eq-2.7.4a}
+\{q_i,q_j\}=\{p_i,p_j\}=0,
+$$
+
+$$ {#eq-2.7.4b}
+\{q_i,p_j\}=\delta_{ij}.
+$$
+
+其中:c[克罗内克符号]{#kronecker-delta}在下标相同时为一，否则为零。把 $\omega$ 分别取成坐标或动量，哈密顿方程便统一写成
+
+$$ {#eq-2.7.5a}
+\dot q_i=\{q_i,\mathcal H\},
+$$
+
+$$ {#eq-2.7.5b}
+\dot p_i=\{p_i,\mathcal H\}.
+$$
+
+例如 $\{p_i,\mathcal H\}=-\partial\mathcal H/\partial q_i$，负号来自定义中第二项，不能凭记忆把两条方程写成同号。
+
+### 点变换如何带动动量变化
+
+先考虑只用旧位置定义新位置的可逆变换，且不显含时间：
+
+$$ {#eq-2.7.6a}
+q_i\longmapsto\bar q_i(q_1,\ldots,q_n),\qquad i=1,\ldots,n.
+$$
+
+把整组坐标简记为 $q$，同一关系可简写为
+
+$$ {#eq-2.7.6b}
+q\longmapsto\bar q(q).
+$$
+
+速度必须跟着链式法则变化：
+
+$$ {#eq-2.7.7}
+\dot{\bar q}_i=\sum_j\frac{\partial\bar q_i}{\partial q_j}\dot q_j.
+$$
+
+### 动量由逆坐标变换决定
+
+新动量不是随意照着位置乘同一个因子，而应重新定义为
+
+$$ {#eq-2.7.8}
+\bar p_i=\frac{\partial\mathcal L(\bar q,\dot{\bar q})}{\partial\dot{\bar q}_i}.
+$$
+
+把速度变换倒过来，$\dot q_j=\sum_i(\partial q_j/\partial\bar q_i)\dot{\bar q}_i$，再求偏导，即得
+
+$$ {#eq-2.7.9}
+\bar p_i=\sum_j\frac{\partial q_j}{\partial\bar q_i}p_j.
+$$
+
+这是点变换诱导的动量变换。例如 $\bar q=aq$ 时，$q=\bar q/a$，因此 $\bar p=p/a$。位置放大，动量必须按倒数缩小。它们是同一物理状态的新坐标，$\mathcal L$ 的数值不变，但把它写成新变量的函数后，表达式通常会变化。
+
+### 点变换保持哈密顿方程的形式
+
+用新坐标表达拉格朗日函数后，Euler–Lagrange 方程形式不变；再以新速度作勒让德变换，就能同样推出
+
+$$ {#eq-2.7.10}
+\dot{\bar q}_i=\frac{\partial\mathcal H}{\partial\bar p_i},\qquad
+\dot{\bar p}_i=-\frac{\partial\mathcal H}{\partial\bar q_i}.
+$$
+
+因此这一对联合变换
+
+$$ {#eq-2.7.11}
+q_i\longmapsto\bar q_i(q_1,\ldots,q_n),\qquad
+\bar p_i=\sum_j\frac{\partial q_j}{\partial\bar q_i}p_j
+$$
+
+称为点变换。这里 $\mathcal H$ 是同一个物理量改用新变量表示后的函数；数值不变并不要求表达式外观不变。
+
+### 正则变换允许把位置与动量混在一起
+
+哈密顿力学的舞台是 $2n$ 维相空间，所以可以考虑更一般的可逆变换
+
+$$ {#eq-2.7.12}
+\bar q_i=\bar q_i(q,p),\qquad\bar p_i=\bar p_i(q,p).
+$$
+
+新变量能描述状态，不代表它们还能使用原来的简单哈密顿方程。若它们在改写后的同一个哈密顿函数下满足 @eq:2.7.10，才称这组变量为正则变量，这个变换为正则变换。本节只讨论不显含时间的变换。点变换是一类正则变换，却不是全部；例如单自由度的 $\bar q=p,\bar p=-q$ 就混合了原来的角色。
+
+### 链式法则给出正则条件
+
+如何不用逐条求解轨道，就判断变换是不是正则的？先把 @eq:2.7.2 的通用规则重新用于新变量：
+
+$$ {#eq-2.7.13}
+\dot\omega=\{\omega,\mathcal H\}_{q,p}
+=\sum_i\left(\frac{\partial\omega}{\partial q_i}\frac{\partial\mathcal H}{\partial p_i}
+-\frac{\partial\omega}{\partial p_i}\frac{\partial\mathcal H}{\partial q_i}\right),
+$$
+
+$$ {#eq-2.7.14}
+\dot{\bar q}_j=\sum_i\left(\frac{\partial\bar q_j}{\partial q_i}\frac{\partial\mathcal H}{\partial p_i}
+-\frac{\partial\bar q_j}{\partial p_i}\frac{\partial\mathcal H}{\partial q_i}\right).
+$$
+
+### 把哈密顿量的偏导改用新变量
+
+把哈密顿量看作新变量的函数，由链式法则分别有
+
+$$ {#eq-2.7.15a}
+\frac{\partial\mathcal H}{\partial p_i}
+=\sum_k\left(\frac{\partial\mathcal H}{\partial\bar q_k}\frac{\partial\bar q_k}{\partial p_i}+\frac{\partial\mathcal H}{\partial\bar p_k}\frac{\partial\bar p_k}{\partial p_i}\right).
+$$
+
+$$ {#eq-2.7.15b}
+\frac{\partial\mathcal H}{\partial q_i}
+=\sum_k\left(\frac{\partial\mathcal H}{\partial\bar q_k}\frac{\partial\bar q_k}{\partial q_i}+\frac{\partial\mathcal H}{\partial\bar p_k}\frac{\partial\bar p_k}{\partial q_i}\right).
+$$
+
+### 收集系数，得到正则条件
+
+将两者代入泊松括号，再把 $\partial\mathcal H/\partial\bar q_k$ 与 $\partial\mathcal H/\partial\bar p_k$ 各自归在一起，得到
+
+$$ {#eq-2.7.16}
+\dot{\bar q}_j=\sum_k\left(\frac{\partial\mathcal H}{\partial\bar q_k}\{\bar q_j,\bar q_k\}+\frac{\partial\mathcal H}{\partial\bar p_k}\{\bar q_j,\bar p_k\}\right),
+$$
+
+$$ {#eq-2.7.17}
+\dot{\bar p}_j=\sum_k\left(\frac{\partial\mathcal H}{\partial\bar q_k}\{\bar p_j,\bar q_k\}+\frac{\partial\mathcal H}{\partial\bar p_k}\{\bar p_j,\bar p_k\}\right).
+$$
+
+若要对任意哈密顿量都恢复 @eq:2.7.10，系数必须满足
+
+$$ {#eq-2.7.18}
+\{\bar q_j,\bar q_k\}=0=\{\bar p_j,\bar p_k\},\qquad
+\{\bar q_j,\bar p_k\}=\delta_{jk}.
+$$
+
+这里的括号仍用旧变量 $q,p$ 计算。这组条件完全不依赖具体的 $\mathcal H$，是在检查坐标体系本身，而不是某一条特殊轨道碰巧符合某个方程。
+
+### 在相平面上比较正则与非正则缩放
+
+取无量纲单自由度变量，作变换 $Q=aq,P=bp$，其中 $a,b>0$。直接求导给出 $\{Q,P\}=ab$，所以正则条件是 $ab=1$。下图中的单位正方形只用来显示变换对一小块相空间的影响；变换后的面积也是 $ab$。单自由度线性变换中，这和正则条件等价，高维时仅检查体积不够。
+
+:::interactive[位置与动量怎样配合]
+<CanonicalScaleLab />
+
+开启正则约束后，增大 $a$ 会自动令 $b=1/a$，形状改变但基本括号保持为一。关闭约束可以看见任意两次缩放通常会改变括号；“可逆”比“正则”要求少，不能混用。
+:::
+
+### 泊松括号不依赖选择哪组正则坐标
+
+两个状态函数先用旧变量计算括号，再改写到新变量中，结果应与直接用新正则坐标计算相同：
+
+$$ {#eq-2.7.19}
+\{\omega,\sigma\}_{q,p}=\{\omega,\sigma\}_{\bar q,\bar p}.
+$$
+
+可把前面的链式展开再做一次：将 $\omega$ 和 $\sigma$ 的旧偏导都写成新偏导。每组乘积的系数分别是 $\{\bar q_j,\bar q_k\}$、$\{\bar p_j,\bar p_k\}$ 或混合括号。前两类因 @eq:2.7.18 消失，混合类留下 $\delta_{jk}$，恰好恢复新变量定义的泊松括号。
+
+也可以从动力学理解。取 $\sigma=\mathcal H$，两种坐标都给出同一个 $d\omega/dt$，所以
+
+$$ {#eq-2.7.20}
+\{\omega,\mathcal H\}_{q,p}=\{\omega,\mathcal H\}_{\bar q,\bar p}.
+$$
+
+正则条件对任意哈密顿函数成立，故这个推理可以把 $\mathcal H$ 换成任意 $\sigma$。因此泊松括号表达的是不依赖正则坐标选择的结构。
+
+### 被动改写与主动移动状态
+
+被动变换使用两套坐标描述同一个状态。比如 $x^2+y^2$ 在极坐标中写成 $r^2$，数值相同，函数形式却换了。主动变换则在同一套坐标中把状态移到新点，再把原来同一个函数放到新点求值。
+
+原书将保持变量取值范围的变换称为 regular transformation，本学习版称“保持取值范围的变换”。例如直角坐标的平移、旋转可作主动解释；从直角坐标改为极坐标，径向坐标不能为负，角度又有周期，不能直接按同一种全局主动移动来理解。
+
+对可作主动解释的变换，函数不变性具有实际内容：
+
+$$ {#eq-2.7.21}
+\omega(q,p)=\omega(\bar q,\bar p).
+$$
+
+两边必须使用相同函数形式。被动改写本来就保持物理数值，不能把那种平凡相等误当成动力学对称性。正则条件则无论采用主动还是被动解释都一样。
+
+### 自测：区分三种容易混淆的判断
+
+::::quiz
+:::question{false}
+只要变换能倒过来，就一定是正则变换。
+
+$Q=2q,P=2p$ 可逆，但 $\{Q,P\}=4$，并非一。它一般不能保持哈密顿方程的标准形式。
+:::
+:::question{true}
+变换 $Q=p,P=-q$ 满足单自由度正则条件。
+
+$\{p,-q\}=1$，而任何函数与自己的泊松括号均为零。位置与动量可以混合，所以正则变换比点变换更广。
+:::
+:::question{false}
+若 $\{F,\mathcal H\}=0$，则任何 $F(q,p,t)$ 都守恒。
+
+还需要检查 $\partial F/\partial t$。例如 $F=t$ 的泊松括号为零，总时间导数却是一。
+:::
+::::
+
+::source[根据 Shankar 第二版第二章本节独立编写，扫描页 104 至 111。保留视觉核对过的核心公式标签；原书练习未逐题复制。]

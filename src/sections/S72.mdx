@@ -1,0 +1,94 @@
+import { ClassicalOscillatorVisualGuide } from "./widgets/BoundClassicalVisualGuides";
+
+export const id = "7.2";
+export const title = "经典谐振子回顾";
+
+### 从 Hamilton 方程回到弹簧方程
+
+@sec:2.5 把 Hamiltonian 形式写成一组一阶方程。对 @eq:7.1.1 的谐振子 Hamiltonian，位置与动量的运动方程是
+$$ {#eq-7.2.1}
+\dot x=\frac{\partial\mathcal H}{\partial p}=\frac{p}{m},
+$$
+$$ {#eq-7.2.2}
+\dot p=-\frac{\partial\mathcal H}{\partial x}=-m\omega^2x.
+$$
+这里 $p$ 是正则动量；对这个二次 Hamiltonian，它等于通常的 $m\dot x$。把 @eq:7.2.1 对时间再求导，代入 @eq:7.2.2，就消去 $p$：
+$$
+\ddot x+\omega^2x=0.
+$$
+这是一个二阶线性 :c[微分方程]{#differential-equation}。它的两个初始条件可以取 $x(0)$ 与 $\dot x(0)$，分别对应初始位置和初始速度。
+
+### 解、振幅与相位
+
+这个方程的通解是
+$$ {#eq-7.2.3}
+x(t)=A\cos\omega t+B\sin\omega t=x_0\cos(\omega t+\phi).
+$$
+其中 $x_0\ge0$ 是振幅，$\phi$ 是初相位。这里的 $x_0$ 是振幅；上一节曾用 $x_0$ 表示平衡位置，本节把平衡点取在原点，不再使用那个含义。两种写法比较系数，得到
+$$
+A=x_0\cos\phi,\qquad B=-x_0\sin\phi.
+$$
+反过来，$x_0=\sqrt{A^2+B^2}$；当 $A\ne0$ 时，$\tan\phi=-B/A$，象限由 $A,B$ 的符号决定。$x_0$ 通常不是 $x(0)$：$x(0)=A=x_0\cos\phi$。例如 $\phi=0$ 时，初始位置才取到正振幅。
+
+初速度是 $\dot x(0)=B\omega=-\omega x_0\sin\phi$。改变 $\phi$ 不改变振幅与能量，只改变从哪个位置、以什么方向开始计时。
+
+### 能量只由振幅决定
+
+把 @eq:7.2.3 代回能量
+$$ {#eq-7.2.4}
+E=T+V=\frac12m\dot x^2+\frac12m\omega^2x^2
+=\frac12m\omega^2x_0^2.
+$$
+求值时 $\cos^2+\sin^2=1$，交叉项抵消；也可以直接看出这是振幅为 $x_0$、角频率为 $\omega$ 的振子的最大势能。$E$ 不随时间变，也不含初相位 $\phi$。
+
+<div className="visual-context">
+
+经典振幅 $x_0$ 可以取任意非负实数，所以经典能量可以连续取值，最低为 $0$。$E=0$ 只对应 $x_0=0$，即物体静止在原点。后面量子化时，这一点会改变：量子谐振子的最低能量不为零。这里先只记录经典事实。
+
+<ClassicalOscillatorVisualGuide />
+
+</div>
+
+### 速度的平方根、转向点与正负分支
+
+由 @eq:7.2.4 解出速度时，先得到的是速度的平方：
+$$
+\dot x^2=\frac{2E}{m}-\omega^2x^2
+=\omega^2(x_0^2-x^2).
+$$
+取平方根必须小心。非负的平方根给出的是速率：
+$$ {#eq-7.2.5}
+\left|\dot x\right|=\left(\frac{2E}{m}-\omega^2x^2\right)^{1/2}
+=\omega\left(x_0^2-x^2\right)^{1/2}.
+$$
+带符号的速度则有两个分支：
+$$
+\dot x=\pm\,\omega\sqrt{x_0^2-x^2},\qquad |x|\le x_0.
+$$
+不能把正根当成所有时刻的速度。物体从一侧转向点出发时速度为零，向原点加速；经过原点时速率最大，为 $\omega x_0$；到达另一侧转向点时速度再次为零，然后反向。正根只描述其中一个运动方向。
+
+在 $|x|>x_0$ 处根号内为负，经典粒子不能到达那里。对非零振幅，$x=\pm x_0$ 是转向点，速度为零，但加速度不为零，所以粒子会返回。一次完整往返的周期是 $2\pi/\omega$，从一侧转向点到另一侧只需半个周期。
+
+同样长的一小段路程，在中心附近经过得快，在转向点附近经过得慢。因此若在随机时刻观察，转向点附近的停留时间更长。后面比较经典与量子位置分布时，会把这个速率差别转成区间概率。
+
+### 自测：经典轨道与概率
+
+::::quiz
+:::question{true}
+$x_0$ 是振幅，通常不等于初始位置 $x(0)$。
+
+由 @eq:7.2.3，$x(0)=x_0\cos\phi$；例如 $\phi=0$ 时等于 $x_0$，其他初相位一般不同。
+:::
+:::question{false}
+@eq:7.2.5 的正平方根给出了所有时刻的带符号速度。
+
+它给出速率，或只给出一个运动方向；带符号速度还要加 $\pm$，转向点处速度为零并反向。
+:::
+:::question{true}
+经典谐振子在中心附近停留的时间比在转向点附近短。
+
+速率在中心最大、在转向点为零，所以同样长的小区间在中心被经过得更快。
+:::
+::::
+
+::source[依 Shankar, Principles of Quantum Mechanics, second edition (1994), Chapter 7 前半独立改写；保留原书方程标签，不复制英文原文。]

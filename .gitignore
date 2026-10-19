@@ -1,0 +1,16 @@
+node_modules/
+dist/
+qa/
+sources/*.pdf
+*.mdx-check.tsx
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+sources/
+CONVENTIONS.md
+REPORT*.md
+output/*
+!output/量子手记-第1至8章.html

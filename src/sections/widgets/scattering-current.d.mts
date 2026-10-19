@@ -1,0 +1,3 @@
+export type Pair=[number,number];
+export function currentPacket(momentum:number,time:number,center?:number):{density:(x:number)=>number;current:(x:number)=>number;phaseGradient:(x:number)=>number;mean:number;width:number;probability:number;left:number;right:number;derivative:number;branch:'no-current'|'gaining'|'losing'|'balanced'};
+export function stepScattering(energyIndex:number,potentialIndex:number):{energy:number;potential:number;k:number;q:number;kappa:number;r:number[];t:number[];R:number;T:number;wave:(x:number)=>number[];gradient:(x:number)=>number[];density:(x:number)=>number;current:(x:number)=>number;branch:'propagating'|'threshold'|'evanescent';incidentCurrent:number;reflectedCurrent:number;transmittedCurrent:number};

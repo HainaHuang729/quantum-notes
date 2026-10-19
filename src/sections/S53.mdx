@@ -1,0 +1,128 @@
+import { ProbabilityCurrentLab } from "./widgets/ScatteringCurrentLabs";
+
+export const id = "5.3";
+export const title = "概率的连续性方程";
+
+### 总量不变，还需要说明它怎样移动
+
+先借用电荷守恒作类比。全空间总电荷满足
+
+$$ {#eq-5.3.1}
+Q(t)=\text{常数}.
+$$
+
+但仅有这个结论，还不能排除“某处消失、另一处凭空出现”的过程。局域守恒提出更具体的要求：一小块区域内电荷的变化，必须由经过边界的流来解释。用电荷密度 $\rho$ 和电流密度 $\mathbf j$ 写成
+
+$$ {#eq-5.3.2}
+\frac{\partial\rho(\mathbf r,t)}{\partial t}=-\nabla\cdot\mathbf j.
+$$
+
+:c[散度]{#divergence} $\nabla\cdot\mathbf j$ 表示单位体积的净流出率；正的净流出让内部密度减少，所以有负号。在一维中它只是 $\partial j/\partial x$。对体积 $V$ 积分，利用 :c[散度定理]{#divergence-theorem} 把内部净流出改写成外边界的通量：
+
+$$ {#eq-5.3.3}
+\frac d{dt}\int_V\rho\,d^3r=-\int_V\nabla\cdot\mathbf j\,d^3r=-\int_{S_V}\mathbf j\cdot d\mathbf S.
+$$
+
+$d\mathbf S$ 指向外侧。你可以先把它理解成水箱记账：水量的增加等于流入减流出，而不必先熟练掌握曲面积分。量子力学中被这样记账的量是概率。@sec:4.3 的幺正演化保持态的范数，因此
+
+$$ {#eq-5.3.4}
+\text{常数}=\langle\psi(t)|\psi(t)\rangle
+=\int\psi^*(\mathbf r,t)\psi(\mathbf r,t)\,d^3r
+=\int P(\mathbf r,t)\,d^3r.
+$$
+
+归一化时这个常数是一。下面要找的是与概率密度 $P=|\psi|^2$ 配套的局域流，而不只是再次证明总概率不变。
+
+### 从薛定谔方程导出概率流
+
+考虑不含磁矢势的 Hamiltonian $H=-\hbar^2\nabla^2/(2m)+V$，其中 $V(\mathbf r,t)$ 为实函数。这里 $\nabla^2$ 是三个方向二阶导数之和。方程及其复共轭为
+
+$$ {#eq-5.3.5}
+i\hbar\frac{\partial\psi}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi,
+$$
+
+$$ {#eq-5.3.6}
+-i\hbar\frac{\partial\psi^*}{\partial t}=-\frac{\hbar^2}{2m}\nabla^2\psi^*+V\psi^*.
+$$
+
+第一式乘 $\psi^*$，第二式乘 $\psi$，然后相减。实势能项相消，时间导数合成 $\partial_t(\psi^*\psi)$，得到
+
+$$
+i\hbar\partial_t(\psi^*\psi)=-\frac{\hbar^2}{2m}(\psi^*\nabla^2\psi-\psi\nabla^2\psi^*).
+$$
+
+再用乘积求导：$\nabla\cdot(\psi^*\nabla\psi)$ 中除了 $\psi^*\nabla^2\psi$，还有 $\nabla\psi^*\cdot\nabla\psi$；减去共轭表达式后，这两个交叉项恰好抵消。所以
+
+$$ {#eq-5.3.7}
+\frac{\partial P}{\partial t}=-\nabla\cdot\mathbf j,
+$$
+
+$$ {#eq-5.3.8}
+\mathbf j=\frac{\hbar}{2mi}(\psi^*\nabla\psi-\psi\nabla\psi^*)
+=\frac\hbar m\operatorname{Im}(\psi^*\nabla\psi).
+$$
+
+:c[梯度]{#gradient} $\nabla\psi$ 把各方向的一阶导数排成一个向量。$\mathbf j$ 虽由复波函数计算，结果却是实向量；括号内的量为纯虚数，除以 $i$ 后便为实数。三维中它的单位是概率每单位时间、每单位面积。若加入磁矢势，概率流也需要相应修正，不能直接套用这个无磁场形式。
+
+### 区域内概率的变化由边界决定
+
+把局域方程在全空间积分，得
+
+$$ {#eq-5.3.9}
+\frac d{dt}\int P(\mathbf r,t)\,d^3r=-\int_{S_\infty}\mathbf j\cdot d\mathbf S.
+$$
+
+对于具有适当衰减和光滑性的正常波包，无穷远处净通量为零，因而恢复全局守恒。这里需要关于波函数及其导数尾部的条件；不能仅凭“平方可积”一句话就认定任意函数的逐点衰减速度或边界流都已受控。
+
+一维中的版本更容易直接检验。令固定区间的概率为 $P_{[a,b]}(t)=\int_a^b|\psi(x,t)|^2dx$，积分连续性方程便有
+
+$$
+\frac{dP_{[a,b]}}{dt}=j(a,t)-j(b,t).
+$$
+
+$j$ 以向右为正。左边界的正流进入区间，右边界的正流离开区间；若某端的 $j$ 为负，方向相反。有限区间的概率当然可以变化，即使整个实轴上的概率一直为一。
+
+### 同样的密度，可以承载不同的流
+
+在一维中，把波函数局部写成 $\psi=\sqrt P e^{iS/\hbar}$，代入 @eq:5.3.8，有 $j=P(\partial_xS)/m$。$S$ 是带有作用量单位的相位函数；它的空间变化率决定流。这个写法在波函数为零处需要另行处理，但直接用 $\psi$ 的流公式仍然有效。
+
+例如同一个实包络 $g(x)$ 乘上 $e^{ikx}$ 或 $e^{-ikx}$，密度都是 $g(x)^2$，流却分别是 $\pm(\hbar k/m)g(x)^2$。整体相位不影响流，空间相位的变化则可能影响流。若 $\psi=cg$，$c$ 是常复数、$g$ 是实函数，便有 $j=0$。
+
+对同能量的左右行平面波 $\psi=Ae^{ipx/\hbar}+Be^{-ipx/\hbar}$，直接求导可得
+
+$$
+j=\frac pm(|A|^2-|B|^2).
+$$
+
+密度包含干涉起伏，流中的交叉项却抵消了。等强反向波形成驻波，可以有非零密度而净流为零；因此“密度高”绝不自动等于“流量大”。
+
+:::interactive[同密度与区间流量的两次比较]
+
+实验使用一个确切自由 Gaussian 波包，取 $\hbar=m=1$、初始包络宽度 $\Delta=1$。平均动量为 $p_0$，初始中心为 $x_0$；其中心随时间为 $x_0+p_0t$，密度宽度随时间变为 $\sqrt{1+t^2}$。流由同一个复波函数算出，不是任意给密度配一个箭头。
+
+<ProbabilityCurrentLab />
+
+先比较“同密度”的两个预设，密度完全相同而流方向相反。再选“从左入射”并单步推进，边界净流的符号与区间概率的增减一致；图窗只显示全实轴的一部分，窗外的概率仍保留在模型中。
+
+:::
+
+### 概率流是系综的通量预测
+
+对许多按同一波函数制备的系统，$\mathbf j\cdot d\mathbf S$ 描述沿给定方向穿过小面积的概率通量；乘上系综规模 $N$，在适当的入射与探测安排中，可对应预期穿越数率。它和 @sec:4.2 的位置密度一样，首先是关于统计预测的量。
+
+流可以为负，因为方向可反过来；概率密度不能为负。计算出 $\mathbf j$ 不等于已经测得单个粒子的连续路径。把它和速度联系时也应记住当前态、Hamiltonian 与探测条件，而不是从一张密度图直接猜轨迹。
+
+::::quiz
+:::question{false}
+一个固定区间内的概率暂时不变，说明两个边界处的概率流都为零。
+
+连续性方程只要求两端流量相同。非零的流可以从左进入、从右等量离开，区间概率仍瞬时不变。
+:::
+:::question{true}
+两个态在某时刻位置密度处处相同，仍可能具有方向相反的概率流。
+
+实包络乘正、负相位梯度就是例子。流取决于复波函数的空间导数，密度本身没有保留这些相位信息。
+:::
+::::
+
+::source[依据 Shankar 第二版本节独立编写；源式标签逐图核对。原习题未复制，相位比较与有限区间实验为本学习版原创。]

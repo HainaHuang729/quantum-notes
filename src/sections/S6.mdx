@@ -1,0 +1,291 @@
+import { ForceAveragingLab } from "./widgets/ForceAveragingLab";
+import { QuadraticClassicalLab } from "./widgets/QuadraticClassicalLab";
+import { ClassicalScaleLab } from "./widgets/ClassicalScaleLab";
+import { GaussianSquareVisualGuide } from "./widgets/BoundClassicalVisualGuides";
+
+export const id = "6";
+export const title = "经典极限";
+
+### 量子理论怎样给出熟悉的经典运动
+
+前几章的量子规律应当能够解释一个日常事实：在适当的准备、观测精度与时间尺度下，经典力学能给出准确的数值预言。本章考察这种近似怎样出现。它不要求把量子态改成同时具有精确位置与精确动量的点，也不从平均值的经典运动推断每次测量的读数相同。
+
+我们先推导严格的期望值运动方程，再问什么时候能把这些方程近似成经典方程。两步所需的条件不同，不能合成一句“量子平均值总按经典规律运动”。
+
+### 对一个期望值求导，要顾及三处变化
+
+从 @sec:4.2 的 $\langle\Omega\rangle=\langle\psi|\Omega|\psi\rangle$ 开始。态的 bra、算符和态的 ket 都可能随时间变；:c[乘积求导]{#derivative}给出
+
+$$ {#eq-6.1}
+\frac d{dt}\langle\Omega\rangle
+=\langle\dot\psi|\Omega|\psi\rangle
++\langle\psi|\Omega|\dot\psi\rangle
++\langle\psi|\dot\Omega|\psi\rangle.
+$$
+
+点表示时间导数。若不习惯对 bra、ket 求导，可将它们展开为一组固定基中的复系数列；这就是对一个多项求和逐项应用乘积规则。
+
+以下先假定 $\Omega$ 没有显含时间，最后一项为零。薛定谔方程和它的厄米共轭分别给出
+
+$$
+|\dot\psi\rangle=-\frac i\hbar H|\psi\rangle,
+\qquad \langle\dot\psi|=\frac i\hbar\langle\psi|H.
+$$
+
+bra 这边的符号因取复共轭而改变；不能把 ket 的负号直接照搬过去。
+
+### Ehrenfest 关系：从演化方程到对易子
+
+代回乘积导数，两项合成
+
+$$ {#eq-6.2}
+\frac d{dt}\langle\Omega\rangle
+=-\frac i\hbar\langle\psi|[\Omega,H]|\psi\rangle
+=-\frac i\hbar\langle[\Omega,H]\rangle.
+$$
+
+这就是这里使用的 Ehrenfest 定理。它是量子演化的精确结果，要求相关期望值存在、态和算符具有合适的定义域，并允许所做的求导。若 $\Omega$ 显含时间，还要加 $\langle\partial\Omega/\partial t\rangle$。
+
+经典力学对应的关系是
+
+$$ {#eq-6.3}
+\frac{d\omega}{dt}=\{\omega,\mathcal H\}.
+$$
+
+右侧是 @sec:2.7 的 Poisson 括号。两式结构相似，但量子式对算符的对易子取期望，并没有自动把期望值的乘积变成乘积的期望值。
+
+### 位置均值的速度，精确等于平均动量除以质量
+
+以下只看一维、实标量势的 $H=P^2/(2m)+V(X)$。原书把期望值的时间变化简记为 $\langle\dot X\rangle=d\langle X\rangle/dt$，于是
+
+$$ {#eq-6.4}
+\langle\dot X\rangle=-\frac i\hbar\langle[X,H]\rangle.
+$$
+
+$X$ 与 $V(X)$ 对易，剩下 $[X,P^2]$。按对易子的乘积规则，
+
+$$
+[X,P^2]=P[X,P]+[X,P]P=2i\hbar P.
+$$
+
+因此
+
+$$ {#eq-6.5}
+\langle\dot X\rangle=\frac{\langle P\rangle}{m}.
+$$
+
+把 $H$ 对 $P$ 的形式偏导写成 $\partial H/\partial P=P/m$，也可记为
+
+$$ {#eq-6.6}
+\langle\dot X\rangle=\left\langle\frac{\partial H}{\partial P}\right\rangle.
+$$
+
+这里的形式偏导是对已指定的多项式表达式按幂次求导，结果仍是算符；它没有授权我们对任意不对易的乘积忽略排序。对当前的动能加位置势，这个写法没有歧义。
+
+### 平均动量的变化由平均力决定
+
+同样有 $d\langle P\rangle/dt=\langle[P,H]\rangle/(i\hbar)$。因为 $P$ 与动能对易，只需处理 $[P,V(X)]$。在位置表示中，令它作用于适当波函数：
+
+$$
+\begin{aligned}
+[P,V]\psi&=-i\hbar\frac d{dx}(V\psi)+i\hbar V\frac{d\psi}{dx}\\
+&=-i\hbar V'(x)\psi.
+\end{aligned}
+$$
+
+乘积导数中含 $\psi'$ 的两项抵消，所以抽象算符关系为
+
+$$ {#eq-6.7}
+[P,V(X)]=-i\hbar\frac{dV}{dX}.
+$$
+
+于是
+
+$$ {#eq-6.8}
+\langle\dot P\rangle=\left\langle-\frac{\partial H}{\partial X}\right\rangle
+=\langle F(X)\rangle,\qquad F(X)=-V'(X).
+$$
+
+它精确地给出“平均力”。经典中心轨道需要的却是 $F(\langle X\rangle)$，两者一般不同。下文所做的近似，主要就发生在这里。
+
+### 选择接近经典准备的有限宽度态
+
+位置与动量没有同时精确的本征态，但它们的标准差可以相对于具体实验尺度同时很小。原书用一个带位置中心和动量相位的 Gaussian 举例：
+
+$$ {#eq-6.9}
+\Psi_{x_0,p_0,\Delta}(x)
+=\left(\frac1{\pi\Delta^2}\right)^{1/4}
+e^{ip_0x/\hbar}e^{-(x-x_0)^2/(2\Delta^2)}.
+$$
+
+其均值为 $\langle X\rangle=x_0$、$\langle P\rangle=p_0$，标准差则是
+
+$$
+\sigma_x=\frac\Delta{\sqrt2},\qquad
+\sigma_p=\frac\hbar{\sqrt2\Delta},\qquad \sigma_x\sigma_p=\frac\hbar2.
+$$
+
+宽度参数 $\Delta$ 与标准差相差 $\sqrt2$，不要混用。称它为“近似确定的位置与动量”，是在给定分辨尺度下的判断，不表示它已经违反不确定关系。
+
+### 从函数的平均，到均值处的函数
+
+让 $x_0(t)=\langle X\rangle$、$p_0(t)=\langle P\rangle$。要恢复经典 Hamilton 方程，需要下面的替换成立：
+
+$$ {#eq-6.10}
+\dot x_0=\langle\dot X\rangle
+=\left\langle\frac{\partial H(X,P)}{\partial P}\right\rangle
+\simeq\left.\frac{\partial H}{\partial P}\right|_{X=x_0,P=p_0}
+=\frac{\partial\mathcal H(x_0,p_0)}{\partial p_0},
+$$
+
+$$ {#eq-6.11}
+\dot p_0=\langle\dot P\rangle
+=-\left\langle\frac{\partial H}{\partial X}\right\rangle
+\simeq-\left.\frac{\partial H}{\partial X}\right|_{X=x_0,P=p_0}
+=-\frac{\partial\mathcal H(x_0,p_0)}{\partial x_0}.
+$$
+
+对本章指定的动能，第一式实际没有近似，因为 $\langle P/m\rangle=p_0/m$；第二式一般需要分布足够窄、力在分布范围内变化足够缓。对其他可观测量，还需另行检查
+
+$$ {#eq-6.12}
+\langle\Omega(X,P)\rangle\simeq\Omega(x_0,p_0)=\omega(x_0,p_0).
+$$
+
+这个近似不是新的公设，也不是只要均值方程成立就自动成立。特别是非线性函数，它往往含有方差、更高阶矩及位置动量相关的贡献。
+
+### 用 Taylor 展开看见有限宽度修正
+
+令 $\mu=\langle X\rangle$，在它附近对力作:c[Taylor 展开]{#taylor-expansion}：
+
+$$
+F(x)=F(\mu)+(x-\mu)F'(\mu)+\frac12(x-\mu)^2F''(\mu)+\cdots.
+$$
+
+用位置密度加权平均后，一阶项因 $\langle X-\mu\rangle=0$ 消失，留下
+
+$$
+\langle F(X)\rangle=F(\mu)+\frac12F''(\mu)\sigma_x^2
++\frac16F'''(\mu)\langle(X-\mu)^3\rangle+\cdots.
+$$
+
+每项把分布的一个中心矩，与力场的一个变化率联系起来。只有展开在分布有效范围内适用、余项也受控，才可截断。一个有量纲的检验是 $|F''(\mu)|\sigma_x^2/2\ll F_{\rm ref}$，其中 $F_{\rm ref}$ 是所关心的力变化或允许误差尺度；不能把带不同单位的两个量直接比较。若中心力为零，也不要机械地除以 $F(\mu)$，应选合适的绝对误差尺度。
+
+### 实验：非线性力的平均是否等于中心力
+
+取 $V(x)=ax^2/2+gx^4/4$，则 $F(x)=-ax-gx^3$。本实验固定二次系数，并指定某一个时刻的位置密度为均值 $\mu$、标准差 $\sigma$ 的 Gaussian；这里的 $\sigma$ 是标准差，等于前面 Gaussian 写法的 $\Delta/\sqrt2$。
+
+Gaussian 的三阶矩为 $\langle X^3\rangle=\mu^3+3\mu\sigma^2$，所以平均力与中心力的差精确为 $-3g\mu\sigma^2$。实验只比较这个时刻，不把 Gaussian 形状假定为四次势中以后始终保持的解。
+
+:::interactive[缩窄分布与移到对称中心，有何不同]
+
+<ForceAveragingLab />
+
+非线性力把有限宽度转成均值方程中的修正。对称中心可让平均力与中心力恰好同为零，但方差仍存在；一项平均值相等不能证明所有可观测量都可用经典点代替。
+
+:::
+
+### 二次势是均值方程精确闭合的特例
+
+若 $V$ 至多为二次函数，$F$ 至多为一次函数，因此 $\langle F(X)\rangle=F(\langle X\rangle)$ 对每个满足定义域条件的态都精确成立。更一般地，适当排序的二次 Hamiltonian 对 $X,P$ 的导数为线性函数，均值方程也能闭合。
+
+但方差不因此归零。下面取 $\hbar=m=\omega=1$ 的谐振子 $H=(P^2+X^2)/2$，初始 Gaussian 用宽度参数 $\Delta$，初始位置动量协方差为零。初始均值为 $x_0,p_0$，均值轨道为 $\mu(t)=x_0\cos t+p_0\sin t$；位置方差为 $\Delta^2\cos^2t/2+\sin^2t/(2\Delta^2)$。
+
+:::interactive[同一条经典中心轨道，可以带不同宽度]
+
+<QuadraticClassicalLab />
+
+二次势使量子均值精确追随同初值的经典轨道，宽度仍可周期变化；此处 $\Delta=1$ 的准备保持宽度。正的方差说明，中心运动经典不代表整个态已经变成经典相空间中的一点。
+
+:::
+
+### 自测：哪一步是近似
+
+::::quiz
+:::question{false}
+Ehrenfest 定理本身需要波包很窄才成立。
+
+定理在相应定义域与求导条件下精确成立。窄分布的要求属于后来把平均力替换为中心力的近似。
+:::
+:::question{true}
+四次势中，一个关于原点对称的位置分布可有平均力为零，同时位置方差不为零。
+
+该势的力是奇函数，左右贡献相消。这个特例没有消除状态宽度，也没有使所有非线性量的平均等于均值处取值。
+:::
+::::
+
+### 宏观质量为什么能使速度散布很小
+
+原书使用粗略 cgs 数量级：对质量约一克、$\Delta\sim10^{-13}$ 厘米的 Gaussian，动量标准差约 $10^{-14}$ 克厘米每秒，速度标准差 $\sigma_v=\sigma_p/m$ 约 $10^{-14}$ 厘米每秒。位置与速度散布相对很多日常测量尺度都很小，于是用一组经典初值描述中心可以非常准确。
+
+这是一项关于质量、准备与比较尺度的联合结论。把同样的动量散布给一个很轻的粒子，速度散布会大得多；刻意准备两个分离的宏观波包，也不能只因质量大就把状态称为一条窄经典轨道。
+
+### 长时间演化还要持续检查近似
+
+@sec:5.1 的自由波包给出
+
+$$
+\sigma_x(t)=\left[\frac{\Delta^2}{2}+\frac{\hbar^2t^2}{2m^2\Delta^2}\right]^{1/2}.
+$$
+
+很小的初始速度散布，在足够长时间后仍会积累成显著位置散布。上述宏观数值展宽到毫米量级需要数十万年，短期实验可能完全看不出，却不能据此宣称永远没有误差。
+
+自由展宽公式不是所有势中的普遍定律。前面的二次势实验就能使宽度周期变化，某些准备的宽度保持不变。非线性势中则要检查分布怎样变化，以及先前忽略的高阶矩何时变得重要。
+
+### 理想的精确定位不能无限逼近而不付代价
+
+如果把一克物体的位置准备压到约 $10^{-27}$ 厘米，按同一个 Gaussian 模型，动量与速度散布就不再是日常尺度下微不足道的量。这说明“宏观物体”本身不足以指定它的量子准备。
+
+实际定位也受装置限制。原书用光学定位作数量级说明：可见光波长在 $10^{-5}$ 厘米量级，普通波动光学装置的定位尺度与波长有关；要继续缩短尺度，必须改变测量方案。若使用波长约 $10^{-27}$ 厘米的光子，光子动量 $h/\lambda$ 已达克厘米每秒量级，动量交换不能再忽略。
+
+这里的 $h/\lambda$ 是单光子动量尺度，不是任何一次测量中必然给物体的完整反冲。实际转移动量取决于入射与散射方向，分辨率也取决于孔径、光场与读出；不能把“准备宽度等于光波长”当成普适等式。
+
+### 实验：同一宽度，在不同质量下意味着什么
+
+下面转用 SI 单位，通过:c[科学计数法]{#scientific-notation}与指数滑块比较质量与初始 Gaussian 宽度，并选择观测时长。所用自由 Gaussian 初始位置与动量没有协方差。它把 $\lambda=\Delta$ 作为一个明确选定的光学数量级对照，同时给出自由展宽；这些显示不构成任意测量仪器的精确模型。控件限制极轻质量与极窄宽度的组合，使速度散布留在所选非相对论教学范围内。
+
+:::interactive[把“小”换成可以比较的单位与时间]
+
+<ClassicalScaleLab />
+
+同一质量下，准备越窄，速度散布与自由展宽越明显；大质量使同一动量散布对应的速度散布较小。光波长取为准备宽度仅作数量级对照，实际定位精度与反冲仍取决于装置几何。
+
+:::
+
+### 即使中心服从经典方程，平方的平均仍可不同
+
+:::example[6.1 (位置平方揭示没有消失的宽度)]
+
+令位置波函数为 $\psi(x)=A\exp[-(x-a)^2/(2\Delta^2)]$，其中 $A$ 使它归一化。对 $\Omega=X^2$，直接用 Gaussian 的均值与方差可得
+
+$$
+\langle X\rangle=a,\qquad
+\langle X^2\rangle=a^2+\frac{\Delta^2}{2},\qquad
+\langle X^2\rangle-\langle X\rangle^2=\frac{\Delta^2}{2}=(\Delta X)^2\ne0.
+$$
+
+<div className="visual-context">
+
+所以 $\langle\Omega(X)\rangle$ 不等于 $\Omega(\langle X\rangle)$。这是一个静态反例，不必先证明中心偏离经典轨道；决定这项替换能否使用的是所考察量对分布宽度的敏感程度。
+
+<GaussianSquareVisualGuide />
+
+</div>
+
+:::
+
+### 自测：经典近似的判断范围
+
+::::quiz
+:::question{false}
+只要一个态的平均位置与动量精确服从经典方程，所有可观测量的期望值就都等于那个经典点的数值。
+
+位置平方已经给出反例。二次势能闭合中心方程，仍允许正的位置方差。
+:::
+:::question{false}
+一克物体的量子态不论怎样准备，都可忽略速度分散。
+
+速度标准差是动量标准差除以质量；动量分散还取决于准备。极窄位置准备可能使它显著，是否可忽略还要给定比较尺度。
+:::
+::::
+
+::source[依 Shankar, Principles of Quantum Mechanics, second edition (1994), Chapter 6 独立改写；保留原书十二项方程标签与例子标签。本章原书没有编号小节。]

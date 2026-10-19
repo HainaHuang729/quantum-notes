@@ -1,0 +1,186 @@
+import { OscillatorPhaseLab } from "./widgets/MechanicsCoordinateLabs";
+
+export const id = "2.5";
+export const title = "哈密顿形式：用位置与动量描述状态";
+
+### 从速度换到正则动量
+
+拉格朗日量以 $q_i,\dot q_i$ 为独立变量，正则动量是由它算出的量：
+
+$$ {#eq-2.5.1}
+p_i=\frac{\partial\mathcal L}{\partial\dot q_i}.
+$$
+
+哈密顿方法改用 $q_i,p_i$，把速度变成由新函数求出的量：
+
+$$ {#eq-2.5.2}
+\dot q_i=\frac{\partial\mathcal H}{\partial p_i}.
+$$
+
+这里的 $q_i$ 是广义坐标，$p_i$ 是它的正则共轭动量。目标不是增加信息，而是把同一个状态从“位置与速度”换成“位置与动量”。下面先推导产生这个变量交换的数学操作。
+
+### 勒让德变换：把斜率当作自变量
+
+给定可微函数 $f(x)$，定义
+
+$$ {#eq-2.5.3}
+u(x)=\frac{df}{dx}.
+$$
+
+如果能反解出 $x=x(u)$，则定义新函数
+
+$$ {#eq-2.5.4}
+g(u)=x(u)u-f(x(u)).
+$$
+
+利用 :c[链式法则]{#chain-rule} 求导：
+
+$$ {#eq-2.5.5}
+\frac{dg}{du}=\frac{dx}{du}u+x(u)-\frac{df}{dx}\frac{dx}{du}=x(u).
+$$
+
+第一项和第三项因为 $df/dx=u$ 而抵消，留下原来的 $x$。这就交换了“变量”与“对该变量的导数”的角色，称为勒让德变换。例如 $f(x)=ax^2/2$，$a>0$ 时，$u=ax$，$x=u/a$，$g(u)=u^2/(2a)$，其导数确实为 $u/a$。反解的条件不能省略；如果斜率不能确定原变量，就不能直接执行这套简单变换。
+
+### 一次交换多个变量
+
+对于 $f(x_1,\ldots,x_n)$，只把前 $j$ 个变量换成 $u_i=\partial f/\partial x_i$，定义
+
+$$ {#eq-2.5.6}
+g(u_1,\ldots,u_j,x_{j+1},\ldots,x_n)
+=\sum_{i=1}^{j}u_ix_i-f(x_1,\ldots,x_n).
+$$
+
+右侧被换掉的 $x_1,\ldots,x_j$ 都必须已经用新变量表示；不能一边声称 $g$ 只依赖新变量，一边仍把旧变量当成独立输入。在保持其他新变量不变时，成对抵消仍给出
+
+$$ {#eq-2.5.7}
+\frac{\partial g}{\partial u_i}=x_i,\qquad i=1,\ldots,j.
+$$
+
+机械系统将用这个操作交换全部速度与动量，而把位置保留下来。
+
+### 定义哈密顿量时必须消去速度
+
+先求 $p_i=\partial\mathcal L/\partial\dot q_i$，假定可以在所讨论区域反解成 $\dot q_i=\dot q_i(q,p,t)$。随后定义
+
+$$ {#eq-2.5.8}
+\mathcal H(q,p,t)=\sum_{i=1}^{n}p_i\dot q_i-\mathcal L(q,\dot q,t).
+$$
+
+本节加入 $t$ 是为了明确允许显含时间；若没有这种依赖，可以省略它。右侧的每一处速度，包括 $\mathcal L$ 里面的速度，都须做同一次代换。对普通二次型动能，反解常是解线性方程；奇异拉格朗日量则可能需要约束分析，不属于这里的常规情形。
+
+### 对动量求偏导，哪些项要一起求导
+
+现在固定位置 $q$ 和时间 $t$，只改变 $p_i$：
+
+$$ {#eq-2.5.9}
+\frac{\partial\mathcal H}{\partial p_i}
+=\frac{\partial}{\partial p_i}\left(\sum_jp_j\dot q_j-\mathcal L\right).
+$$
+
+速度已经是动量的函数，所以不能把它当常数。展开后有
+
+$$ {#eq-2.5.10}
+\frac{\partial\mathcal H}{\partial p_i}
+=\dot q_i+\sum_jp_j\frac{\partial\dot q_j}{\partial p_i}
+-\sum_j\frac{\partial\mathcal L}{\partial\dot q_j}\frac{\partial\dot q_j}{\partial p_i}
+=\dot q_i.
+$$
+
+两组带 $\partial\dot q_j/\partial p_i$ 的项由动量定义逐项抵消。没有通过位置产生的链式项，因为此处固定了所有 $q_j$。这就是 @eq:2.5.2 的来源。
+
+### 对位置求偏导，负号从哪里来
+
+这次固定 $p,t$，对 $q_i$ 求 :c[偏导数]{#partial-derivative}。速度又会随位置间接改变，得到
+
+$$ {#eq-2.5.11}
+\begin{aligned}
+\frac{\partial\mathcal H}{\partial q_i}
+&=\sum_jp_j\frac{\partial\dot q_j}{\partial q_i}
+-\frac{\partial\mathcal L}{\partial q_i}
+-\sum_j\frac{\partial\mathcal L}{\partial\dot q_j}\frac{\partial\dot q_j}{\partial q_i}\\
+&=-\frac{\partial\mathcal L}{\partial q_i}.
+\end{aligned}
+$$
+
+右边 $\partial\mathcal L/\partial q_i$ 表示原来拉格朗日变量中的位置偏导，求它时速度固定。即使两处都写偏导，它们固定的其余变量不同；把这一步写出链式展开，就能避免混淆。
+
+### 两组一阶方程包含原来的动力学
+
+欧拉–拉格朗日方程给出 $\partial\mathcal L/\partial q_i=\dot p_i$。代入上一结果，得到哈密顿正则方程：
+
+$$ {#eq-2.5.12}
+\frac{\partial\mathcal H}{\partial p_i}=\dot q_i,\qquad
+-\frac{\partial\mathcal H}{\partial q_i}=\dot p_i.
+$$
+
+有 $n$ 个自由度时，共有 $2n$ 个一阶时间 :c[微分方程]{#differential-equation}。初始数据是 $q_i(0),p_i(0)$；拉格朗日形式的 $n$ 个二阶方程则需要 $q_i(0),\dot q_i(0)$。在前面假定的可逆条件下，两套初始数据可相互换算，因此没有增加或减少自由度。
+
+### 哈密顿量什么时候等于总能量
+
+若笛卡尔坐标中 $\mathcal L=T-V$，势 $V$ 不依赖速度，且 $T=\sum_i m_i\dot x_i^2/2$，则 $p_i=m_i\dot x_i$，所以
+
+$$ {#eq-2.5.13}
+\sum_i p_i\dot x_i=\sum_i m_i\dot x_i^2=2T.
+$$
+
+于是
+
+$$ {#eq-2.5.14}
+\mathcal H=\sum_i p_i\dot x_i-\mathcal L=T+V.
+$$
+
+同一个系统换成不显含时间的广义坐标后，这个数值关系仍成立；随时间移动的坐标系需要另外检查。但使用哈密顿方程时，还需把它写成正确的 $q,p$ 函数；只说“动能加势能”并未完成变量替换。另外，等于总能量与总能量守恒是两个判断；若势显含时间，外界仍可能向系统输入能量。
+
+### 简谐振子：从定义算出两条运动方程
+
+取 $\mathcal L=m\dot x^2/2-kx^2/2$，其中 $m,k>0$。由 $p=m\dot x$ 反解 $\dot x=p/m$，得到
+
+$$ {#eq-2.5.15}
+\mathcal H(x,p)=\frac{p^2}{2m}+\frac12kx^2.
+$$
+
+两条哈密顿方程分别是
+
+$$ {#eq-2.5.16}
+\dot x=\frac{\partial\mathcal H}{\partial p}=\frac pm,
+$$
+
+$$ {#eq-2.5.17}
+\dot p=-\frac{\partial\mathcal H}{\partial x}=-kx.
+$$
+
+第一式再对时间求导，就得到 $m\ddot x=\dot p=-kx$，与熟悉的弹簧运动一致。在相空间里，守恒能量 $E>0$ 的轨道满足 $x^2/(2E/k)+p^2/(2mE)=1$，因而是椭圆；$E=0$ 则退化为静止的原点。
+
+### 一个相空间点已经包含运动方向
+
+构形空间只记录位置：相同位置的粒子可以向左也可以向右，速度不同会通向不同轨迹。相空间同时记录位置与动量；对于满足通常唯一性条件的哈密顿方程，给定一个相空间点就确定该点的运动方向。两种描述的区别可概括为
+
+| 描述 | 状态数据 | 时间方程 |
+|---|---|---|
+| 拉格朗日形式 | $n$ 个位置与 $n$ 个速度 | $n$ 个二阶方程 |
+| 哈密顿形式 | $n$ 个位置与 $n$ 个正则动量 | $2n$ 个一阶方程 |
+
+下面用 $q$ 表示振子位置，设 $q=A\cos\theta$，$p=-A\sqrt{mk}\sin\theta$，相位 $\theta=\omega t$，$\omega=\sqrt{k/m}$。改变 $m,k,A$ 会改变轨道形状或能量；只改变相位，则沿同一条轨道前进。
+
+:::interactive[相空间里的振子]
+
+<OscillatorPhaseLab />
+
+在位移最大的端点，动量为零，接下来的回复力把粒子拉回去；经过平衡点时，位移为零，动量的大小最大。随着相位增加，两项能量相互转化，但总和始终为 $kA^2/2$。
+
+:::
+
+::::quiz
+:::question{false}
+知道振子此刻 $x=0$，就能唯一确定它接下来的运动。
+
+还需要速度或动量。正、负动量分别表示从平衡点向不同方向通过，零动量则对应静止平衡态。
+:::
+:::question{true}
+对于 $\mathcal L=2\dot q^2-3q^2$，有 $p=4\dot q$，$\mathcal H=p^2/8+3q^2$。
+
+先反解 $\dot q=p/4$，再算 $p\dot q-\mathcal L=p^2/4-(p^2/8-3q^2)$，便得到给出的表达式。把速度消去是必要步骤。
+:::
+::::
+
+::source[依据 Shankar 第二版哈密顿形式一节独立编写，保留勒让德变换与正则方程的完整抵消步骤。]

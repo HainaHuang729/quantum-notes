@@ -1,0 +1,455 @@
+import { EigenDirections, CoupledModes } from "./widgets/EigenWidgets";
+
+export const id = "1.8";
+export const title = "本征值问题：找出变化中保持形状的状态";
+
+前面我们学会用算符描述变化，用矩阵计算变化。本节反过来问：给定一个算符，能否找到一些特殊输入，使输出只等于输入乘一个数？这条思路会把联立方程、简谐振动和以后的量子态演化连接起来。阅读时先掌握具体计算，再回头理解定理的证明。
+
+### 什么叫本征向量
+
+一般情况下，算符把一个非零向量变成另一个向量：
+
+$$ {#eq-1.8.1}
+\Omega|V\rangle=|V'\rangle.
+$$
+
+如果输出恰好是原向量的倍数，就得到本征值方程：
+
+$$ {#eq-1.8.2}
+\Omega|V\rangle=\omega|V\rangle,\qquad |V\rangle\ne|0\rangle.
+$$
+
+$|V\rangle$ 叫本征向量或本征右矢，$\omega$ 叫本征值。实数 $\omega$ 可以表示拉长、压短、反向或压成零；在复向量空间里，它还可以是 :c[复数]{#complex-number}。零向量被排除，是因为它对任何 $\omega$ 都满足等式，不能挑出有用信息。
+
+若 $|V\rangle$ 是本征向量，那么任何非零倍数 $a|V\rangle$ 也是，因为 $\Omega(a|V\rangle)=a\Omega|V\rangle=\omega(a|V\rangle)$。因此我们关心独立方向，通常再把向量归一化。归一化后仍可以乘模为一的复数，这个整体相位不会改变本征值。
+
+:::example[1.8.1 (单位算符)]
+$I|V\rangle=|V\rangle$，所以单位算符只有本征值 $1$，所有非零向量都是它的本征向量。只有一个不同的本征值，并不意味着只有一个独立本征向量。
+:::
+
+:::example[1.8.2 (投影算符)]
+设 $|V\rangle$ 已归一化，$\mathbb P_V=|V\rangle\langle V|$。沿 $|V\rangle$ 的非零向量投影后保持不变，本征值是 $1$；与它正交的非零向量投影后变成零，本征值是 $0$。如果一个向量同时含有非零的平行、垂直分量，投影只保留前者，便不能写成原向量的同一个倍数。投影和正交的计算见 @sec:1.3 和 @sec:1.6。
+:::
+
+:::example[1.8.3 (实图像可能漏掉复方向)]
+绕 $x$ 轴旋转 $\pi/2$ 时，沿轴的向量不变，本征值是 $1$。在实三维空间里，垂直平面中的非零实向量都会转向，所以看不见其他本征方向。但是把分量允许为复数后，还会有另外两个独立方向。下面用矩阵把它们算出来。
+:::
+
+### 特征方程：先找数，再找向量
+
+把 @eq:1.8.2 移到一边：
+
+$$ {#eq-1.8.3}
+(\Omega-\omega I)|V\rangle=|0\rangle.
+$$
+
+如果 $\Omega-\omega I$ 可逆，左乘其逆便会得到
+
+$$ {#eq-1.8.4}
+|V\rangle=(\Omega-\omega I)^{-1}|0\rangle=|0\rangle,
+$$
+
+这与本征向量非零矛盾。所以本征值必须使矩阵失去可逆性。这里需要一个矩阵判据：方阵不可逆，当且仅当它的行列式为零。
+
+先用二阶矩阵理解这个判据。$M=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ 的行列式是 $ad-bc$。如果它非零，那么 $M^{-1}=\frac1{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$，相乘可直接验证。若行列式为零，两列相关，矩阵把至少一个非零方向压到零，因此无法恢复输入。高阶行列式用同样的可逆性判据；原书把一般公式放在附录中。
+
+一般矩阵的逆也有对应公式。删去第 $i$ 行、第 $j$ 列后所得小矩阵的行列式，乘上 $(-1)^{i+j}$，叫代数余子式 $C_{ij}$；把这些数排成矩阵 $C$，便有
+
+$$ {#eq-1.8.5}
+M^{-1}=\frac{C^{\mathsf T}}{\det M},\qquad \det M\ne0.
+$$
+
+这里 $\mathsf T$ 表示转置。这给出了相同的判断：分母不为零时能写出逆；分母为零时需要回到齐次方程寻找非零解。
+
+应用于本征值问题，便得到
+
+$$ {#eq-1.8.6}
+\det(\Omega-\omega I)=0.
+$$
+
+在一组基下，把向量分量记成 $v_j$，同一条件写成
+
+$$ {#eq-1.8.7}
+\sum_j(\Omega_{ij}-\omega\delta_{ij})v_j=0.
+$$
+
+行列式展开以后，是关于 $\omega$ 的 $n$ 次 :c[多项式]{#polynomial}：
+
+$$ {#eq-1.8.8}
+\sum_{m=0}^{n}c_m\omega^m=0.
+$$
+
+这个方程叫特征方程，它左边叫特征多项式：
+
+$$ {#eq-1.8.9}
+P^n(\omega)=\sum_{m=0}^n c_m\omega^m.
+$$
+
+上标 $n$ 在此标记多项式的次数。复数范围内，一个 $n$ 次多项式有 $n$ 个根，重根要重复计算。因此本征值总能找到；但是一般矩阵未必能找到 $n$ 个线性无关的本征向量。后面会看到，厄米算符和酉算符（也称幺正算符）拥有更好的性质。
+
+计算的顺序很具体：求行列式，解出候选 $\omega$；逐个代回齐次方程；求出所有独立解；最后归一化。换基会改变矩阵元素，却不改变抽象方程 @eq:1.8.2，所以不会改变本征值。
+
+:::example[1.8.4 (把旋转算完)]
+绕 $x$ 轴旋转 $\pi/2$ 的矩阵为
+
+$$
+R=\begin{pmatrix}1&0&0\\0&0&-1\\0&1&0\end{pmatrix}.
+$$
+
+沿第一行展开 $\det(R-\omega I)$ 得到
+
+$$ {#eq-1.8.10}
+(1-\omega)(\omega^2+1)=0.
+$$
+
+所以 $\omega=1,i,-i$。当 $\omega=1$ 时，方程要求第二、第三分量为零；当 $\omega=i$ 时，第一分量为零，第二分量等于第三分量乘 $i$；另一个根类似。可以选取归一化向量
+
+$$
+|1\rangle=\begin{pmatrix}1\\0\\0\end{pmatrix},\quad
+|i\rangle=\frac1{\sqrt2}\begin{pmatrix}0\\i\\1\end{pmatrix},\quad
+|-i\rangle=\frac1{\sqrt2}\begin{pmatrix}0\\-i\\1\end{pmatrix}.
+$$
+
+直接相乘就能核对，例如 $R(0,i,1)^T=(0,-1,i)^T=i(0,i,1)^T$。复向量的长度要用 :c[共轭]{#conjugate}，所以 $(0,i,1)^\dagger(0,i,1)=2$。实空间里的旋转并没有停止，复本征向量描述的是允许复数系数后的代数结构。
+:::
+
+### 厄米算符：实本征值和完整正交基
+
+厄米条件 $\Omega^\dagger=\Omega$ 在 @sec:1.6 中定义。它保证的不只是矩阵具有对称外观，而是本征值和本征向量具有如下性质。以下讨论都是有限维复内积空间。
+
+:::theorem[9 (厄米算符的本征值为实数)]
+如果 $\Omega^\dagger=\Omega$ 且 $\Omega|\omega\rangle=\omega|\omega\rangle$，那么 $\omega=\omega^*$。
+:::
+
+::::proof
+:::step
+左乘 $\langle\omega|$，得到
+
+$$ {#eq-1.8.11}
+\langle\omega|\Omega|\omega\rangle=\omega\langle\omega|\omega\rangle.
+$$
+
+对它取共轭，并用厄米条件，左边不变，右边变为 $\omega^*\langle\omega|\omega\rangle$。
+:::
+:::step
+两式相减给出 $(\omega-\omega^*)\langle\omega|\omega\rangle=0$。非零向量的长度平方严格大于零，因此只能有 $\omega=\omega^*$，也就是虚部为零。
+::why[最后一步依靠正定内积；不能因为一个乘积为零就随意约掉可能为零的因子。]
+:::
+::::
+
+:::theorem[10 (厄米算符存在正交归一本征基)]
+每个有限维厄米算符都可以找到一整组正交归一的本征向量。用这组向量作基，矩阵为对角矩阵，对角线上就是本征值。即使本征值重复，这个结论仍成立。
+:::
+
+::::proof
+:::step
+特征多项式至少给出一个根，所以先取一个归一化本征向量 $|\omega_1\rangle$。把其余基向量选在与它正交的子空间里。对任何这样的 $|v\rangle$，
+
+$$
+\langle\omega_1|\Omega|v\rangle
+=\langle\Omega\omega_1|v\rangle
+=\omega_1\langle\omega_1|v\rangle=0.
+$$
+
+这说明 $\Omega|v\rangle$ 仍在该正交子空间中，不会漏出一个沿 $|\omega_1\rangle$ 的分量。
+:::
+:::step
+在这组基下，矩阵分成两个互不混合的块：
+
+$$ {#eq-1.8.12}
+\Omega\longleftrightarrow\begin{pmatrix}\omega_1&0\\0&B\end{pmatrix},\qquad B^\dagger=B.
+$$
+
+右下角 $B$ 比原矩阵少一维，而且仍厄米。对 $B$ 重复同一过程，再找一个本征向量，并到更小的正交子空间里继续。有限次以后得到 $n$ 个正交归一向量。证明从来不要求各根不同，因此也处理了重根。
+:::
+::::
+
+不同本征值的本征向量为何自动正交？设 $\Omega|\omega_i\rangle=\omega_i|\omega_i\rangle$、$\Omega|\omega_j\rangle=\omega_j|\omega_j\rangle$。分别计算同一个矩阵元 $\langle\omega_j|\Omega|\omega_i\rangle$，一次让算符向右作用，一次利用厄米性向左作用，相减便得
+
+$$ {#eq-1.8.15}
+(\omega_i-\omega_j^*)\langle\omega_j|\omega_i\rangle=0.
+$$
+
+由 @theorem:9，本征值为实数；如果又有 $\omega_i\ne\omega_j$，括号便非零，于是
+
+$$ {#eq-1.8.17}
+\langle\omega_i|\omega_j\rangle=0.
+$$
+
+这个短证明说明不同本征值之间的关系，却不能代替 @theorem:10 的完整证明：如果两个本征值相同，@eq:1.8.15 只剩下 $0=0$，不再强迫内积为零。
+
+### 简并：同一个本征值对应一整个空间
+
+在厄米问题中，若某一本征值出现多次，就会有多个独立本征方向，这叫简并。属于同一本征值的向量的任意非零线性组合仍是本征向量，因为
+
+$$
+\Omega(a|\omega,1\rangle+b|\omega,2\rangle)
+=\omega(a|\omega,1\rangle+b|\omega,2\rangle).
+$$
+
+这些向量加上零向量组成一个本征子空间。我们可以在其中自由选择正交归一基。这里“自由选择”不表示不同本征值的向量也能任意混合。
+
+:::example[1.8.5 (二重简并的完整计算)]
+考虑
+
+$$
+\Omega=\begin{pmatrix}1&0&1\\0&2&0\\1&0&1\end{pmatrix}.
+$$
+
+它的特征根为 $0,2,2$。本征值 $0$ 的归一化向量可选为 $(1,0,-1)^T/\sqrt2$。代入 $\omega=2$ 时，齐次方程只有一个独立条件 $x_1=x_3$，而 $x_2$ 自由，所以得到整个平面，而不是缺少了一个解。
+
+在这个平面中可以选
+
+$$
+|2,a\rangle=\frac1{\sqrt3}\begin{pmatrix}1\\1\\1\end{pmatrix},\qquad
+|2,b\rangle=\frac1{\sqrt6}\begin{pmatrix}1\\-2\\1\end{pmatrix}.
+$$
+
+两者内积为 $(1-2+1)/\sqrt{18}=0$，而且都与零本征值的方向正交。把这两个向量在其平面内旋转，会得到另一组同样有效的本征基。因此只写 $|2\rangle$ 不能唯一指定向量，还要增加 $a,b$ 这样的标记。
+:::
+
+现在用一个二维实对称矩阵看“接近简并”和“确实简并”的区别。令 $R_\phi$ 是转角 $\phi=30^\circ$ 的旋转矩阵，并定义 $A=R_\phi\operatorname{diag}(1,1+g)R_\phi^T$。参数 $g$ 是两个本征值之间的间隔；单位输入向量 $v=(\cos\theta,\sin\theta)^T$ 的角度为 $\theta$。图中显示 $v$ 和 $Av$。
+
+:::interactive[寻找不转向的输入]
+<EigenDirections />
+
+当 $g>0$ 时，只有两条相互垂直的直线是本征方向；$g$ 很小时，许多方向看起来几乎不变，但这不等于它们都成为本征方向。当 $g=0$ 时，矩阵恰好成为单位矩阵，所有方向才真正等价。
+:::
+
+:::remark[(一般矩阵的重根需要谨慎)]
+例如 $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ 的特征多项式是 $(1-\omega)^2$，但本征方程要求第二分量为零，因此只有一个独立本征方向。重根的次数与独立本征向量的个数，在一般矩阵中可以不同。厄米条件排除了这种缺陷。
+:::
+
+### 酉算符的本征值在单位圆上
+
+:::theorem[11 (酉本征值的模为一)]
+若 $U^\dagger U=I$，那么每个本征值 $u$ 都满足 $|u|=1$。
+:::
+
+:::theorem[12 (酉本征向量的正交性)]
+酉算符属于不同本征值的本征向量互相正交。无简并时可以直接归一化组成正交本征基；有简并时也可以在每个本征子空间内部选取正交归一基。
+:::
+
+::::proof
+:::step
+设 $U|u_i\rangle=u_i|u_i\rangle$。由于 $U$ 保持内积，
+
+$$ {#eq-1.8.19}
+(1-u_i u_j^*)\langle u_j|u_i\rangle=0.
+$$
+
+取 $i=j$，向量非零便给出 $u_i u_i^*=1$，即 :c[模]{#modulus}为一。
+:::
+:::step
+如果 $u_i\ne u_j$，那么 $u_i u_j^*\ne1$，于是内积只能为零。若发生简并，可以像厄米证明那样逐次分离一维：第一列是 $(u_1,0,\ldots)^T$，而酉矩阵每行元素的模平方之和为一。因为 $|u_1|^2=1$ 已经占满第一行，其余元素必须为零；剩余块仍然酉，继续即可。
+:::
+::::
+
+前面的旋转矩阵本征值 $1,\pm i$ 恰好都在复平面的单位圆上。这是酉性的表现。厄米要求本征值在实轴上，酉要求本征值在单位圆上；同时具备两种性质时，本征值只能为 $1$ 或 $-1$。
+
+### 对角化就是选择本征基
+
+把正交归一的本征向量逐列装入矩阵 $U$，就有 $U^\dagger U=I$，而且
+
+$$ {#eq-1.8.21}
+|\omega_i\rangle=U|i\rangle.
+$$
+
+在这组基下，
+
+$$
+U^\dagger\Omega U=\operatorname{diag}(\omega_1,\ldots,\omega_n).
+$$
+
+这一式是 @sec:1.7 中换基规则的具体应用。右乘 $U$ 把新坐标还原到旧坐标，$\Omega$ 完成作用，左乘 $U^\dagger$ 再读出新坐标。由于每个新基向量只被乘一个本征值，新的矩阵便只有对角元素。
+
+对角化也给出检查计算的方法：矩阵的迹等于本征值之和，行列式等于本征值之积，重复的根仍重复计入。它们在换基时保持不变。比如 @example:1.8.5 的迹为 $4=0+2+2$，行列式为零，与所得本征值一致。
+
+### 两个厄米算符什么时候能同时对角化
+
+:::theorem[13 (对易厄米算符有共同本征基)]
+如果两个有限维厄米算符 $\Omega,\Lambda$ 对易，即 $[\Omega,\Lambda]=0$，那么存在一组正交归一的共同本征向量，使它们同时成为对角矩阵。
+:::
+
+::::proof
+:::step
+先设 $\Omega$ 没有简并。对它的本征向量，利用对易性得到
+
+$$ {#eq-1.8.22}
+\Omega\Lambda|\omega_i\rangle=\omega_i\Lambda|\omega_i\rangle.
+$$
+
+所以 $\Lambda|\omega_i\rangle$ 仍在 $\Omega$ 的同一本征子空间里。该空间只有一维，因而一定存在数 $\lambda_i$ 使
+
+$$ {#eq-1.8.23}
+\Lambda|\omega_i\rangle=\lambda_i|\omega_i\rangle.
+$$
+
+即使左边恰好为零，这也成立，对应 $\lambda_i=0$。
+:::
+:::step
+如果 $\Omega$ 有简并，@eq:1.8.22 只能保证 $\Lambda$ 把每个本征子空间映射回自身，不能保证原来随手选的每个基向量已经是共同本征向量。
+
+把同一本征值的向量排在一起，$\Omega$ 的每块都是 $\omega_i I$，而 $\Lambda$ 成为分块对角矩阵。每个块仍厄米，因此在每个子空间中单独把 $\Lambda$ 对角化。这些内部换基不会改变 $\omega_i I$，于是两个算符同时对角化。
+:::
+::::
+
+反过来，如果已经有完整共同本征基，两个矩阵在该基里均对角，乘法可交换，因此两个算符必对易。共同本征向量可以用一对数 $|\omega,\lambda\rangle$ 标记。如果一对数还不能区分所有独立方向，就继续加入与前面算符都对易的算符。足够多的标记可以确定每个一维方向，这便是以后使用“完备对易算符组”的原因。向量的整体相位仍可自由选择。
+
+:::example[#eigen-joint-labels]
+设 $\Omega=\operatorname{diag}(2,2,5)$，$\Lambda=\operatorname{diag}(1,-1,0)$。只知道 $\omega=2$，无法区分前两个方向；加上 $\lambda=1$ 或 $-1$ 就能区分。$\Omega$ 在前两个方向张成的平面内完全相同，而 $\Lambda$ 提供了第二把辨认方向的尺子。
+:::
+
+### 耦合弹簧：把本征值变成可以观察的运动
+
+:::example[1.8.6 (两个质量块的正常模)]
+两块相同质量 $m$ 的物体，依次由三根劲度系数均为 $k$ 的弹簧连接在两面固定墙之间。$x_1,x_2$ 是相对于平衡位置向右为正的位移。第一块向右移动会使左弹簧把它拉回，同时中间弹簧的力取决于两块的位移差。由牛顿第二定律：
+
+$$ {#eq-1.8.24a}
+\ddot x_1=-\frac{2k}{m}x_1+\frac{k}{m}x_2.
+$$
+
+$$ {#eq-1.8.24b}
+\ddot x_2=\frac{k}{m}x_1-\frac{2k}{m}x_2.
+$$
+
+点号表示对时间求 :c[导数]{#derivative}，两个点就是加速度。把两个位移一起视为抽象向量 $|x(t)\rangle$，便得到
+
+$$ {#eq-1.8.25a}
+\begin{pmatrix}\ddot x_1\\\ddot x_2\end{pmatrix}
+=\frac{k}{m}\begin{pmatrix}-2&1\\1&-2\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}.
+$$
+
+$$ {#eq-1.8.26}
+|\ddot x(t)\rangle=\Omega|x(t)\rangle.
+$$
+
+这里 $|1\rangle=(1,0)^T$ 表示只把第一块移开单位距离，$|2\rangle=(0,1)^T$ 表示只把第二块移开单位距离，所以
+
+$$ {#eq-1.8.29}
+|x\rangle=|1\rangle x_1+|2\rangle x_2.
+$$
+
+物理坐标很直观，却相互耦合：求第一块的加速度必须知道第二块的位置。矩阵是实对称的，可以改用它的本征基。求解特征方程后得到
+
+$$ {#eq-1.8.31a}
+\omega_{\mathrm I}=\sqrt{\frac{k}{m}},\qquad
+|\mathrm I\rangle=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix},\qquad
+\Omega|\mathrm I\rangle=-\omega_{\mathrm I}^2|\mathrm I\rangle.
+$$
+
+$$ {#eq-1.8.31b}
+\omega_{\mathrm {II}}=\sqrt{\frac{3k}{m}},\qquad
+|\mathrm {II}\rangle=\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix},\qquad
+\Omega|\mathrm {II}\rangle=-\omega_{\mathrm {II}}^2|\mathrm {II}\rangle.
+$$
+
+请区分两种数：$\Omega$ 的本征值是负数 $-k/m,-3k/m$，物体运动的角频率则是正数 $\omega_{\mathrm I},\omega_{\mathrm {II}}$。这里沿用原书的正常模记号，不能把角频率直接当成本征值。
+
+在新基中展开
+
+$$ {#eq-1.8.32}
+|x(t)\rangle=|\mathrm I\rangle x_{\mathrm I}(t)+|\mathrm {II}\rangle x_{\mathrm {II}}(t).
+$$
+
+由于两个基向量独立，代回运动方程后，各自的系数必须分别相等，得到两个互不耦合的方程：
+
+$$ {#eq-1.8.35}
+\ddot x_i+\omega_i^2x_i=0,\qquad i=\mathrm I,\mathrm {II}.
+$$
+
+如果初速度都为零，它们的解是
+
+$$ {#eq-1.8.36}
+x_i(t)=x_i(0)\cos(\omega_i t).
+$$
+
+这可以通过对余弦求两次导数核对；余弦在零时刻等于一，第一次导数在零时刻等于零，正好符合初始条件。若初速度不为零，还须加上 $\dot x_i(0)\sin(\omega_i t)/\omega_i$，本节下面的传播公式专门采用零初速度。
+
+初始向量沿两个正常模的系数由投影给出：
+
+$$
+x_{\mathrm I}(0)=\frac{x_1(0)+x_2(0)}{\sqrt2},\qquad
+x_{\mathrm {II}}(0)=\frac{x_1(0)-x_2(0)}{\sqrt2}.
+$$
+
+每个系数乘上对应的余弦，再换回原坐标，就得到整个运动：
+
+$$ {#eq-1.8.38a}
+x_1(t)=\frac{x_1(0)+x_2(0)}2\cos(\omega_{\mathrm I}t)
++\frac{x_1(0)-x_2(0)}2\cos(\omega_{\mathrm {II}}t).
+$$
+
+$$ {#eq-1.8.38b}
+x_2(t)=\frac{x_1(0)+x_2(0)}2\cos(\omega_{\mathrm I}t)
+-\frac{x_1(0)-x_2(0)}2\cos(\omega_{\mathrm {II}}t).
+$$
+
+若开始时两块同向等量位移，反向模的系数为零，中间弹簧始终不变长，两块以 $\sqrt{k/m}$ 振动。若开始时两块反向等量位移，同向模消失，中间弹簧的伸缩为单块位移的两倍，加上端部弹簧，等效回复系数是 $3k$，所以频率较高。一般初态就是这两种正常模的叠加。
+:::
+
+下面固定 $m=k=1$，使用无量纲时间 $t$。选择同向、反向、只移动第一块三种零初速度初态，拖动时间查看物理位移 $x_1,x_2$，并观察正常模坐标 $x_{\mathrm I},x_{\mathrm {II}}$ 如何各自独立变化。
+
+:::interactive[把混合运动拆成两种正常模]
+<CoupledModes />
+
+同向初态只有慢模，反向初态只有快模；单块初态同时含有两种频率。观察到的复杂位移来自简单模式的叠加，选择本征基正是为了把这些独立模式分离出来。
+:::
+
+### 传播子：对所有初态重复使用同一条规则
+
+把 @eq:1.8.38a 和 @eq:1.8.38b 写成矩阵，记 $c_{\mathrm I}=\cos(\omega_{\mathrm I}t)$、$c_{\mathrm {II}}=\cos(\omega_{\mathrm {II}}t)$，得到
+
+$$ {#eq-1.8.39}
+\begin{pmatrix}x_1(t)\\x_2(t)\end{pmatrix}
+=\frac12\begin{pmatrix}c_{\mathrm I}+c_{\mathrm {II}}&c_{\mathrm I}-c_{\mathrm {II}}\\c_{\mathrm I}-c_{\mathrm {II}}&c_{\mathrm I}+c_{\mathrm {II}}\end{pmatrix}
+\begin{pmatrix}x_1(0)\\x_2(0)\end{pmatrix}.
+$$
+
+这个矩阵只取决于系统和经过的时间，不取决于初始位移。把它叫作传播子 $U(t)$，便有
+
+$$ {#eq-1.8.40}
+|x(t)\rangle=U(t)|x(0)\rangle.
+$$
+
+用投影算符可把同一规则写得更简洁：
+
+$$ {#eq-1.8.41a}
+U(t)=|\mathrm I\rangle\langle\mathrm I|\cos(\omega_{\mathrm I}t)
++|\mathrm {II}\rangle\langle\mathrm {II}|\cos(\omega_{\mathrm {II}}t).
+$$
+
+作用时，先投影出初始向量在每个正常模上的成分，再分别乘时间因子，最后相加。例如它的左上矩阵元为 $U_{11}=(c_{\mathrm I}+c_{\mathrm {II}})/2$，与 @eq:1.8.39 一致。在正常模基下它则已经对角：
+
+$$ {#eq-1.8.43}
+U(t)\longleftrightarrow\begin{pmatrix}\cos(\omega_{\mathrm I}t)&0\\0&\cos(\omega_{\mathrm {II}}t)\end{pmatrix}.
+$$
+
+这里的 $U(t)$ 只是原书给传播子取的名字，不能因此断言它酉。对于只记录位移、并限定零初速度的这个映射，余弦可能为零，位移长度也不守恒。完整机械状态还包括速度。
+
+这套方法会在量子力学中再次出现：量子态满足 $i\hbar|\dot\psi\rangle=H|\psi\rangle$，其中 $H$ 为厄米的哈密顿算符，$\hbar=h/(2\pi)$。它是一阶时间方程，给出初始态便能决定初始导数。对于不随时间变化的 $H$，同样先解本征问题，再为各本征成分配上相应的时间因子。本节只建立这种数学路线，物理含义在后续章节展开。
+
+::::quiz
+:::question{false}
+一个二维矩阵的特征多项式有二重根，就一定有两个独立本征向量。
+
+一般矩阵可能缺少独立方向，例如正文中的上三角矩阵。有限维厄米或酉条件才保证可以选出完整的正交归一本征基。
+:::
+:::question{false}
+厄米算符的任意两个本征向量都互相正交。
+
+不同本征值才强制正交。同一本征值的子空间内可以选取非正交向量，也可以整理成正交归一基。
+:::
+:::question{true}
+当两块弹簧质量块初始位移相同、初速度均为零时，只出现同向正常模。
+
+因为 $x_{\mathrm {II}}(0)=(x_1(0)-x_2(0))/\sqrt2=0$。此后该模式的系数一直为零，中间弹簧不发生伸缩。
+:::
+:::question{false}
+两个对易的厄米算符，只要随手找出第一个的任意本征基，就一定已经同时对角化。
+
+如果第一个有简并，还要在它的简并子空间内对角化第二个，才能选出共同本征基。
+:::
+::::
+
+::source[依据 Shankar《Principles of Quantum Mechanics》第二版第一章本征值问题部分，独立编写中文学习讲解；保留已核对的公式、定理与例题标记。原书习题未逐题重制，判断题为本学习版自编。]

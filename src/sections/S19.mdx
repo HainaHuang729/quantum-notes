@@ -1,0 +1,129 @@
+import { SpectralGuide } from "./widgets/MathVisualGuides";
+
+export const id = "1.9";
+export const title = "算符也能代入函数";
+
+从 @sec:1.8 我们知道，把矩阵换到本征基底以后，许多操作会变成逐个处理对角元。现在问一个更进一步的问题：$\sin\Omega$、$e^\Omega$ 究竟是什么意思？不能把矩阵里的每个元素分别取正弦就当作答案，因为矩阵乘法会把不同元素联系起来。
+
+### 从幂级数定义算符函数
+
+先回顾普通 :c[函数]{#function}。一类函数可以写成 :c[幂级数]{#series}，即常数、一次项、二次项等的无限叠加：
+
+$$ {#eq-1.9.1}
+f(x)=\sum_{n=0}^{\infty}a_nx^n.
+$$
+
+只要相应的级数收敛，就把数换成算符，并把零次幂理解为恒等算符：
+
+$$ {#eq-1.9.2}
+f(\Omega)=\sum_{n=0}^{\infty}a_n\Omega^n,\qquad \Omega^0=I.
+$$
+
+这里的 $\Omega^2$ 是“先做一次 $\Omega$，再做一次”，而不是把每个矩阵元素平方。例如交换坐标的矩阵 $A=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ 满足 $A^2=I$；逐元素平方却仍等于 $A$，两种运算完全不同。
+
+:::example[(先用一个多项式练习)]
+
+取 $f(x)=1+2x+x^2$。代入算符时得到 $f(A)=I+2A+A^2=2I+2A$。若 $A|v\rangle=\lambda|v\rangle$，逐次作用给出 $A^n|v\rangle=\lambda^n|v\rangle$，于是 $f(A)|v\rangle=f(\lambda)|v\rangle$。同一个本征方向保留，沿这个方向的倍率变成了 $f(\lambda)$。
+
+:::
+
+最常见的例子是 :c[指数函数]{#exponential}：
+
+$$ {#eq-1.9.3}
+e^\Omega=\sum_{n=0}^{\infty}\frac{\Omega^n}{n!}=I+\Omega+\frac{\Omega^2}{2!}+\cdots.
+$$
+
+对于有限维矩阵，这个指数级数对任意矩阵都收敛。对一般的无界算符，定义域和收敛不能省略；本节先在有限维情形理解它。
+
+### 到本征基底中逐项计算
+
+设 $\Omega$ 是有限维厄米算符。在正交归一本征基底中，它的矩阵是
+
+$$ {#eq-1.9.4}
+\Omega=\operatorname{diag}(\omega_1,\ldots,\omega_N).
+$$
+
+对角矩阵相乘不会混合不同方向，因此
+
+$$ {#eq-1.9.5}
+\Omega^m=\operatorname{diag}(\omega_1^m,\ldots,\omega_N^m).
+$$
+
+把每一项累加：
+
+$$ {#eq-1.9.6}
+e^\Omega=\operatorname{diag}\!\left(\sum_{m=0}^{\infty}\frac{\omega_1^m}{m!},\ldots,\sum_{m=0}^{\infty}\frac{\omega_N^m}{m!}\right)=\operatorname{diag}(e^{\omega_1},\ldots,e^{\omega_N}).
+$$
+
+<div className="visual-context">
+
+回到不依赖坐标的语言，这就是谱展开 $f(\Omega)=\sum_j f(\omega_j)|\omega_j\rangle\langle\omega_j|$。有简并时，把同一本征值的项合成该本征子空间的投影即可。如果 $\Omega=SDS^\dagger$，原基底里的答案是 $f(\Omega)=Sf(D)S^\dagger$。
+
+<SpectralGuide />
+
+</div>
+
+:::example[(收敛条件不能丢)]
+
+普通几何级数 $1+x+x^2+\cdots$ 只在 $|x|<1$ 时收敛到 $(1-x)^{-1}$。对于厄米矩阵 $A$，相应结论是所有本征值都满足 $|\lambda_j|<1$ 时，$\sum_{n=0}^{\infty}A^n=(I-A)^{-1}$。即使逆矩阵存在，级数也未必收敛；例如 $A=2I$ 有 $(I-A)^{-1}=-I$，但幂级数发散。
+
+:::
+
+### 参数变化时，算符怎样求导
+
+若矩阵 $\Theta(\lambda)$ 依赖一个实参数，:c[导数]{#derivative}可以对每个矩阵元素分别求。现在先让 $\Omega$ 固定，仅改变数 $\lambda$：$\Theta(\lambda)=e^{\lambda\Omega}$。对幂级数逐项求导并重新编号，得到
+
+$$
+\begin{aligned}
+\frac{d}{d\lambda}\sum_{n=0}^\infty\frac{\lambda^n\Omega^n}{n!}
+&=\sum_{n=1}^\infty\frac{n\lambda^{n-1}\Omega^n}{n!}\\
+&=\Omega\sum_{n=1}^\infty\frac{\lambda^{n-1}\Omega^{n-1}}{(n-1)!}
+=\Omega e^{\lambda\Omega}.
+\end{aligned}
+$$
+
+常数项求导为零，因此新求和从 $n=1$ 开始；$n/n!=1/(n-1)!$，再令 $m=n-1$ 就认出了原来的指数级数。于是
+
+$$ {#eq-1.9.7}
+\frac{d\Theta}{d\lambda}=\Omega e^{\lambda\Omega}=e^{\lambda\Omega}\Omega=\Theta(\lambda)\Omega.
+$$
+
+中间能交换顺序，是因为 $\Omega$ 与它自己的每一个幂都可交换。配合初值 $\Theta(0)=I$，这给出常系数矩阵微分方程的解。对于一般初值 $\Theta(0)=C$，方程 $\Theta'=\Omega\Theta$ 的解是 $\Theta=e^{\lambda\Omega}C$；$C$ 不能随意挪到左边，除非它也与 $\Omega$ 可交换。
+
+### 有两个算符时，必须保留顺序
+
+同一个算符的指数满足 $e^{a\Omega}e^{b\Omega}=e^{(a+b)\Omega}$。但对不同算符 $\Omega,\Lambda$，通常 $e^{a\Omega}e^{b\Lambda}\ne e^{a\Omega+b\Lambda}$。在幂级数的二阶项里，左右两种写法分别出现有序乘积与对称组合；当 $[\Omega,\Lambda]\ne0$ 时，它们就可能不同。
+
+乘积求导仍遵守“前导后不导，加上前不导后导”，但乘积的次序必须保留：
+
+$$ {#eq-1.9.8}
+\frac{d}{d\lambda}\left(e^{\lambda\Omega}e^{\lambda\Lambda}\right)=\Omega e^{\lambda\Omega}e^{\lambda\Lambda}+e^{\lambda\Omega}e^{\lambda\Lambda}\Lambda.
+$$
+
+这里只能让 $\Omega$ 穿过自己的指数，不能未经证明就穿过 $e^{\lambda\Lambda}$。
+
+:::example[(厄米算符生成酉变换)]
+
+设 $H=H^\dagger$。由于 $(e^{iH})^\dagger=e^{-iH}$，而 $H$ 与自己可交换，$U^\dagger U=e^{-iH}e^{iH}=I$。所以 $U=e^{iH}$ 是酉算符。它改变复向量的相位和方向，却保持内积与长度；以后量子态的时间演化会使用这种结构。
+
+:::
+
+::::quiz
+
+:::question{false}
+
+矩阵指数可以把每个矩阵元素分别取指数得到。
+
+一般不行。定义使用矩阵幂；特别是零矩阵的指数是恒等矩阵，不是每个元素都为一的矩阵。
+:::
+
+:::question{true}
+
+固定矩阵与它自己的指数可交换。
+
+指数是同一个矩阵的幂级数；每一项都与原矩阵可交换。这不能推导出它与其他矩阵也可交换。
+:::
+
+::::
+
+::source[依据原书本节，印刷页 54–57。中文独立讲解；习题采用原创自测。]

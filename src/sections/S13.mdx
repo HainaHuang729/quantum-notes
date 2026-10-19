@@ -1,0 +1,251 @@
+import { GramSchmidtLab } from "./widgets/EarlyLabs";
+import { DualGuide } from "./widgets/MathVisualGuides";
+
+export const id = "1.3";
+export const title = "对偶空间与 Dirac 记号";
+
+@sec:1.2 用“一行乘一列”得到内积。Dirac 记号给这一行也起一个抽象的名字：$\langle V|$，读作“bra V”。一个 ket 表示向量，一个 bra 则接收 ket 并输出一个数。把两者接起来，便是 $\langle V|W\rangle$。这里所有分量表示都基于正交归一基。
+
+### bra 与 ket 的对应
+
+从 ket 的分量列变成相应 bra 的分量行，需要两步：转置，再对每个分量取 :c[复共轭]{#conjugate}。这个组合称“伴随”，用 $\dagger$ 标记。
+
+$$ {#eq-1.3.1}
+|V\rangle\longleftrightarrow
+\begin{pmatrix}v_1\\v_2\\\vdots\\v_n\end{pmatrix}
+\longleftrightarrow
+\begin{pmatrix}v_1^*&v_2^*&\cdots&v_n^*\end{pmatrix}
+\longleftrightarrow\langle V|.
+$$
+
+向量与数表的对应依赖选定的基，ket 与相应 bra 的抽象对应则由内积决定，不必先指定一组基。所有 bra 也能相加、数乘，并组成与 ket 空间相配的对偶空间。把 bra 理解为“测量分量的线性规则”很有用：固定 $\langle V|$ 后，它对输入 $a|W\rangle+b|Z\rangle$ 输出 $a\langle V|W\rangle+b\langle V|Z\rangle$。但 ket 到对应 bra 的映射是反线性的，因为这一步会共轭系数。
+
+<div className="visual-context">
+
+例如 $|V\rangle=(1,2i)^{\mathsf T}$，其 bra 是 $(1,-2i)$。在正交归一基中，基 ket $|j\rangle$ 的列只在第 $j$ 个位置为 $1$，基 bra $\langle j|$ 的行也只有该位置为 $1$。将 $\langle j|$ 乘任意分量列，就是读取那一项。
+
+<DualGuide />
+
+</div>
+
+### 1.3.1 在正交归一基下展开
+
+从假定的基展开出发：
+
+$$ {#eq-1.3.2}
+|V\rangle=\sum_i v_i|i\rangle.
+$$
+
+左乘 $\langle j|$，只留下第 $j$ 项：
+
+$$ {#eq-1.3.3}
+\langle j|V\rangle=\sum_i v_i\langle j|i\rangle
+=\sum_i v_i\delta_{ji},
+$$
+
+$$ {#eq-1.3.4}
+\langle j|V\rangle=v_j.
+$$
+
+因此“求分量”可以写成内积，无须猜系数。再将系数代回，得到
+
+$$ {#eq-1.3.5}
+|V\rangle=\sum_i|i\rangle\langle i|V\rangle.
+$$
+
+先由 $\langle i|V\rangle$ 读出第 $i$ 个分量，再乘上 $|i\rangle$ 放回那个方向，最后求和。这就是重建整个向量。后面在 @sec:1.6 中，还会把 $\sum_i|i\rangle\langle i|$ 看作恒等算符。
+
+把同一关系再写成基展开和列式，就能看清抽象记号与数表的对应：
+
+$$ {#eq-1.3.6}
+|V\rangle=\sum_i v_i|i\rangle,
+$$
+
+$$ {#eq-1.3.7}
+\begin{pmatrix}v_1\\v_2\\\vdots\\v_n\end{pmatrix}
+=v_1\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}
++v_2\begin{pmatrix}0\\1\\\vdots\\0\end{pmatrix}
++\cdots+v_n\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
+$$
+
+### 1.3.2 伴随操作
+
+标量乘 ket 后，对整个对象取伴随，标量也要共轭：
+
+$$ {#eq-1.3.8}
+a|V\rangle\longleftrightarrow
+\begin{pmatrix}av_1\\ av_2\\\vdots\\ av_n\end{pmatrix}
+\longmapsto
+\begin{pmatrix}a^*v_1^*&a^*v_2^*&\cdots&a^*v_n^*\end{pmatrix}
+\longleftrightarrow\langle V|a^*.
+$$
+
+所以尽管 $|aV\rangle$ 是 $a|V\rangle$ 的简写，相应的 bra 却是
+
+$$ {#eq-1.3.9}
+\langle aV|=\langle V|a^*.
+$$
+
+例如若 $a=i$，相应的 bra 系数为 $-i$，不能仍保留 $i$。一个向量等式
+
+$$ {#eq-1.3.10}
+a|V\rangle=b|W\rangle+c|Z\rangle+\cdots
+$$
+
+取伴随后给出另一个同样成立的等式：
+
+$$ {#eq-1.3.11}
+\langle V|a^*=\langle W|b^*+\langle Z|c^*+\cdots.
+$$
+
+基展开也照此处理：
+
+$$ {#eq-1.3.12}
+|V\rangle=\sum_{i=1}^{n}v_i|i\rangle,
+\qquad\langle V|=\sum_{i=1}^{n}\langle i|v_i^*.
+$$
+
+因为 $v_i=\langle i|V\rangle$ 而 $v_i^*=\langle V|i\rangle$，
+
+$$ {#eq-1.3.13}
+|V\rangle=\sum_{i=1}^{n}|i\rangle\langle i|V\rangle
+$$
+
+的伴随是
+
+$$ {#eq-1.3.14}
+\langle V|=\sum_{i=1}^{n}\langle V|i\rangle\langle i|.
+$$
+
+可以把规则记成一项操作：**整串因子倒序，bra 与 ket 互换，标量取共轭。** 实数标量也遵守规则，只是共轭后看不出变化。保留因子次序的习惯，是为了以后加入不能随意交换的算符。
+
+### Gram–Schmidt：减去已经拥有的方向
+
+现在证明 @theorem:3。假设 $|I\rangle,|II\rangle,|III\rangle,\ldots$ 是原来的线性无关基。罗马数字命名旧基，阿拉伯数字命名新基，以免把两者混在一起。第一步先归一化：
+
+$$
+|1\rangle=\frac{|I\rangle}{|I|},\qquad
+|I|=\sqrt{\langle I|I\rangle},\qquad
+\langle1|1\rangle=1.
+$$
+
+接着从第二个旧向量中减掉沿 $|1\rangle$ 的投影：
+
+$$
+|2'\rangle=|II\rangle-|1\rangle\langle1|II\rangle.
+$$
+
+左乘 $\langle1|$，便能直接检查正交性：
+
+$$
+\langle1|2'\rangle
+=\langle1|II\rangle-\langle1|1\rangle\langle1|II\rangle=0.
+$$
+
+再令 $|2\rangle=|2'\rangle/|2'|$。第三次要同时减去前两个方向：
+
+$$
+|3'\rangle=|III\rangle-|1\rangle\langle1|III\rangle
+-|2\rangle\langle2|III\rangle,
+\qquad |3\rangle=\frac{|3'\rangle}{|3'|}.
+$$
+
+一般步骤是 $|k'\rangle=|K\rangle-\sum_{j<k}|j\rangle\langle j|K\rangle$，再归一化。若原来的成员线性无关，剩余向量不可能为零，否则 $|K\rangle$ 已经由前面的成员表达，违背假设。若输入线性相关，算法会在某步遇到零剩余量，不能继续除以长度。
+
+下面取固定的 $I=(2,1)$、可调的 $II=(u,v)$。令 $e_1=I/\sqrt5$，投影 $p=e_1(e_1\cdot II)$，剩余量 $r=II-p$。想得到第二个单位基向量，就要让 $r$ 非零，然后除以 $|r|$。
+
+:::interactive[把第二支箭头中重复的方向拿掉]
+
+<GramSchmidtLab />
+
+剩余量 $r$ 与第一方向的点积为零。输入恰好平行时 $r=0$，没有新的方向；接近平行时 $r$ 很短，归一化会放大输入误差。正交化的几何意义是先删除重复部分，再调整尺度。
+:::
+
+:::example[#gram-schmidt-worked]
+取 $I=(1,1,0)$、$II=(1,0,1)$。先得 $e_1=(1,1,0)/\sqrt2$，投影为 $(1,1,0)/2$。剩余量 $r=(1/2,-1/2,1)$，长度 $\sqrt{3/2}$，因此 $e_2=(1,-1,2)/\sqrt6$。检查 $e_1\cdot e_2=0$ 且两个长度均为 $1$。改变处理顺序通常会得到另一组同样合法的正交归一基。
+:::
+
+:::theorem[4 (维数与正交方向)]
+有限维内积空间的维数，等于其中两两正交的非零向量所能达到的最大个数。
+:::
+
+先看两两正交的非零向量为什么独立：若 $\sum_i a_i|i\rangle=0$，左乘 $\langle j|$ 后只剩 $a_j\langle j|j\rangle=0$。因 $\langle j|j\rangle>0$，得 $a_j=0$。所以正交向量不能多于维数；反过来，Gram–Schmidt 能从一组基造出同样多的正交非零向量，故也不能少于维数。
+
+### Schwarz 不等式与三角不等式
+
+:::theorem[5 (Schwarz 不等式)]
+内积的模不超过两个向量的长度之积：
+
+$$ {#eq-1.3.15}
+|\langle V|W\rangle|\le |V|\,|W|.
+$$
+:::
+
+:::theorem[6 (三角不等式)]
+两个向量相加后的长度，不超过它们长度之和：
+
+$$ {#eq-1.3.16}
+|V+W|\le |V|+|W|.
+$$
+:::
+
+对实箭头，前一结论对应 $|\cos\theta|\le1$，后一结论对应走三角形两边不会比直达更短。抽象空间里不必诉诸画图，直接利用非负长度证明即可。
+
+当 $|W\rangle\ne0$，从 $|V\rangle$ 中扣除沿 $|W\rangle$ 的投影，构造
+
+$$ {#eq-1.3.17}
+|Z\rangle=|V\rangle-\frac{\langle W|V\rangle}{|W|^2}|W\rangle.
+$$
+
+展开其非负范数平方，注意左侧系数取共轭：
+
+$$ {#eq-1.3.18}
+\begin{aligned}
+0\le\langle Z|Z\rangle
+&=\langle V|V\rangle
+-\frac{\langle W|V\rangle\langle V|W\rangle}{|W|^2}
+-\frac{\langle W|V\rangle^*\langle W|V\rangle}{|W|^2}\\
+&\quad+\frac{\langle W|V\rangle^*\langle W|V\rangle\langle W|W\rangle}{|W|^4}\\
+&=|V|^2-\frac{|\langle W|V\rangle|^2}{|W|^2}.
+\end{aligned}
+$$
+
+所以
+
+$$ {#eq-1.3.19}
+\langle V|V\rangle\ge
+\frac{\langle W|V\rangle\langle V|W\rangle}{|W|^2}.
+$$
+
+两边乘 $|W|^2$ 再开方，就是 @eq:1.3.15。若 $W=0$ 则两边直接为零，不需要除法。等号要求剩余量 $Z=0$，也就是两个非零向量线性相关；复数空间中的比例可以是复数。
+
+三角不等式可由它推得。利用复数实部不超过模长，
+
+$$
+\begin{aligned}
+|V+W|^2
+&=|V|^2+|W|^2+2\operatorname{Re}\langle V|W\rangle\\
+&\le |V|^2+|W|^2+2|\langle V|W\rangle|\\
+&\le(|V|+|W|)^2.
+\end{aligned}
+$$
+
+开方得到 @eq:1.3.16。对两个非零向量，等号还要求比例系数为正实数；仅仅“复数意义下平行”还不够。任意一方为零时也有等号。
+
+::::quiz
+
+:::question{false}
+若 $|A\rangle=i|B\rangle$，那么 $\langle A|=i\langle B|$。
+
+取伴随后系数应变为 $-i$，所以 $\langle A|=-i\langle B|$。这正是 ket 到 bra 的反线性。
+:::
+
+:::question{true}
+取 $V=(1,0)$、$W=(i,0)$，Schwarz 不等式取等号，但三角不等式不取等号。
+
+两个长度均为 $1$，内积模为 $1$；然而和向量长度为 $|1+i|=\sqrt2<2$。二者不是正实数倍关系。
+:::
+
+::::
+
+::source[数学内容对应 Shankar 第二版本节，纸本页 11 至 17。原书中延后到本节的正交化与不等式证明均在此展开。]

@@ -1,0 +1,337 @@
+import { BasisSynthesisLab } from "./widgets/BasisSynthesisLab";
+import { ThermalOscillatorLab } from "./widgets/ThermalOscillatorLab";
+
+export const id = "7.5";
+export const title = "从能量基到位置基";
+
+@sec:7.3 在位置表象里直接解微分方程，@sec:7.4 在能量基里用 $a,a^\dagger$ 得到能谱和矩阵元。两条路线描述的是同一个振子，不是两个不同的物理系统。本节不再解一遍能级，而是把能量本征态投影到位置基，看看代数关系怎样变成波函数，再把同一组能量系数与位置图放在一起比较。内积与复共轭的规则见 @sec:4.2；升降算符的对易关系见 @sec:7.4。
+
+### 为什么不先对角化 X
+
+能量基的优点是把 Hamiltonian 变成对角矩阵，把矩阵元变成简单的代数。若想求 $\langle x|n\rangle$，也可以先找 $X$ 的全部本征态 $|x\rangle$，再对无限矩阵 $X$ 作对角化；但这是一条绕远的路。更直接的办法是从最低态满足的代数方程出发：
+
+$$ {#eq-7.5.1}
+a|0\rangle=0.
+$$
+
+这不是一个微分方程，而是一个代数向量关系。把它投影到 $X$ 表象后，才得到一个一阶微分方程；它只要求一个态被降算符送到零，没有同时要求它是一个能量本征值问题的解。解出它在 $X$ 表象中的波函数后，再用 $a^\dagger$ 逐次作用，就能生成其余全部 $\psi_n$。这条路线之所以可行，依赖于 @sec:7.4 已经证明的结论：$|0\rangle$ 是最低态，$a^\dagger$ 每次把能级抬高一级，而且这些态构成完整的正交基。本节只使用这些结论，不重证能谱。
+
+### 把升降算符投影到位置表象
+
+@sec:7.4 把升降算符写成
+
+$$
+a=\left(\frac{m\omega}{2\hbar}\right)^{1/2}X
++i\left(\frac{1}{2m\omega\hbar}\right)^{1/2}P,
+\qquad
+a^\dagger=\left(\frac{m\omega}{2\hbar}\right)^{1/2}X
+-i\left(\frac{1}{2m\omega\hbar}\right)^{1/2}P.
+$$
+
+在位置表象中作替换 $X\to x$、$P\to -i\hbar\,d/dx$。注意 $iP$ 的符号：$i(-i\hbar\,d/dx)=+\hbar\,d/dx$，所以 $a$ 的导数项是正的。投影结果为
+
+$$ {#eq-7.5.2}
+a\longrightarrow
+\left(\frac{m\omega}{2\hbar}\right)^{1/2}x
++\left(\frac{\hbar}{2m\omega}\right)^{1/2}\frac{d}{dx}.
+$$
+
+对 $a^\dagger$ 作同样的替换，$-iP$ 给出负号：
+$$
+a^\dagger\longrightarrow
+\left(\frac{m\omega}{2\hbar}\right)^{1/2}x
+-\left(\frac{\hbar}{2m\omega}\right)^{1/2}\frac{d}{dx}.
+$$
+源书在 @eq:7.5.2 只写出 $a$ 的投影；$a^\dagger$ 的这一行由伴随关系得到，不是另一条独立假设。为了把 $m,\omega,\hbar$ 从方程里拿掉，定义无量纲坐标
+
+$$
+y=\left(\frac{m\omega}{\hbar}\right)^{1/2}x,
+\qquad
+\frac{d}{dx}=\left(\frac{m\omega}{\hbar}\right)^{1/2}\frac{d}{dy}.
+$$
+
+代回后，两个算符都只剩一个 $1/\sqrt2$：
+
+$$ {#eq-7.5.3}
+a=\frac{1}{\sqrt2}\left(y+\frac{d}{dy}\right),
+$$
+
+$$ {#eq-7.5.4}
+a^\dagger=\frac{1}{\sqrt2}\left(y-\frac{d}{dy}\right).
+$$
+
+这两个式子也给出后面要用的组合：
+$$
+a+a^\dagger=\sqrt2\,y,
+\qquad
+a-a^\dagger=\sqrt2\,\frac{d}{dy}.
+$$
+
+这里有一个定义域问题不能跳过。$d/dy$ 本身不是厄米算符；在整条实轴、函数及其导数在无穷远足够快衰减的共同定义域上，分部积分产生的边界项为零，$d/dy$ 的形式伴随才是 $-d/dy$，因此 $a^\dagger$ 是 $a$ 的伴随。若把问题限制在半直线，或改变边界条件，这个结论必须重新检查。形式上的对称不等于已经证明了自伴性。
+
+### 投影后解一阶方程，得到归一化 Gaussian
+
+把 @eq:7.5.3 代入 @eq:7.5.1，并在 $X$ 表象中写成波函数：
+
+$$ {#eq-7.5.5}
+\left(y+\frac{d}{dy}\right)\psi_0(y)=0.
+$$
+
+移项得
+
+$$
+\frac{d\psi_0}{dy}=-y\,\psi_0,
+$$
+
+这是一个最简单的可分离 :c[微分方程]{#differential-equation}。在 $y$ 坐标中，它的通解是 $N_0e^{-y^2/2}$。为了让无量纲函数
+
+$$
+\phi_0(y)=N_0e^{-y^2/2},
+\qquad
+\int_{-\infty}^{\infty}|\phi_0(y)|^2dy=1
+$$
+
+归一，用 :c[积分]{#integral} $\int_{-\infty}^{\infty}e^{-y^2}dy=\sqrt\pi$ 得到 $N_0=\pi^{-1/4}$。注意这是在 $dy$ 下的归一化常数，不是物理 $x$ 波函数的振幅。
+
+物理波函数还要乘上坐标变换 Jacobian 的平方根。令
+
+$$
+\ell=\left(\frac{\hbar}{m\omega}\right)^{1/2}
+$$
+
+为振子的自然长度，则 $x=\ell y$、$dx=\ell\,dy$，所以
+
+$$
+\psi_0(x)=\ell^{-1/2}\phi_0(x/\ell)
+=\ell^{-1/2}\pi^{-1/4}e^{-x^2/(2\ell^2)}.
+$$
+
+把 $\ell$ 代回，就得到
+
+$$ {#eq-7.5.6}
+\psi_0(x)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+\exp\left(-\frac{m\omega x^2}{2\hbar}\right).
+$$
+
+两种写法一致；若直接用 $\phi_0(x/\ell)$ 作为物理波函数，对 $dx$ 积分的模平方会得到 $\ell$，而不是 $1$。归一化是在整条实轴上做的，不是在显示窗口里把曲线重新缩放。
+
+### 升算符生成 Hermite 波函数
+
+@sec:7.4 给出
+$$
+|n\rangle=\frac{(a^\dagger)^n}{\sqrt{n!}}|0\rangle,
+$$
+其中 $n!$ 是 :c[阶乘]{#factorial}。把右边投影到 $X$ 表象，依次使用 @eq:7.5.4 和 @eq:7.5.6，就得到
+
+$$ {#eq-7.5.7}
+\langle x|n\rangle=\psi_n(x)
+=\frac{1}{\sqrt{n!}}
+\left[\frac{1}{\sqrt2}\left(y-\frac{d}{dy}\right)\right]^n
+\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}e^{-y^2/2},
+\qquad
+x=\ell y.
+$$
+
+方括号表示整个微分算符的 $n$ 次复合，它作用在右边的 Gaussian 上，不是只作用在 $e^{-y^2/2}$ 的某一部分。把 $e^{-y^2/2}$ 提出来后，剩下的多项式就是 Hermite 多项式。源书用
+
+$$ {#eq-7.5.8}
+H_n(y)=e^{y^2/2}\left(y-\frac{d}{dy}\right)^n e^{-y^2/2}
+$$
+
+定义它。这个定义与 @eq:7.3.21 的低阶多项式一致：$H_0=1$、$H_1=2y$、$H_2=4y^2-2$。若换用概率论中另一种 Hermite 约定，变量的缩放与归一化约定也要相应改变。
+
+为了把物理归一化写清楚，定义无量纲函数
+
+$$
+\phi_n(y)=\frac{1}{\sqrt{2^n n!}}\pi^{-1/4}H_n(y)e^{-y^2/2},
+\qquad
+\int_{-\infty}^{\infty}|\phi_n(y)|^2dy=1.
+$$
+
+那么 @eq:7.5.7 可以改写成
+
+$$
+\psi_n(x)=\ell^{-1/2}\phi_n(x/\ell).
+$$
+
+这个 $\ell^{-1/2}$ 是 Jacobian $|dy/dx|=1/\ell$ 的平方根。它保证
+$$
+\int_{-\infty}^{\infty}|\psi_n(x)|^2dx
+=\int_{-\infty}^{\infty}|\phi_n(y)|^2dy=1.
+$$
+@eq:7.3.22 已经给出同一个归一化波函数；这里只是从升降算符重新得到它，并强调 $x$ 归一化与 $y$ 归一化的区别，不重新推导能级或归一化常数。
+
+### Hermite 递推与升降算符
+
+@eq:7.5.8 的定义可以直接计算低阶多项式，但高阶时更省力的办法是回到升降算符。由 @sec:7.4，
+$$
+a|n\rangle=\sqrt n\,|n-1\rangle,
+\qquad
+a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle.
+$$
+
+先看 $a|n\rangle$。把 @eq:7.5.3 作用在 $\phi_n(y)$ 上，利用
+$$
+\left(y+\frac{d}{dy}\right)\left(H_ne^{-y^2/2}\right)
+=H_n'e^{-y^2/2},
+$$
+再比较两边 $H$ 的系数，就得到
+
+$$
+H_n'(y)=2nH_{n-1}(y).
+$$
+
+再看 $a^\dagger|n\rangle$。把 @eq:7.5.4 作用在同一个函数上，得到
+$$
+\left(y-\frac{d}{dy}\right)\left(H_ne^{-y^2/2}\right)
+=(2yH_n-H_n')e^{-y^2/2}.
+$$
+比较系数并用上面的导数关系，得到
+
+$$
+H_{n+1}(y)=2yH_n(y)-2nH_{n-1}(y).
+$$
+
+这两条正是 @eq:7.3.24 与 @eq:7.3.25 的 Hermite 递推；它们也可以看成 :c[递推关系]{#recurrence-relation} 的另一个来源。$n=0$ 时导数关系应读作 $H_0'=0$，递推给出 $H_1=2y$，与直接计算一致。这里没有引入新的特殊函数约定，也没有把递推当成能级条件；能级已经由 @sec:7.3 的全局边界条件确定。
+
+### 同一个态的两种表示
+
+设一个只占最低两个能级的纯态
+$$
+|\psi\rangle=c_0|0\rangle+c_1|1\rangle,
+\qquad
+|c_0|^2+|c_1|^2=1.
+$$
+在能量基中，它是一列两个复数；在位置基中，它是
+$$
+\psi(x)=c_0\psi_0(x)+c_1\psi_1(x).
+$$
+这两列数据不是两个物理态，而是同一个抽象态在两组基下的坐标。换基不改变态本身，也不改变任何测量概率；它只是换了一种写同一件事的方式。
+
+取
+$$
+c_0=\sqrt w\,e^{-i\omega t/2},
+\qquad
+c_1=\sqrt{1-w}\,e^{i\phi}e^{-3i\omega t/2},
+$$
+其中 $0\le w\le1$，$\phi$ 是相对相位。于是
+$$
+\psi(x,t)=\sqrt w\,\psi_0(x)e^{-i\omega t/2}
++\sqrt{1-w}\,e^{i\phi}\psi_1(x)e^{-3i\omega t/2}.
+$$
+这里的时间因子来自 @eq:7.3.20 的 $E_n=(n+1/2)\hbar\omega$；能级本身不再重新推导。能量权重是
+$$
+P(E_0)=w,
+\qquad
+P(E_1)=1-w,
+\qquad
+\langle E\rangle=\left(\frac32-w\right)\hbar\omega.
+$$
+
+由 $\langle0|x|1\rangle=\ell/\sqrt2$，最低两态的位置均值是
+$$
+\langle x\rangle
+=\ell\sqrt{2w(1-w)}\cos(\phi-\omega t).
+$$
+这个式子只描述这个两态截断模型，不是对整个振子谱的普遍结论。相对相位 $\delta=\phi-\omega t$ 改变干涉项，因此密度和 $\langle x\rangle$ 会随时间变；能量权重 $w,1-w$ 不随时间变。若再给整个态乘一个整体相位 $e^{i\kappa}$，$c_0,c_1$ 同时旋转，密度、$\langle x\rangle$ 与能量权重都不变。整体相位不可观测，相对相位才可以进入干涉。
+
+:::interactive[同一态的能量基与位置图]
+
+<BasisSynthesisLab />
+
+实验把同一组 $c_0,c_1$ 与 $\psi_0,\psi_1$ 逐点相加，左图显示概率密度及两个加权成分，右图显示实部与虚部；位置窗固定为 $[-5,5]$，窗外尾部在读数中单列，没有在窗内重新归一化。改变相对相位或单步时间会移动干涉项，而“整体乘 i”只旋转实部与虚部。$w=0$ 或 $1$ 时只剩一个能量本征态，时间只带来整体相位，密度与 $\langle x\rangle$ 保持不变。实验中的 $q$ 是以 $\ell$ 为单位的位置，$\hbar=m=\omega=1$。
+
+:::
+
+### 自测：投影、归一化与相位
+
+::::quiz
+
+:::question{true}
+$a|0\rangle=0$ 本身是代数向量关系；把它投影到 $X$ 表象后，才得到一阶微分方程。
+
+在 $X$ 表象中它变成 $(y+d/dy)\psi_0=0$，解为 Gaussian；解出基态后，再用 $a^\dagger$ 逐次作用生成其余态。
+:::
+
+:::question{false}
+若 $\phi_n(y)$ 在 $dy$ 下归一化，那么把 $\psi_n(x)=\phi_n(x/\ell)$ 直接当作物理波函数仍然满足 $dx$ 归一化。
+
+换变量 $x=\ell y$ 会带来 $dx=\ell\,dy$；物理波函数需要 $\psi_n(x)=\ell^{-1/2}\phi_n(x/\ell)$，否则积分会多出或缺少一个 $\ell$ 因子。
+:::
+
+:::question{false}
+给整个态乘一个整体相位 $e^{i\kappa}$ 会改变能量权重 $w$ 与 $1-w$。
+
+整体相位同时乘在 $c_0,c_1$ 上，模平方不变；只有相对相位 $\phi-\omega t$ 改变干涉项和位置密度。能量权重由 $|c_0|^2,|c_1|^2$ 决定，不受整体相位影响。
+:::
+
+::::
+
+:::::deepdive[热振子与热容]
+
+这一段对应原书带星号的热力学练习，是可选展开，不是后面必读内容的前提。它独立说明 Boltzmann 统计混合、经典与量子配分函数，以及 Einstein 晶体热容。这里出现的公式不冒充正文的源方程编号。
+
+设系统与温度为 $T$ 的热库平衡，处于能量 $E_i$ 的概率是
+$$
+P_i=\frac{e^{-\beta E_i}}{Z},
+\qquad
+Z=\sum_i e^{-\beta E_i},
+\qquad
+\beta=\frac{1}{k_BT}.
+$$
+$Z$ 是配分函数，$k_B$ 是 Boltzmann 常数。热平均能量为
+$$
+\bar E=\sum_i E_iP_i
+=-\frac{\partial}{\partial\beta}\ln Z.
+$$
+有限正温下，多个能量本征态按概率混合，不能用把 $\sqrt{P_i}$ 带着相位相加的单一波函数代替。零温极限则回到纯的基态。
+
+对经典谐振子，$H=p^2/(2m)+\frac12m\omega^2x^2$，相空间积分给出
+$$
+Z_{\rm cl}^{\rm raw}
+=\int\!\!\int e^{-\beta H}dx\,dp
+=\frac{2\pi}{\beta\omega}.
+$$
+若要把相空间元写成无量纲的 $dx\,dp/h$，则 $Z_{\rm cl}=Z_{\rm cl}^{\rm raw}/h=1/(\beta\hbar\omega)$。两种写法只差一个与 $\beta$ 无关的常数，对 $\beta$ 求导得到的平均能量相同：
+$$
+\bar E_{\rm cl}=\frac1\beta=k_BT.
+$$
+不要把“原书写的 $2\pi/(\beta\omega)$”与“除以 $h$ 后的无量纲版本”当成互相矛盾的公式；它们对应不同的相空间测度约定。
+
+量子振子的能级是 $E_n=(n+\frac12)\hbar\omega$。把 $e^{-\beta\hbar\omega}$ 看成公比，对几何级数求和得到
+$$
+Z_{\rm qu}
+=\frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta\hbar\omega}},
+\qquad
+\bar E_{\rm qu}
+=\hbar\omega\left(\frac12+\frac{1}{e^{\beta\hbar\omega}-1}\right).
+$$
+高温 $k_BT\gg\hbar\omega$ 时，$\bar E_{\rm qu}\to k_BT$，与经典结果一致。零点项 $\hbar\omega/2$ 不随温度变，因此不贡献热容；热容来自能级布居随温度重排。
+
+三维 Einstein 晶体把每个原子看成三个同频的独立振子，每原子热容是单振子的三倍：
+$$
+C_{\rm cl}=3k_B,
+\qquad
+C_{\rm qu}(T)
+=3k_B\left(\frac{\Theta_E}{T}\right)^2
+\frac{e^{\Theta_E/T}}{(e^{\Theta_E/T}-1)^2},
+\qquad
+\Theta_E=\frac{\hbar\omega}{k_B}.
+$$
+高温时 $C_{\rm qu}\to3k_B$；低温时
+$$
+C_{\rm qu}\sim3k_B\left(\frac{\Theta_E}{T}\right)^2e^{-\Theta_E/T}\to0.
+$$
+这个低温指数衰减来自“所有模同一个频率”的简化，不能给出一般真实晶体的 $T^3$ 律。Debye 模型需要引入频率分布，本节不推导它。原书用 diamond 的数据与 Einstein 曲线比较，并取 $\Theta_E=1320\,\mathrm K$；下面的实验只画理论曲线，不复制扫描图，也不伪造原始实验点。
+
+::::interactive[热振子：能量与热容]
+
+<ThermalOscillatorLab />
+
+读图时先看每个振子的无量纲温度 $\tau=k_BT/(\hbar\omega)$：平均能量从 $\tau=0$ 的 $1/2$ 出发，逐渐靠近经典直线 $\tau$；热容从 $0$ 上升并趋近 $1$。零点项与温度无关，对热容的导数为零。若按三维 Einstein 晶体每原子计，热容要再乘 $3$，读数中已单独标明；低温端仍是指数衰减，不是 Debye 的 $T^3$。
+
+::::
+
+:::::
+
+::source[依 Shankar, Principles of Quantum Mechanics, second edition (1994), Chapter 7 独立改写；保留 7.5 的八个方程标签，不复制英文原文。]

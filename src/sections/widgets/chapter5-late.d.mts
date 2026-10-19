@@ -1,0 +1,3 @@
+export function twoPathGeometry(y:number,wavelength:number,separation:number,distance:number):{upper:number;lower:number;pathDifference:number;phase:number;approxPhase:number;intensity:number;approximate:number;error:number};
+export function geometryWindow(wavelength:number,separation:number,distance:number):{normalizer:number;centerProbability:number;edgeError:number;branch:'accurate'|'noticeable'};
+export function realEigenstate(weight:number,globalDegrees:number):{real:(x:number)=>number;imaginary:(x:number)=>number;energy:number;energyVariance:number;minimumImaginaryNorm:number;currentImaginaryNorm:number;branch:'eigenstate'|'superposition'};

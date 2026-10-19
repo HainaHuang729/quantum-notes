@@ -1,0 +1,114 @@
+import { CanonicalMomentumFigure } from "./widgets/ClassicalQuantumVisualGuides";
+
+export const id = "2.2";
+export const title = "电磁拉格朗日量：把速度相关的力放进来";
+
+### 磁力让问题多了一个速度
+
+质量为 $m$、电荷为 $q$ 的粒子处于电场 $\mathbf E$ 和磁场 $\mathbf B$ 中时，受洛伦兹力
+
+$$ {#eq-2.2.1}
+\mathbf F=q\left(\mathbf E+\frac{\mathbf v}{c}\times\mathbf B\right).
+$$
+
+这里 $\mathbf v=\dot{\mathbf r}$，$c$ 是光速，$\times$ 是 :c[向量叉积]{#cross-product}。本节沿用原书的高斯单位制，不能将公式中的 $1/c$ 随意删掉。$q$ 在本节表示电荷；之前的广义坐标 $q_i$ 是另一种用途的字母。电场项可以直接推动带电粒子，磁场项则取决于速度，所以只会产生位置势能的 $\mathcal L=T-V(\mathbf r)$ 还不够。
+
+### 用两个势描述电磁场
+
+引入标量势 $\phi(\mathbf r,t)$ 和矢量势 $\mathbf A(\mathbf r,t)$，取
+
+$$ {#eq-2.2.2}
+\mathcal L_{\mathrm{em}}=\frac12m\mathbf v\cdot\mathbf v-q\phi+\frac qc\mathbf v\cdot\mathbf A.
+$$
+
+场与势的关系是
+
+$$ {#eq-2.2.3}
+\mathbf E=-\boldsymbol\nabla\phi-\frac1c\frac{\partial\mathbf A}{\partial t},
+$$
+
+$$ {#eq-2.2.4}
+\mathbf B=\boldsymbol\nabla\times\mathbf A.
+$$
+
+$\boldsymbol\nabla\phi$ 的三个分量是 $\partial\phi/\partial x_i$，测量势随位置的变化率。$\boldsymbol\nabla\times\mathbf A$ 称为旋度，例如其 $z$ 分量为 $\partial A_y/\partial x-\partial A_x/\partial y$。这些都是 :c[偏导数]{#partial-derivative}：求某个方向上的变化时，其余坐标和时间先固定。势不必唯一，但此处先给定一组势，检查它是否产生正确运动方程。
+
+### 对速度求导先得到什么
+
+把 $x_i$ 作为坐标，欧拉–拉格朗日方程给出
+
+$$ {#eq-2.2.5}
+\frac d{dt}\left(m\dot x_i+\frac qc A_i\right)
+=-q\frac{\partial\phi}{\partial x_i}
++\frac qc\frac{\partial(\mathbf v\cdot\mathbf A)}{\partial x_i},\qquad i=1,2,3.
+$$
+
+左端来自 $\partial\mathcal L/\partial\dot x_i$：动能贡献 $m\dot x_i$，线性速度项贡献 $qA_i/c$。右端求位置偏导时，把各个 $\dot x_j$ 当作独立变量固定。将三个分量并在一起，便是
+
+$$ {#eq-2.2.6}
+\frac d{dt}\left(m\mathbf v+\frac qc\mathbf A\right)
+=-q\boldsymbol\nabla\phi+\frac qc\boldsymbol\nabla(\mathbf v\cdot\mathbf A).
+$$
+
+因此与位置共轭的正则动量为
+
+$$ {#eq-2.2.7}
+\mathbf p=m\mathbf v+\frac qc\mathbf A.
+$$
+
+<div className="visual-context">
+
+机械动量 $m\mathbf v$ 则直接由质量和速度决定。它们在一般电磁场中不同；把正则动量总写成 $m\mathbf v$，会在后面的哈密顿量里丢掉磁场效应。
+
+<CanonicalMomentumFigure caption="对速度求导得到正则动量；图中将它拆成机械部分与矢量势部分。" />
+
+</div>
+
+### 随粒子变化，不等于只随时间变化
+
+从 @eq:2.2.6 移走矢量势项：
+
+$$ {#eq-2.2.8}
+\frac d{dt}(m\mathbf v)
+=-q\boldsymbol\nabla\phi+\frac qc\left[-\frac{d\mathbf A}{dt}+\boldsymbol\nabla(\mathbf v\cdot\mathbf A)\right].
+$$
+
+粒子运动时，即使场在每个固定位置都不随时间变，粒子也可能走进不同的场值。用 :c[链式法则]{#chain-rule} 对沿轨迹读取的势求导，得到
+
+$$
+\frac{d\mathbf A(\mathbf r(t),t)}{dt}
+=\frac{\partial\mathbf A}{\partial t}+(\mathbf v\cdot\boldsymbol\nabla)\mathbf A.
+$$
+
+例如 $A_y=bx$ 且没有显含时间，仍有 $dA_y/dt=b\dot x$。这里总导数 $d/dt$ 追踪移动的粒子，偏导数 $\partial/\partial t$ 观察固定位置，不能把二者互换。
+
+### 磁场项怎样从偏导数里出现
+
+代入总导数后，运动方程成为
+
+$$ {#eq-2.2.9}
+\frac d{dt}(m\mathbf v)
+=-q\boldsymbol\nabla\phi-\frac qc\frac{\partial\mathbf A}{\partial t}
++\frac qc\left[\boldsymbol\nabla(\mathbf v\cdot\mathbf A)-(\mathbf v\cdot\boldsymbol\nabla)\mathbf A\right].
+$$
+
+方括号第 $i$ 个分量为 $\sum_jv_j(\partial_iA_j-\partial_jA_i)$，恰好等于 $[\mathbf v\times(\boldsymbol\nabla\times\mathbf A)]_i$。例如它的 $x$ 分量是 $v_y(\partial_xA_y-\partial_yA_x)+v_z(\partial_xA_z-\partial_zA_x)=v_yB_z-v_zB_y$。再使用场与势的关系，前两项合成 $q\mathbf E$，方括号合成 $\mathbf v\times\mathbf B$，于是恢复 @eq:2.2.1。
+
+### 速度项不等于一份磁势能
+
+虽然可以形式上写 $\mathcal L=T-U$，其中 $U=q\phi-(q/c)\mathbf v\cdot\mathbf A$，但这个 $U$ 不能一概当作普通势能。磁力始终与速度垂直，所以磁力的功率 $\mathbf F_B\cdot\mathbf v=0$；它改变运动方向，却不直接改变动能。一般时变电磁场也不保证具有只由端点决定的势能。拉格朗日量的核心要求是通过变分给出正确动力学，$T-V$ 是一类常见系统的简便形式。
+
+::::quiz
+:::question{false}
+若矢量势没有显含时间，沿粒子运动求出的 $d\mathbf A/dt$ 必定为零。
+
+粒子仍可能穿过空间上不同的矢量势。例如 $A_y=bx$ 时，沿轨迹的导数是 $b\dot x$，即使 $\partial A_y/\partial t=0$。
+:::
+:::question{true}
+若某时刻 $\mathbf v$ 与 $\mathbf B$ 平行，磁力在该时刻为零。
+
+平行向量的叉积为零。电场力仍可能存在，不能据此断言总力为零。
+:::
+::::
+
+::source[依据 Shankar 第二版电磁拉格朗日量一节独立编写；公式采用原书高斯单位制，保留核对过的标签。]

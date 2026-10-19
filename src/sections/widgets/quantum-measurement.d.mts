@@ -1,0 +1,18 @@
+export type Complex = [number, number];
+export type ComplexState = Complex[];
+export type BornParameters = { r: number; phiPi: number; gammaPi: number; beta: number };
+export type MeasurementOutcome = { label: string; value: number; vectors: ComplexState[] };
+export type MeasurementResult = { index: number; outcome: MeasurementOutcome; probability: number; probabilities: number[]; after: ComplexState };
+export const BORN_PRESETS: (BornParameters & { label: string })[];
+export function normSquared(state: ComplexState): number;
+export function normalizeState(state: ComplexState): ComplexState;
+export function innerProduct(a: ComplexState, b: ComplexState): Complex;
+export function realBasis(beta: number): ComplexState[];
+export function bornBasisState(parameters: BornParameters): { state: ComplexState; basis: ComplexState[]; amplitudes: Complex[]; probabilities: number[]; mixture: number[]; branch: string };
+export function preparedState(dimension: number): ComplexState;
+export function measurementObservable(dimension: number, which: "A" | "B"): MeasurementOutcome[];
+export function projectState(state: ComplexState, vectors: ComplexState[]): ComplexState;
+export function measurementDistribution(state: ComplexState, observable: MeasurementOutcome[]): number[];
+export function projectiveMeasurement(state: ComplexState, observable: MeasurementOutcome[], randomValue: number): MeasurementResult;
+export function measurementSequence(initial: ComplexState, observable: MeasurementOutcome[], count: number, seed: number, reprepare: boolean): { counts: number[]; events: number[]; finalState: ComplexState };
+export function measurementDraw(seed: number, offset: number): number;

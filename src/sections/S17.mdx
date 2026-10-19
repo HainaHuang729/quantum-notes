@@ -1,0 +1,106 @@
+import { ActivePassiveWidget } from "./widgets/OperatorWidgets";
+
+export const id = "1.7";
+export const title = "主动与被动变换：移动向量，或改写算符";
+
+同一个实验中的数值变化，可以用两种数学记账方式表示。先设 $U$ 是 @sec:1.6 定义的酉算符，将所有向量一起变换：
+
+$$ {#eq-1.7.1}
+|V\rangle\longrightarrow U|V\rangle.
+$$
+
+令 $|V'\rangle$ 表示另一个输入向量，这里的撇号用来区分向量，不表示它已经经过上式变换。若算符 $\Omega$ 暂时不动，两个向量之间的矩阵元变为
+
+$$ {#eq-1.7.2}
+\langle V'|\Omega|V\rangle
+\longrightarrow\langle UV'|\Omega|UV\rangle
+=\langle V'|U^\dagger\Omega U|V\rangle.
+$$
+
+最右端给出了第二种算法：把两个原向量留在原位，改用新算符
+
+$$ {#eq-1.7.3}
+\Omega\longrightarrow U^\dagger\Omega U.
+$$
+
+这两种算法对任意 $V,V'$ 都产生相同的矩阵元。原书相对于向量命名：改变向量的方案叫主动变换；向量不动而相应改变算符的方案叫被动变换。这里的对应关系明确由 @eq:1.7.2 决定，不应把两个方向相反的旋转口号混在一起记。
+
+### 用一组数同时计算两遍
+
+在实二维平面中取 $\Omega=\operatorname{diag}(2,1)$，它把横向分量加倍。取单位向量 $v=(\cos\varphi,\sin\varphi)^{\mathsf T}$，以及旋转矩阵
+
+$$
+U=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}.
+$$
+
+实矩阵的伴随就是转置。令 $c=\cos\theta,s=\sin\theta$，被动方案使用的矩阵是
+
+$$
+B=U^{\mathsf T}\Omega U
+=\begin{bmatrix}2c^2+s^2&-cs\\-cs&2s^2+c^2\end{bmatrix}.
+$$
+
+主动方案先计算 $Uv$，再算 $(Uv)^{\mathsf T}\Omega(Uv)$。被动方案则计算 $v^{\mathsf T}Bv$。它们由结合律逐项相等；$Uv$ 与 $Bv$ 本身却不是同一个向量，界面中的两种颜色用于区分这两种操作。
+
+:::interactive[两种记账方式，一个矩阵元]
+
+<ActivePassiveWidget />
+
+把变换角设为零时，$B=\Omega$，两种方案都回到原来的计算。设为四分之一圈时，$B=\operatorname{diag}(1,2)$；原来“横向加倍”的作用在被动表达中换了方向，但两边计算出的数仍完全一样。
+
+:::
+
+### 与换基的联系
+
+设原来的正交归一基为 $|i\rangle$，新基为 $|\widetilde i\rangle=U|i\rangle$，而抽象向量和抽象算符保持不变。新基中的矩阵元为
+
+$$
+\Omega^{\mathrm{new}}_{ij}
+=\langle\widetilde i|\Omega|\widetilde j\rangle
+=\langle i|U^\dagger\Omega U|j\rangle.
+$$
+
+所以相同的夹乘公式也描述换基。此时同一个向量的分量变为 $\widetilde v_i=\langle\widetilde i|V\rangle$，即 $\widetilde v=U^\dagger v$；这与主动旋转向量时的 $v\mapsto Uv$ 有不同含义。先说明到底保持什么不动，再选择公式，比单记“顺时针或逆时针”可靠。
+
+### 哪些数不随这类改写改变
+
+矩阵的迹定义为主对角线元素之和：$\operatorname{Tr}\Omega=\sum_i\Omega_{ii}$。它可从矩阵乘法直接推导出循环性质：
+
+$$
+\operatorname{Tr}(AB)=\sum_{i,j}A_{ij}B_{ji}
+=\sum_{j,i}B_{ji}A_{ij}=\operatorname{Tr}(BA).
+$$
+
+各项是普通数，交换两个数的次序没有问题。这不代表 $AB=BA$，只是两者的对角元之和相同。对三个因子，$\operatorname{Tr}(ABC)=\operatorname{Tr}(BCA)=\operatorname{Tr}(CAB)$；允许的是循环移动，不能任意交换中间两项。因此
+
+$$
+\operatorname{Tr}(U^\dagger\Omega U)
+=\operatorname{Tr}(\Omega UU^\dagger)=\operatorname{Tr}\Omega.
+$$
+
+行列式也不变。对二维矩阵 $\begin{bmatrix}a&b\\c&d\end{bmatrix}$，行列式定义为 $ad-bc$，它描述带方向的面积缩放倍数；高维时则对应体积缩放。行列式的乘积规则 $\det(AB)=\det A\det B$ 配合 $U^\dagger U=I$ 给出
+
+$$
+\det(U^\dagger\Omega U)
+=\det(U^\dagger)\det\Omega\det U=\det\Omega.
+$$
+
+界面中的原矩阵迹为 $3$、行列式为 $2$。虽然夹乘会改变矩阵的各个元素，这两个值始终保留。类似地，酉矩阵自身满足 $|\det U|^2=1$，因为 $\det(U^\dagger)=\overline{\det U}$；但“行列式模为一”本身不足以证明矩阵酉。
+
+::::quiz
+
+:::question{false}
+因为 $\operatorname{Tr}(AB)=\operatorname{Tr}(BA)$，所以任何两个矩阵都可交换相乘。
+
+例如 $A=\begin{bmatrix}1&0\\0&0\end{bmatrix}$，$B=\begin{bmatrix}0&1\\0&0\end{bmatrix}$，有 $AB=B$，$BA=0$，但两者的迹都为零。迹相等只是一条数值关系。
+:::
+
+:::question{true}
+若新基为 $U|i\rangle$，原向量不动，其新坐标列是 $U^\dagger v$。
+
+新坐标第 $i$ 项为 $\langle Ui|V\rangle=\langle i|U^\dagger|V\rangle$。坐标是在新基上读取同一个向量，因此与主动改变向量的坐标规则不同。
+:::
+
+::::
+
+::source[依据 Shankar 第二版主动与被动变换一节独立编写，加入换基辨析与原创数值实验。]

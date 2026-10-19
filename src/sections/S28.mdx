@@ -1,0 +1,269 @@
+import { RotationSymmetryLab, EndpointActionLab } from "./widgets/CanonicalSymmetryLabs";
+
+export const id = "2.8";
+export const title = "对称性及其后果";
+
+### 对称性描述一种变换下的不变性
+
+圆转过任何角度都保持外观，正六边形则只在若干特定角度保持外观。前者包含任意微小的旋转，称连续对称性；后者只有离散的旋转对称性。圆柱绕自己的轴可以任意旋转，换一条轴通常就不再保持不变，所以还须说清楚是哪一组变换。
+
+函数也能具有对称性。比如 $f(x,y)=x^2+y^2$，把自变量作旋转
+
+$$ {#eq-2.8.1}
+\bar x=x\cos\theta-y\sin\theta,\qquad
+\bar y=x\sin\theta+y\cos\theta,
+$$
+
+展开平方后交叉项抵消，得到 $f(\bar x,\bar y)=f(x,y)$。这是 @sec:2.7 中的主动不变性：在不同点上比较同一个函数。
+
+### 从微小变换读出生成方向
+
+当转角 $\epsilon$ 很小时，:c[泰勒展开]{#taylor-expansion}给出 $\cos\epsilon=1+O(\epsilon^2)$、$\sin\epsilon=\epsilon+O(\epsilon^3)$。只保留一次项，旋转成为
+
+$$ {#eq-2.8.2}
+\bar x=x-y\epsilon+O(\epsilon^2),\qquad
+\bar y=y+x\epsilon+O(\epsilon^2).
+$$
+
+这告诉我们每一点最先往哪个方向移动。不断沿这些方向移动，可以拼成有限旋转；但不能把一次近似直接当作有限角度的精确公式。对称性如果对每个微小步骤都成立，便沿相应连续变换一直成立。
+
+### 用一个函数生成正则变换
+
+任取一个光滑的状态函数 $g(q,p)$，用它定义微小变换
+
+$$ {#eq-2.8.3}
+\delta q_i=\epsilon\frac{\partial g}{\partial p_i},\qquad
+\delta p_i=-\epsilon\frac{\partial g}{\partial q_i},\qquad
+\bar q_i=q_i+\delta q_i,\quad\bar p_i=p_i+\delta p_i.
+$$
+
+$g$ 称为生成元，$\epsilon$ 是这组变换的参数，不一定是时间，其单位由所研究的变换决定。检查正则性时，例如
+
+$$
+\{\bar q_i,\bar p_j\}
+=\delta_{ij}+\epsilon\left(\frac{\partial^2g}{\partial q_j\partial p_i}-\frac{\partial^2g}{\partial p_i\partial q_j}\right)+O(\epsilon^2)
+=\delta_{ij}+O(\epsilon^2).
+$$
+
+混合偏导在光滑条件下相等，一次修正便抵消。其余两类基本括号也类似，所以这是到一次精度的正则变换；对应的精确有限变换应当通过连续积分构造。
+
+### 对称性为什么意味着生成元守恒
+
+先计算哈密顿量由自变量变化引起的一次改变量：
+
+$$ {#eq-2.8.4}
+\delta\mathcal H
+=\sum_i\left(\frac{\partial\mathcal H}{\partial q_i}\delta q_i+\frac{\partial\mathcal H}{\partial p_i}\delta p_i\right)
+=\epsilon\{\mathcal H,g\}.
+$$
+
+若变换是哈密顿量的连续对称变换，一次改变量处处为零，就有 $\{\mathcal H,g\}=0$。再利用反对称性和 @eq:2.7.2，
+
+$$ {#eq-2.8.5}
+\frac{dg}{dt}=\{g,\mathcal H\}=0.
+$$
+
+这里假设生成元不显含时间，否则总导数还要加 $\partial g/\partial t$。对称性和守恒律的联系是一个可计算的推导，所用变换必须正则，不能仅仅看到某个函数数值没变就套用。
+
+同样的计算也适用于任意不显含时间的状态函数 $\omega(q,p)$，得到通用关系
+
+$$ {#eq-2.8.6}
+\delta\omega=\epsilon\{\omega,g\}.
+$$
+
+### 平移的生成元是动量
+
+一维情况下取 $g=p$。因为 $\partial p/\partial p=1$、$\partial p/\partial q=0$，得到
+
+$$ {#eq-2.8.7}
+\delta q=\epsilon,\qquad\delta p=0.
+$$
+
+这正是平移位置而不改变动量。若 $\mathcal H=p^2/(2m)+V(q)$ 在任意小平移下不变，势能不能随位置变化，因此力为零，$p$ 守恒。多粒子系统要一起平移所有粒子，生成元便是总动量 $P=\sum_a p_a$。相互作用可以依赖相对位置，粒子间仍能有力，但总动量不变。
+
+### 旋转的生成元是角动量
+
+在二维取 $g=l_z=xp_y-yp_x$。分别对位置、动量求偏导，便得到
+
+$$ {#eq-2.8.8}
+\delta x=-y\epsilon,\quad\delta y=x\epsilon,\quad
+\delta p_x=-p_y\epsilon,\quad\delta p_y=p_x\epsilon.
+$$
+
+它同时旋转位置与动量，正好是完整物理状态的旋转。若哈密顿量对此不变，$l_z$ 就守恒。对通常的动能，旋转不会改变 $p_x^2+p_y^2$；若势能只依赖半径，沿圆周的势能不变，就没有切向力，也没有绕原点的力矩。
+
+必须同时变换位置与动量。只旋转位置、把动量原封不动，可能让某些特殊哈密顿量数值不变，却一般不满足正则条件，也就不能推出同样的守恒律或轨道对应关系。
+
+### 让圆对称逐渐失效
+
+取无量纲系统 $m=1$、$\omega_x=1$，哈密顿量为 $\mathcal H=(p_x^2+p_y^2+x^2+(1+\alpha)y^2)/2$。参数 $\alpha\ge0$ 衡量两个方向回复力的差异，初态为 $(x,y,p_x,p_y)=(1,0,0,1)$。解析解是 $x=\cos t$、$y=\sin(\sqrt{1+\alpha}t)/\sqrt{1+\alpha}$；动量由位置对时间求导得到。
+
+在这套系统中，$\dot l_z=\{l_z,\mathcal H\}=-\alpha xy$。下面同时观察轨道、当前角动量 $l_z$ 与该时刻力矩 $\dot l_z$。
+
+:::interactive[对称性与角动量]
+<RotationSymmetryLab />
+
+$\alpha=0$ 时，完整的旋转对称性使角动量始终不变。$\alpha$ 非零时，某些时刻仍可能恰好有 $xy=0$，导致瞬时力矩为零；这不表示系统恢复了旋转对称性，也不保证以后角动量不变。
+:::
+
+### 哈密顿量生成时间演化
+
+在 @eq:2.8.3 中取 $g=\mathcal H$，与哈密顿方程比较得到
+
+$$ {#eq-2.8.9}
+\delta q_i=\epsilon\{q_i,\mathcal H\},\qquad
+\delta p_i=\epsilon\{p_i,\mathcal H\},
+$$
+
+$$ {#eq-2.8.10}
+\delta q_i=\epsilon\dot q_i,\qquad\delta p_i=\epsilon\dot p_i.
+$$
+
+因此哈密顿量生成的微小正则变换，就是让状态按真实运动前进一小段时间。这解释了它为什么在动力学中居于中心。对于不显含时间的哈密顿量，时间平移对称性对应它本身的守恒；如果它等于能量，就是能量守恒。
+
+### 从生成元积分到有限旋转
+
+对一般 $g$，可以把变换参数 $s$ 临时当成一种计算用的“时间”，求解
+
+$$ {#eq-2.8.11}
+\delta q_i=\epsilon\{q_i,g\},\qquad\delta p_i=\epsilon\{p_i,g\},
+$$
+
+并在微小步骤连续累积的极限下写成
+
+$$
+\frac{dq_i}{ds}=\{q_i,g\},\qquad\frac{dp_i}{ds}=\{p_i,g\}.
+$$
+
+它与哈密顿方程形式相同，但未必描述物体真实经历的运动。比如取 $g=l_z$，把微小参数认作转角 $\delta\theta$，
+
+$$ {#eq-2.8.12}
+\delta x=\epsilon\{x,l_z\}=-\epsilon y=-(\delta\theta)y,
+\qquad\delta y=(\delta\theta)x.
+$$
+
+连续累积后，位置满足
+
+$$ {#eq-2.8.13}
+\frac{dx}{d\theta}=-y,\qquad\frac{dy}{d\theta}=x.
+$$
+
+再求一次导数，就有 $d^2x/d\theta^2=-x$。满足初值 $x(0)=x_0,y(0)=y_0$ 的解为
+
+$$ {#eq-2.8.14}
+\bar x=x_0\cos\theta-y_0\sin\theta,\qquad
+\bar y=x_0\sin\theta+y_0\cos\theta.
+$$
+
+动量满足同一组旋转公式。有限变换由生成方向的连续流得到，不能把 $x-y\theta,y+x\theta$ 用在大角度上。离散对称性本身只要求若干有限变换，不自动提供一条保持哈密顿量不变的连续路径。
+
+### 对称变换把一条真实轨道送到另一条真实轨道
+
+守恒量以外还有第二个结果：如果一个不显含时间、保持变量范围的正则变换使 $\mathcal H$ 的函数形式不变，那么它作用在某一解的每个时刻，得到的整条新轨道仍满足同一个哈密顿量的运动方程。
+
+证明只需结合两种结构。正则性让新变量满足以改写后哈密顿量为基础的哈密顿方程；主动不变性又保证这个改写后的函数与原函数形式相同。于是
+
+$$ {#eq-2.8.15}
+\dot{\bar q}_j=\frac{\partial\mathcal H(\bar q,\bar p)}{\partial\bar p_j},\qquad
+\dot{\bar p}_j=-\frac{\partial\mathcal H(\bar q,\bar p)}{\partial\bar q_j}.
+$$
+
+具体地，新坐标作为旧相空间的函数，沿运动满足
+
+$$ {#eq-2.8.16}
+\dot{\bar q}_j=\{\bar q_j,\mathcal H(q,p)\}_{q,p}.
+$$
+
+先用主动对称性把括号内的 $\mathcal H(q,p)$ 换成 $\mathcal H(\bar q,\bar p)$，再用正则不变性把括号改用新变量计算，就得到 @eq:2.8.15 的位置方程。动量一侧同理给出
+
+$$ {#eq-2.8.17}
+\dot{\bar p}_j=-\frac{\partial\mathcal H(\bar q,\bar p)}{\partial\bar q_j}.
+$$
+
+由此两条方程确实都成立。仅有正则性或仅有哈密顿量数值不变，都不足以保证变换后的轨道满足同一个运动规律。
+
+### 相同实验搬到别处，结果为何一致
+
+设两个粒子的势能只依赖间距 $V(x_1-x_2)$，把两粒子的初始位置同时增加 $a$，初始动量不变。平移是正则变换，哈密顿量也不变，因此全部后续位置同样增加 $a$，动量的演化保持相同。把观察者和装置一起搬过去，所看到的相对过程就与原实验一致。
+
+旋转对称性给出类似解释：把初态、装置和观察方向一起旋转，轨道也相应旋转，而依照装置自身读数得到的实验结果一致。这里要求相关外场也具有相应不变性；只挪动物体、仍保留一个偏向某位置或方向的外场，不能假定实验等价。
+
+### 经典作用量为什么对末时刻的导数等于负能量
+
+把连接固定初末位置的真实经典轨道上的作用量记成 $S_{\mathrm{cl}}(x_f,t_f;x_i,t_i)$。它是端点数据的函数，因为改变旅行时间，连接同一对位置的经典轨道通常也会改变。原书接着建立
+
+$$
+\left.\frac{\partial S_{\mathrm{cl}}}{\partial t_f}\right|_{x_f,x_i,t_i}=-\mathcal H(t_f).
+$$
+
+在能量守恒且 $\mathcal H=E$ 的情况下，成为
+
+$$ {#eq-2.8.18}
+\frac{\partial S_{\mathrm{cl}}(x_f,t_f;x_i,t_i)}{\partial t_f}=-E.
+$$
+
+不能只对积分上限求导便写成 $\mathcal L(t_f)$：那样遗漏了整条经典路径对末时刻的依赖。下面把被遗漏的边界项找出来。
+
+### 边界项怎样把拉格朗日量变成哈密顿量
+
+固定 $x_i,x_f,t_i$，把末时刻增加 $\Delta t$。新轨道在旧时间区间可写成 $x(t)+\eta(t)$，其中初端扰动为零；为了在更晚时刻到达相同的末位置，旧末时刻的位移差须满足 $\eta(t_f)=-\dot x(t_f)\Delta t+O(\Delta t^2)$。
+
+对作用量做一次变化，并对含 $\dot\eta$ 的项作:c[分部积分]{#integration-by-parts}，
+
+$$
+\begin{aligned}
+\delta S_{\mathrm{cl}}
+&=\int_{t_i}^{t_f}\left(\frac{\partial\mathcal L}{\partial x}\eta+\frac{\partial\mathcal L}{\partial\dot x}\dot\eta\right)dt+\mathcal L(t_f)\Delta t\\
+&=\int_{t_i}^{t_f}\left(\frac{\partial\mathcal L}{\partial x}-\frac{d}{dt}\frac{\partial\mathcal L}{\partial\dot x}\right)\eta\,dt
++[p\eta]_{t_i}^{t_f}+\mathcal L(t_f)\Delta t\\
+&=[\mathcal L-p\dot x]_{t_f}\Delta t=-\mathcal H(t_f)\Delta t.
+\end{aligned}
+$$
+
+积分内项由于真实轨道满足欧拉–拉格朗日方程而为零，剩下的边界项正是必要修正。若改为固定末时间、轻轻移动末位置，完全相同的推导给出 $\partial S_{\mathrm{cl}}/\partial x_f=p(t_f)$。对多自由度，每个末坐标的导数等于各自的末动量。
+
+### 用自由粒子核对端点导数
+
+取 $m=1,x_i=t_i=0,x_f=1$，旅行时间为 $T>0$。没有力时，经典路径是直线 $x(t)=t/T$，速度为 $1/T$，所以 $S_{\mathrm{cl}}=1/(2T)$，$E=1/(2T^2)$。下图同时显示基准时间 $T_0=1$ 与可调时间 $T$ 的经典路径，终点位置相同。
+
+:::interactive[晚一点到达，会怎样？]
+<EndpointActionLab />
+
+增大旅行时间会降低整段路径的速度，因此作用量下降，$\partial S_{\mathrm{cl}}/\partial T=-1/(2T^2)=-E$。单独增加积分上限会给出正的 $\mathcal L$，而重新选择连接固定端点的真实轨道后，还须加入负的动量边界项。此图用自由粒子的特例重绘原书端点变时示意的含义。
+
+::source[按 Shankar 图 2.5 的固定位置端点与不同到达时间思想重绘。]
+:::
+
+:::deepdive[作用量与哈密顿–雅可比观点]
+
+将 $p_f=\partial S_{\mathrm{cl}}/\partial x_f$ 代入末时刻的哈密顿量，端点关系可以组织为
+
+$$
+\frac{\partial S_{\mathrm{cl}}}{\partial t_f}
++\mathcal H\left(x_f,\frac{\partial S_{\mathrm{cl}}}{\partial x_f},t_f\right)=0.
+$$
+
+这就是哈密顿–雅可比观点的入口：不直接为每个初态追踪位置、动量，而是寻找一个端点函数，从它的导数读出动量和能量。这是对刚才端点恒等式的进一步整理，本章不求解一般哈密顿–雅可比方程。原书章末还用谐振子检验这些关系，具体计算可作为后续练习。
+:::
+
+### 自测：相等的数值还不等于动力学对称性
+
+::::quiz
+:::question{true}
+连续平移整个孤立多粒子系统，所对应的生成元是总动量，而非任意挑出的一粒子的动量。
+
+对 $g=\sum_a p_a$，每个粒子的 $\delta q_a=\epsilon$，所以这是整体平移。粒子之间可以交换动量，但总动量保持不变。
+:::
+:::question{false}
+各向异性振子在某一瞬间力矩为零，就说明它具有完整旋转对称性。
+
+例如粒子恰好经过坐标轴时 $xy=0$，但只要 $\alpha$ 非零，其他状态通常仍有 $-\alpha xy\ne0$。对称性约束整个函数，不是单独一个状态。
+:::
+:::question{false}
+固定起点、终点的位置，把旅行时间增加一点，经典作用量的变化率一定等于末时刻的拉格朗日量。
+
+路径本身也改变。把路径变化的动量边界项计入后，变化率是 $-\mathcal H(t_f)$。
+:::
+::::
+
+::source[根据 Shankar 第二版第二章对称性一节独立编写，扫描页 111 至 119。保留已核对的公式标记，原创自测代替逐题复制；端点图使用自由粒子特例重绘原书图示含义。]

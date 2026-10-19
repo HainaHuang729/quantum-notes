@@ -1,0 +1,147 @@
+import { ShortTimeLab, ShortTimeScaleFigure } from "./widgets/ShortTimeLab";
+
+export const id = "8.5";
+export const title = "从路径积分回到薛定谔方程";
+
+### 短时间里，两个表述必须给出同一次更新
+
+@sec:4.3 用哈密顿算符决定状态怎样随时间变化；前面的路径积分则把传播写成固定端点路径的振幅和。要检查两者是否相容，只需看足够短的正时间 $\varepsilon$。先把算符演化展开到一阶：
+
+$$ {#eq-8.5.1}
+|\psi(\varepsilon)\rangle-|\psi(0)\rangle
+=-\frac{i\varepsilon}{\hbar}H|\psi(0)\rangle.
+$$
+
+本节这些短时等式均保留至 $\varepsilon$ 的一阶，省略更高阶余项。对 $H=P^2/(2m)+V(X,t)$，坐标表象要求
+
+$$ {#eq-8.5.2}
+\psi(x,\varepsilon)-\psi(x,0)
+=-\frac{i\varepsilon}{\hbar}\left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x,0)\right]\psi(x,0).
+$$
+
+下面从传播核独立得到这次更新。这里使用的是非相对论、笛卡尔坐标下的标量势；$m>0$，并假设势与初态足够光滑，使所用展开和积分成立。令初始时间为零只是记号选择，不要求势永远不随时间变化。
+
+### 动能相位为什么把相关位移缩到平方根尺度？
+
+传播核对初态的作用是一个 :c[积分]{#integral}：每个初始位置的振幅都要乘传播振幅，再相加。
+
+$$ {#eq-8.5.3}
+\psi(x,\varepsilon)=\int_{-\infty}^{\infty}U(x,\varepsilon;x')\psi(x',0)\,dx'.
+$$
+
+短时间切片中的核为
+
+$$ {#eq-8.5.4}
+U(x,\varepsilon;x')=
+\left(\frac{m}{2\pi\hbar i\varepsilon}\right)^{1/2}
+\exp\left\{\frac{i}{\hbar}\left[\frac{m(x-x')^2}{2\varepsilon}-\varepsilon V\!\left(\frac{x+x'}2,0\right)\right]\right\}.
+$$
+
+这是产生正确短时极限所需的表达式；对于一般势，不能把它当成任意有限时间的精确核。代入后有
+
+$$ {#eq-8.5.5}
+\psi(x,\varepsilon)=\left(\frac{m}{2\pi\hbar i\varepsilon}\right)^{1/2}
+\int_{-\infty}^{\infty}
+ e^{im(x-x')^2/(2\varepsilon\hbar)}
+ e^{-i\varepsilon V((x+x')/2,0)/\hbar}\psi(x',0)\,dx'.
+$$
+
+令 $\eta=x'-x$。动能相位约为 $m\eta^2/(2\varepsilon\hbar)$；当这个量随 $\eta$ 迅速变化，邻近贡献发生相消。因此估算相位还没有转过约半圈的位移尺度，得到
+
+$$ {#eq-8.5.6}
+|\eta|\lesssim\left(\frac{2\varepsilon\hbar\pi}{m}\right)^{1/2}.
+$$
+
+这个估算指导展开中的阶数：$\eta$ 按 $\sqrt{\varepsilon}$ 计，$\eta^2$ 按 $\varepsilon$ 计。它不是积分的硬边界，也不是粒子一步允许移动的最大距离。积分仍覆盖全实轴，远处贡献的处理靠振荡相消。
+
+<ShortTimeScaleFigure />
+
+### 展开振幅，再用三个高斯积分收集各阶
+
+变量替换给出
+
+$$ {#eq-8.5.7}
+\psi(x,\varepsilon)=\left(\frac{m}{2\pi\hbar i\varepsilon}\right)^{1/2}
+\int_{-\infty}^{\infty}e^{im\eta^2/(2\hbar\varepsilon)}
+ e^{-i\varepsilon V(x+\eta/2,0)/\hbar}\psi(x+\eta,0)\,d\eta.
+$$
+
+用 :c[泰勒展开]{#taylor-expansion}，把同一时刻的函数在 $x$ 附近展开：
+
+$$
+\psi(x+\eta,0)=\psi+\eta\psi_x+\frac{\eta^2}{2}\psi_{xx}+\cdots,
+\qquad
+ e^{-i\varepsilon V(x+\eta/2,0)/\hbar}=1-\frac{i\varepsilon}{\hbar}V(x,0)+\cdots.
+$$
+
+这里右侧的 $\psi$ 及其导数都在 $(x,0)$ 取值。势前已有一个 $\varepsilon$；再展开它的空间参数会产生 $\varepsilon\eta$ 等更高阶项。为了保留一阶更新，积分中需留下的括号为
+
+$$
+\psi-\frac{i\varepsilon}{\hbar}V\psi+\eta\psi_x+\frac{\eta^2}{2}\psi_{xx}.
+$$
+
+记 $I_j=\int_{-\infty}^{\infty}\eta^j e^{im\eta^2/(2\hbar\varepsilon)}d\eta$。采用先乘微小高斯阻尼、积分后令阻尼趋零的振荡积分约定，得到
+
+$$
+I_0=\left(\frac{2\pi i\hbar\varepsilon}{m}\right)^{1/2},\qquad
+I_1=0,\qquad
+I_2=\frac{i\hbar\varepsilon}{m}I_0.
+$$
+
+$I_1$ 由奇偶性为零；$I_2$ 可由 $I_0$ 对二次指数的系数求导得到。平方根的相位与正时间自由核的分支一致。这不是把绝对收敛的普通高斯积分直接换成虚系数而不说明极限。
+
+### 二阶空间导数正好组成动能项
+
+核前面的系数抵消 $I_0$，于是
+
+$$
+\psi(x,\varepsilon)=\psi(x,0)-\frac{i\varepsilon}{\hbar}V(x,0)\psi(x,0)
++\frac{i\hbar\varepsilon}{2m}\psi_{xx}(x,0)+o(\varepsilon).
+$$
+
+将同阶项重新整理，得到源书的结果：
+
+$$ {#eq-8.5.8}
+\psi(x,\varepsilon)-\psi(x,0)
+=-\frac{i\varepsilon}{\hbar}\left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x,0)\right]\psi(x,0).
+$$
+
+等式两边除以 $\varepsilon$，再取 :c[极限]{#limit}，便得到 $i\hbar\partial_t\psi=H\psi$。这与 @eq:8.5.2 要求的更新一致。任意时刻都能重复这一局部论证，因此路径积分与薛定谔微分方程描述同一个演化问题。
+
+这种对应也帮助理解经典力学中运动方程与驻定作用量原则的关系：一个给局部变化率，一个使用整段固定端点路径。量子路径积分还保留了各条路径的复相位；它没有把每条路径赋予一个经典概率。
+
+### 实验：把曲率与势能的更新分别看见
+
+:::interactive[沿着图解走完一次短时更新]
+
+先用实的 Gaussian 初态与常数势做一个可解对照。依次点亮常数、奇次、曲率、势能四步，再切换峰顶、拐点和外侧。这里显示振幅的实部与虚部，负值并非负概率。
+
+<ShortTimeLab />
+
+峰顶与外侧的曲率符号相反，所以动能首先产生的虚部方向也相反。缩短 $\varepsilon$ 后，一阶曲线与精确演化更接近；有限步长的一阶式只近似保持范数。
+
+:::
+
+### 自测：一阶时间更新需要哪些项？
+
+::::quiz
+:::question{false}
+若只保留波函数展开中的常数项和一次位移项，已经足够得到动能造成的一阶时间变化。
+
+一次位移项因奇偶性积分为零。二次位移项虽然含 $\eta^2$，它的积分恰好贡献一阶 $\varepsilon$，产生二阶空间导数，不能丢弃。
+:::
+
+:::question{false}
+位移尺度随 $\sqrt{\varepsilon}$ 缩小，说明在该尺度以外传播核严格为零。
+
+自由核在非零时间对所有有限位移都有非零模长。这个尺度反映相位随位置变化的快慢以及相消机制，不是核的支撑边界。
+:::
+
+:::question{true}
+在光滑标量势的这一阶推导里，动能导致的空间二阶导数与势能的局部乘法项来自不同的展开步骤。
+
+二阶导数来自 $\psi(x+\eta)$ 的二次项和 $I_2$；势能项来自势指数的一阶时间展开。这两项经过同一个传播积分，合成哈密顿算符。
+:::
+::::
+
+::source[依据 Shankar 第二版相应短时推导独立编写，保留全部八个源公式标签；自测为原创。]

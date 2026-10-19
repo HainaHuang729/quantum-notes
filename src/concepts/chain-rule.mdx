@@ -1,0 +1,7 @@
+export const title = "链式法则";
+
+链式法则计算“变化经过几层传递”后的总变化率。若 $y=f(x)$ 且 $x=x(t)$，就有 $dy/dt=f'(x)\,dx/dt$：每单位时间改变多少输入，再乘每单位输入改变多少输出。
+
+例如 $x=t^2$、$y=x^3$，依次求 :c[导数]{#derivative} 得 $dy/dt=3x^2\cdot2t=6t^5$，与直接对 $t^6$ 求导相同。
+
+若 $f$ 有多个输入，每条变化途径都要计算。对 $f(x(t),y(t),t)$，结果是 $df/dt=(\partial f/\partial x)\dot x+(\partial f/\partial y)\dot y+\partial f/\partial t$；这里的 :c[偏导数]{#partial-derivative} 分别固定其余输入，点号表示对时间求导。
